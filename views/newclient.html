@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  </head>
+
+  <body>
+<div class="container">
+  <div class="row">
+    <div class="col">
+  <div class="p-3 mb-2 bg-secondary text-white">Donnees Client</div>
+  <form name ="formulaire_acheteur" method = "post" action = saisie.php>
+    <form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputnom">Nom</label>
+      <input type="Nom" class="form-control" id="inputnom" placeholder="Nom">
+    </div>
+      <div class="form-group col-md-6">
+        <label for="inputprenom">Prenom</label>
+        <input type="Prenom" class="form-control" id="inputprenom" placeholder="Prenom">
+      </div>
+      </div>
+  <div class="form-group">
+    <label for="inputAddress">Addresse Ligne 1</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="Ex : 6 rue de Paris">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Addresse Ligne 2</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Appartment, studio, etage ...">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">Ville</label>
+      <input type="text" class="form-control" id="inputCity" placeholder = "ex: Nice">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">Pays</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>France</option>
+        <option>Belgique</option>
+        <option>Suisse</option>
+        <option>Allemagne</option>
+        <option>Espagne</option>
+        <option>Portugal</option>
+        <option>Angleterre</option>
+        <option>Irlande</option>
+      </select>
+        </div>
+      <div class="form-group col-md-2">
+        <label for="inputtel">Telephone</label>
+        <input type="Telephone" class="form-control" id="inputtel" placeholder="ex : 0662452331">
+      </div>
+  </div>
+
+</form>
+    </div>
+  </div>
+    <div class="col">
+    <div class="p-3 mb-2 bg-secondary text-white">Donnees Bancaires</div>
+
+    <form name ="formulaire_cartebancaire" method = "post" action = saisie1.php>
+  <div>
+      Type de Carte <select type="text" name="carte" class = "form-control">
+<option value="" ></option>
+<option value="MasterCard" >MasterCard</option>
+<option value="Visa">Visa</option>
+<option value="AmericanExpress">AmericanExpress</option>
+<option value="Paypal">Paypal</option>
+</select><br>
+  </div>
+  <div class = "form-group col-md-6">
+  <label for ="inputnumerocartebleue">Numero carte bancaire</label>
+   <input type = number class = "form-control" name="numero_carte" placeholder="ex : 1234..."/>
+   </div>
+  <div class="form-group col-md-6">
+      <label for="inputcartebleue">Nom sur la carte bleue</label>
+      <input type="number" class="form-control" id="inputnomcb" placeholder="Nom sur la carte bancaire">
+    </div>
+    <div class="form-group">
+        <label for="inputdateexpiration">Date d'expiration</label>
+        <input type="date" class="form-control" id="inputdateexpiration" placeholder="19/03/2021">
+      </div>
+    <div class = "form-group">
+  <label for = "iputcodesecurite">Code de Securite</label>
+  <input class = "form-control" type = "password" name="code securite" maxlength = "3" placeholder="Pictogramme" />
+  <br>
+  </div>
+  <button type="button" class="btn btn-primary">Valider</button>
+</form>
+  </div>
+  </body>
