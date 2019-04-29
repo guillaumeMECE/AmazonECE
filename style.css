@@ -3,6 +3,9 @@
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
+html{
+   font-family: 'Roboto', sans-serif;
+}
 
 .col-nav{
    text-align: center;
@@ -30,18 +33,18 @@ img{
 }
 
 
-
+/*LOGIN DROPDOWN*/
 #login-dp{
     min-width: 250px;
     padding: 14px 14px 0;
     overflow:hidden;
-    background-color:rgba(255,255,255,.8);
+    background-color:rgba(255,255,255,1);
 }
 #login-dp .help-block{
     font-size:12px
 }
 #login-dp .bottom{
-    background-color:rgba(255,255,255,.8);
+    background-color:rgba(255,255,255,1);
     border-top:1px solid #ddd;
     clear:both;
     padding:14px;
