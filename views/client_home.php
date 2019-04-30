@@ -153,8 +153,7 @@
 
         // make the request to the DATABASE
         $sql = "SELECT *
-              FROM produits
-              WHERE categorie = 'Musique';";
+              FROM music;";
         $result = mysqli_query($conn, $sql); // send the query
         //$row = mysqli_fetch_assoc($result); // fetch keys with values
         if (mysqli_num_rows($result) > 0) { // if we get back some values so the request was good
