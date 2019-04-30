@@ -70,7 +70,7 @@
                            </form>
                        </div>
                        <div class=\"bottom text-center\">
-                          Nouveau ? <a href=\"#\"><b>Inscription</b></a>
+                          Nouveau ? <a href=\"views/newclient.html\"><b>Inscription</b></a>
                        </div>";
                   }
                          ?>
