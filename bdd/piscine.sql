@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `buyer` (
   `id_buyer` int(255) NOT NULL AUTO_INCREMENT,
   `id_card` int(255) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `picture` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
