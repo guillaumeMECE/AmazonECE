@@ -15,29 +15,29 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputnom">Nom</label>
-      <input type="Nom" class="form-control" id="inputnom" placeholder="Nom">
+      <input type="Nom" class="form-control" id="inputnom" placeholder="Nom" required>
     </div>
       <div class="form-group col-md-6">
         <label for="inputprenom">Prenom</label>
-        <input type="Prenom" class="form-control" id="inputprenom" placeholder="Prenom">
+        <input type="Prenom" class="form-control" id="inputprenom" placeholder="Prenom" required>
       </div>
       </div>
   <div class="form-group">
     <label for="inputAddress">Addresse Ligne 1</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="Ex : 6 rue de Paris">
+    <input type="text" class="form-control" id="inputAddress" placeholder="Ex : 6 rue de Paris" required>
   </div>
   <div class="form-group">
     <label for="inputAddress2">Addresse Ligne 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Appartment, studio, etage ...">
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Appartment, studio, etage ..."required>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">Ville</label>
-      <input type="text" class="form-control" id="inputCity" placeholder = "ex: Nice">
+      <input type="text" class="form-control" id="inputCity" placeholder = "ex: Nice" required>
     </div>
     <div class="form-group col-md-4">
       <label for="inputState">Pays</label>
-      <select id="inputState" class="form-control">
+      <select id="inputState" class="form-control" required>
         <option selected>Choose...</option>
         <option>France</option>
         <option>Belgique</option>
@@ -49,9 +49,13 @@
         <option>Irlande</option>
       </select>
         </div>
+        <div class="form-group col-md-2">
+          <label for="inputcodepostal">CodePostal</label>
+          <input type="number" maxlength ="5" class="form-control" id="inputcodepostal" placeholder="ex : 75015" required>
+        </div>
       <div class="form-group col-md-2">
         <label for="inputtel">Telephone</label>
-        <input type="Telephone" class="form-control" id="inputtel" placeholder="ex : 0662452331">
+        <input type="Telephone" class="form-control" id="inputtel" placeholder="ex : 0662452331" required>
       </div>
   </div>
 
@@ -63,32 +67,35 @@
 
     <form name ="formulaire_cartebancaire" method = "post" action = saisie1.php>
   <div>
-      Type de Carte <select type="text" name="carte" class = "form-control">
+      Type de Carte <select type="text" name="carte" class = "form-control col-md-6" required>
 <option value="" ></option>
 <option value="MasterCard" >MasterCard</option>
 <option value="Visa">Visa</option>
 <option value="AmericanExpress">AmericanExpress</option>
 <option value="Paypal">Paypal</option>
 </select><br>
+
   </div>
   <div class = "form-group col-md-6">
   <label for ="inputnumerocartebleue">Numero carte bancaire</label>
-   <input type = number class = "form-control" name="numero_carte" placeholder="ex : 1234..."/>
+   <input type = number class = "form-control" name="numero_carte" placeholder="ex : 1234..." required/>
    </div>
   <div class="form-group col-md-6">
       <label for="inputcartebleue">Nom sur la carte bleue</label>
-      <input type="number" class="form-control" id="inputnomcb" placeholder="Nom sur la carte bancaire">
+      <input type="number" class="form-control" id="inputnomcb" placeholder="Nom sur la carte bancaire" required>
     </div>
-    <div class="form-group">
+    <div class="form-group col-md-2">
         <label for="inputdateexpiration">Date d'expiration</label>
-        <input type="date" class="form-control" id="inputdateexpiration" placeholder="19/03/2021">
+        <input type="date" class="form-control" id="inputdateexpiration" placeholder="19/03/2021" required>
       </div>
-    <div class = "form-group">
+    <div class = "form-row col-md-2">
   <label for = "iputcodesecurite">Code de Securite</label>
-  <input class = "form-control" type = "password" name="code securite" maxlength = "3" placeholder="Pictogramme" />
+  <input class = "form-control" type = "password" name="code securite" maxlength = "3" placeholder="Cryptogramme" required />
   <br>
   </div>
+  <br>
   <button type="button" class="btn btn-primary">Valider</button>
 </form>
   </div>
   </body>
+  </html>
