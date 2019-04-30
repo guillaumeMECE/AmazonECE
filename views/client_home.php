@@ -1,37 +1,37 @@
 <!--BEST SELL-->
 <?php // include the configs / constants for the database connection
   require_once("config/db.php");
+include("best_sell.html");
+$iscloth=false;
+$isbook=false;
+$issports=false;
+$ismusic=false;
+if (isset($_GET["cat"])) {
 
+   switch ($_GET["cat"]) {
+      case 'book':
+         $isbook=true;
+         break;
+      case 'music':
+         $ismusic=true;
+         break;
+      case 'sports':
+         $issports=true;
+         break;
+      case 'cloth':
+         $iscloth=true;
+         break;
+   }
+}
    ?>
 
 
-<div class="container my-5 shadow" id="best-sell">
-   <h2>Ventes Flash</h2>
-   <div class="row">
-      <div class="col-3 col-best-sell">
-         <img src="img/who.jpg" alt="who">
-         <div id="comment-in-img">The Who</div>
-      </div>
-      <div class="col-3 col-best-sell">
-         <img src="img/rhcp.jpg" alt="rhcp">
-         <div id="comment-in-img">Red Hot Chili Peppers</div>
-      </div>
-      <div class="col-3 col-best-sell">
-         <img src="img/tp.jpg" alt="tp">
-         <div id="comment-in-img">The Police</div>
-      </div>
-      <div class="col-3 col-best-sell">
-         <img src="img/am.jpg" alt="am">
-         <div id="comment-in-img">Arctic Monkeys</div>
-      </div>
-   </div>
-</div>
 
 <div class="container my-5 shadow " id="categorie">
    <h2>Catégories</h2>
    <div class="row">
       <div class="col-3 my-3 shadow-sm" style="text-align:center">
-         <a href="#books" id="show-books">
+         <a href="#book" id="show-books">
             <h3>Livres</h3>
             <div class="row">
                <div class="col-6">
@@ -225,7 +225,7 @@
          </a>
       </div>
       <div class="col-3 my-3 shadow-sm" style="text-align:center">
-         <a href="#clothing" id="show-clothing">
+         <a href="#cloth" id="show-clothing">
             <h3>Vêtements</h3>
             <div class="row">
                <div class="col-6">
@@ -421,7 +421,7 @@
    </div>
 </div>
 
-<div class="container" id="books" style="display:none">
+<div class="container" id="book" <?php if (!$isbook) {echo "style=\"display:none\"";} ?>>
    <div class="row">
       <div class="col">
          <h3>Livres</h3>
@@ -445,7 +445,7 @@
              <div class=\"card-body\">
                 <h5 class=\"card-title\">".$row["title"]."</h5>
                 <p class=\"card-text\">".$row["prix"]." €</p>
-                <a href=\"#\" class=\"btn btn-primary\">Aperçu</a>
+                <a href=\"article.php?cat=book&id=".$row["id_book"]."\" class=\"btn btn-primary\">Aperçu</a>
              </div>
           </div>";
            }
@@ -458,7 +458,7 @@
    </div>
 </div>
 
-<div class="container" id="music" style="display:none">
+<div class="container" id="music"  <?php if (!$ismusic) {echo "style=\"display:none\"";} ?>>
    <div class="row">
       <div class="col">
          <h3>Musique</h3>
@@ -483,7 +483,7 @@
              <div class=\"card-body\">
                 <h5 class=\"card-title\">".$row["nom"]."</h5>
                 <p class=\"card-text\">".$row["prix"]." €</p>
-                <a href=\"#\" class=\"btn btn-primary\">Aperçu</a>
+                <a href=\"article.php?cat=music&id=".$row["id_music"]."\" class=\"btn btn-primary\">Aperçu</a>
              </div>
           </div>";
            }
@@ -497,7 +497,7 @@
    </div>
 </div>
 
-<div class="container" id="clothing" style="display:none">
+<div class="container" id="cloth"  <?php if (!$iscloth) {echo "style=\"display:none\"";} ?>>
    <div class="row">
       <div class="col">
          <h3>Vêtements</h3>
@@ -521,7 +521,7 @@
              <div class=\"card-body\">
                 <h5 class=\"card-title\">".$row["nom"]."</h5>
                 <p class=\"card-text\">".$row["prix"]." €</p>
-                <a href=\"#\" class=\"btn btn-primary\">Aperçu</a>
+                <a href=\"article.php?cat=cloth&id=".$row["id_vetement"]."\" class=\"btn btn-primary\">Aperçu</a>
              </div>
           </div>";
            }
@@ -534,7 +534,7 @@
    </div>
 </div>
 
-<div class="container" id="sports" style="display:none">
+<div class="container" id="sports"  <?php if (!$issports) {echo "style=\"display:none\"";} ?>>
    <div class="row">
       <div class="col">
          <h3>Sports</h3>
@@ -558,7 +558,7 @@
              <div class=\"card-body\">
                 <h5 class=\"card-title\">".$row["nom"]."</h5>
                 <p class=\"card-text\">".$row["prix"]." €</p>
-                <a href=\"#\" class=\"btn btn-primary\">Aperçu</a>
+                <a href=\"article.php?cat=sports&id=".$row["id_sl"]."\" class=\"btn btn-primary\">Aperçu</a>
              </div>
           </div>";
            }
@@ -577,27 +577,27 @@
    $(document).ready(function() {
       var scroll = new SmoothScroll('a[href*="#"]');
       $("#show-books").click(function() {
-         $("#books").show();
+         $("#book").show();
          $("#music").hide();
-         $("#clothing").hide();
+         $("#cloth").hide();
          $("#sports").hide();
       });
       $("#show-music").click(function() {
-         $("#books").hide();
+         $("#book").hide();
          $("#music").show();
-         $("#clothing").hide();
+         $("#cloth").hide();
          $("#sports").hide();
       });
       $("#show-clothing").click(function() {
-         $("#books").hide();
+         $("#book").hide();
          $("#music").hide();
-         $("#clothing").show();
+         $("#cloth").show();
          $("#sports").hide();
       });
       $("#show-sports").click(function() {
-         $("#books").hide();
+         $("#book").hide();
          $("#music").hide();
-         $("#clothing").hide();
+         $("#cloth").hide();
          $("#sports").show();
       });
    });
