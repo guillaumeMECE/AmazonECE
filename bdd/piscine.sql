@@ -25,37 +25,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `acheteur`
+-- Structure de la table `buyer`
 --
 
-DROP TABLE IF EXISTS `acheteur`;
-CREATE TABLE IF NOT EXISTS `acheteur` (
-  `id_user` varchar(11) DEFAULT NULL,
-  `id_card` varchar(16) DEFAULT NULL,
-  `type` varchar(255) DEFAULT NULL,
+DROP TABLE IF EXISTS `buyer`;
+CREATE TABLE IF NOT EXISTS `buyer` (
+  `id_buyer` int(255) NOT NULL AUTO_INCREMENT,
+  `id_card` int(255) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `picture` varchar(255) NOT NULL,
+  `mail` varchar(255) NOT NULL,
   `adresse` varchar(255) NOT NULL,
   `ville` varchar(255) NOT NULL,
   `cp` varchar(255) NOT NULL,
   `pays` varchar(255) NOT NULL,
   `tel` varchar(10) NOT NULL,
-  KEY `id_user` (`id_user`),
-  KEY `id_card` (`id_card`),
-  KEY `type` (`type`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `admin`
---
-
-DROP TABLE IF EXISTS `admin`;
-CREATE TABLE IF NOT EXISTS `admin` (
-  `id_admin` int(11) NOT NULL AUTO_INCREMENT,
-  `id_user` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_admin`),
-  KEY `id_user` (`id_user`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `type` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_buyer`),
+  KEY `id_card` (`id_card`)
+ ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -65,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 DROP TABLE IF EXISTS `card`;
 CREATE TABLE IF NOT EXISTS `card` (
-  `id_card` int(11) NOT NULL AUTO_INCREMENT,
+  `id_card` int(255) NOT NULL AUTO_INCREMENT,
   `nomcarte` varchar(255) NOT NULL,
   `numero` varchar(16) NOT NULL,
   `datefin` date DEFAULT NULL,
@@ -82,9 +71,10 @@ CREATE TABLE IF NOT EXISTS `card` (
 
 DROP TABLE IF EXISTS `demandevendeur`;
 CREATE TABLE IF NOT EXISTS `demandevendeur` (
-  `id_demvendeur` int(11) NOT NULL AUTO_INCREMENT,
+  `id_demvendeur` int(255) NOT NULL AUTO_INCREMENT,
   `mail` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `picture` varchar(255) NOT NULL,
   `bgpic` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
@@ -97,49 +87,47 @@ CREATE TABLE IF NOT EXISTS `demandevendeur` (
 -- Structure de la table `livre`
 --
 
-DROP TABLE IF EXISTS `livre`;
-CREATE TABLE IF NOT EXISTS `livre` (
-  `id_book` int(11) DEFAULT NULL,
+DROP TABLE IF EXISTS `book`;
+CREATE TABLE IF NOT EXISTS `book` (
+  `id_book` int(255) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
   `auteur` varchar(255) NOT NULL,
   `date` date NOT NULL,
   `editeur` varchar(255) NOT NULL,
-  `categorie` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `musique`
---
-
-DROP TABLE IF EXISTS `musique`;
-CREATE TABLE IF NOT EXISTS `musique` (
-  `id_musique` int(11) DEFAULT NULL,
-  `auteur` varchar(255) NOT NULL,
-  `datesortie` date DEFAULT NULL,
-  `taille` varchar(255) NOT NULL,
-  KEY `id` (`id_musique`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `produits`
---
-
-DROP TABLE IF EXISTS `produits`;
-CREATE TABLE IF NOT EXISTS `produits` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(255) NOT NULL,
+  `prix` float(11) NOT NULL,
   `photo` varchar(255) DEFAULT NULL,
   `video` varchar(255) DEFAULT NULL,
   `description` varchar(255) NOT NULL,
-  `prix` int(11) NOT NULL,
-  `categorie` varchar(255) NOT NULL,
+  `categorie` varchar(255) DEFAULT NULL,
   `genre` varchar(255) NOT NULL,
   `nombre` int(11) NOT NULL,
-  `id_seller` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `id_seller` int(255) DEFAULT NULL,
+  PRIMARY KEY (`id_book`),
+  KEY `id_seller` (`id_seller`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `music`
+--
+
+DROP TABLE IF EXISTS `music`;
+CREATE TABLE IF NOT EXISTS `music` (
+  `id_music` int(255) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) NOT NULL,
+  `auteur` varchar(255) NOT NULL,
+  `datesortie` date DEFAULT NULL,
+  `taille` varchar(255) NOT NULL,
+  `photo` varchar(255) DEFAULT NULL,
+  `video` varchar(255) DEFAULT NULL,
+  `description` varchar(255) NOT NULL,
+  `prix` float(11) NOT NULL,
+  `categorie` varchar(255) DEFAULT NULL,
+  `genre` varchar(255) NOT NULL,
+  `nombre` int(11) NOT NULL,
+  `id_seller` int(255) DEFAULT NULL,
+  PRIMARY KEY (`id_music`),
   KEY `id_seller` (`id_seller`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -151,9 +139,14 @@ CREATE TABLE IF NOT EXISTS `produits` (
 
 DROP TABLE IF EXISTS `seller`;
 CREATE TABLE IF NOT EXISTS `seller` (
-  `id` int(11) DEFAULT NULL,
+  `id_seller` int(255) NOT NULL AUTO_INCREMENT,
   `bg_pic` varchar(255) NOT NULL,
-  KEY `id` (`id`)
+  `mail` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `picture` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+ PRIMARY KEY (`id_seller`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -164,27 +157,21 @@ CREATE TABLE IF NOT EXISTS `seller` (
 
 DROP TABLE IF EXISTS `sportsloisirs`;
 CREATE TABLE IF NOT EXISTS `sportsloisirs` (
-  `id_sl` int(11) DEFAULT NULL,
+  `id_sl` int(255) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) NOT NULL,
   `marque` varchar(255) NOT NULL,
-  KEY `id` (`id_sl`)
+  `photo` varchar(255) DEFAULT NULL,
+  `video` varchar(255) DEFAULT NULL,
+  `description` varchar(255) NOT NULL,
+  `prix` float(11) NOT NULL,
+  `categorie` varchar(255) DEFAULT NULL,
+  `genre` varchar(255) NOT NULL,
+  `nombre` int(11) NOT NULL,
+  `id_seller` int(255) DEFAULT NULL,
+  PRIMARY KEY (`id_sl`),
+  KEY `id_seller` (`id_seller`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Structure de la table `user`
---
-
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT,
-  `mail` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `picture` varchar(255) NOT NULL,
-  `type` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_user`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -194,15 +181,39 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 DROP TABLE IF EXISTS `vetements`;
 CREATE TABLE IF NOT EXISTS `vetements` (
-  `id_vetement` int(11) DEFAULT NULL,
+  `id_vetement` int(255) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) NOT NULL,
   `taille` varchar(255) NOT NULL,
   `couleur` varchar(255) NOT NULL,
   `sexe` varchar(255) NOT NULL,
   `marque` varchar(255) NOT NULL,
-  KEY `id` (`id_vetement`)
+  `photo` varchar(255) DEFAULT NULL,
+  `video` varchar(255) DEFAULT NULL,
+  `description` varchar(255) NOT NULL,
+  `prix` float(11) NOT NULL,
+  `categorie` varchar(255) NOT NULL,
+  `genre` varchar(255) NOT NULL,
+  `nombre` int(11) NOT NULL,
+  `id_seller` int(255) DEFAULT NULL,
+  PRIMARY KEY(`id_vetement`),
+  KEY `id_seller` (`id_seller`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+/*INSERT USER*/
+INSERT INTO `buyer` (`id_buyer`, `id_card`, `name`, `password`, `picture`, `mail`, `adresse`, `ville`, `cp`, `pays`, `tel`, `type`) VALUES (NULL, NULL, 'Guillaume', 'azerty', '', 'guillaume.maurin@edu.ece.fr', '11 Rue de Gramont', 'Chambourcy', '78240', 'France', '0760577499', NULL);
+/*INSERT MUSIC*/
+INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'Suck it and See', 'Arctic Monkeys', '2019-04-03', '45', 'img/am.jpg', NULL, 'Album', '9.98', NULL, 'indie rock', '3', NULL);
+INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'Hot Sugar', 'Red Hot Chili Peppers', '2019-04-03', '45', 'img/rhcp.jpg', NULL, 'Album', '8.32', NULL, 'pop rock', '5', NULL);
+INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'A Quick One', 'the Who', '2019-04-03', '45', 'img/who.jpg', NULL, 'Album', '4.5', NULL, 'rock', '12', NULL);
+INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'Greatest Hit - the Police', 'The Police', '2019-04-03', '45', 'img/tp.jpg', NULL, 'Album', '11.42', NULL, 'rock', '9', NULL);
+/*INSERT BOOKS*/
+INSERT INTO `book` (`id_book`, `title`, `auteur`, `date`, `editeur`, `prix`, `photo`, `video`, `description`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'Le Rouge et le Noir', 'Stendhal', '2019-04-17', '', '7.4', 'img/retn.jpg', NULL, '', NULL, 'roman', '1', NULL);
+/*INSERT CLOTHING*/
+INSERT INTO `vetements` (`id_vetement`, `nom`, `taille`, `couleur`, `sexe`, `marque`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'T-Shirt Champion', 'M', 'Blanc', 'M', 'Champion', 'img/champion.jpg', NULL, '', '21.00', '', '', '7', NULL);
+/*INSERT SPORTS*/
+INSERT INTO `sportsloisirs` (`id_sl`, `nom`, `marque`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'Pure Drive 2017', 'Babolat', 'img/babolat.jpg', NULL, 'Offrant une combinaison incroyable de vitesse, de puissance et d\'effets, la Pure Drive est l\'une des raquettes les plus populaires et polyvalentes jamais créées !', '169.90', NULL, '', '23', NULL);
