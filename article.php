@@ -17,6 +17,8 @@
       <a href="#" class="floatBtn cart shadow-lg">
             <i class="material-icons md-36" style="margin-top:15px;">add_shopping_cart</i>
       </a-->
+      <!--NAVIGATION BTN-->
+      <div class="floatBtn shadow-lg">
          <div class="floatBtnL">
             <a href="<?php echo "/amazonece?cat=".$_GET["cat"]."#".$_GET["cat"]; ?>" class="previous">
                   <i class="material-icons md-36" style="margin-top:12px;">arrow_back_ios</i>
@@ -27,6 +29,8 @@
                   <i class="material-icons md-36" style="margin-top:12px;">add_shopping_cart</i>
             </a>
          </div>
+      </div>
+
 
 
       <?php include("views/navbar.php") ?>
@@ -152,9 +156,18 @@
          </div>
       </div>
 
+<!--IMPORT BEST SELL-->
       <?php include("views/best_sell.html"); ?>
 
-      <!--IMPORT BEST SELL-->
+      <script type="text/javascript">
+         var element = document.getElementById("nav-home");
+         element.classList.remove("active");
+         element = document.getElementById("nav-panier");
+         element.classList.remove("active");
+         element = document.getElementById("nav-compte");
+         element.classList.remove("active");
+      </script>
+
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
    </body>

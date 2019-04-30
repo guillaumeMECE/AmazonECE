@@ -34,17 +34,24 @@
          $row = mysqli_fetch_assoc($result); // fetch keys with values
          if (mysqli_num_rows($result) > 0) { // if we get back some values so the request was good
             $_SESSION["email"]=$_POST['email'];
-            $_SESSION["name"]=$row['name'];
+             $_SESSION["name"]=$row['name'];
          }
 
-         mysqli_close($conn);
-      } ?>
+        mysqli_close($conn);
+    } ?>
    <?php
    include("views/navbar.php") ?>
 
    <?php include("views/client_home.php") ?>
 
-
+   <script type="text/javascript">
+      var element = document.getElementById("nav-home");
+      element.classList.add("active");
+      element = document.getElementById("nav-panier");
+      element.classList.remove("active");
+      element = document.getElementById("nav-compte");
+      element.classList.remove("active");
+   </script>
 
    <!--script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script-->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

@@ -24,6 +24,9 @@ html{
    position: absolute;
    left: 50%;
    bottom: 10%;
+   -ms-transform: translateX(-50%);
+   -moz-transform: translateX(-50%);
+   -webkit-transform: translateX(-50%);
    transform: translateX(-50%);
    background-color: rgba(255, 255, 255, 0.7);
 }
@@ -100,7 +103,7 @@ img{
 
 /*FLOATING BUTTON*/
 .floatBtnL{
-	position:fixed;
+	position:relative;
 	/*width:60px;
 	height:60px;*/
    width:60px;
@@ -109,12 +112,12 @@ img{
 	border-radius:50px 0 0 50px;
 	text-align:center;
    z-index: 999;
-   bottom:40px;
-	left:50%;
-   transform: translateX(-60px);
+   /*bottom:40px;
+	left:50%;*/
+   /*transform: translateX(-60px);*/
 }
 .floatBtnR{
-	position:fixed;
+	position:relative;
 	/*width:60px;
 	height:60px;*/
    width:60px;
@@ -123,9 +126,30 @@ img{
 	border-radius:0 50px 50px 0;
 	text-align:center;
    z-index: 999;
+   float: right;
+
+   /*bottom:40px;
+	left:50%;*/
+   -ms-transform: translateY(-100%);
+   -moz-transform: translateY(-100%);
+   -webkit-transform: translateY(-100%);
+   transform: translateY(-100%);
+}
+.floatBtn{
+   position:fixed;
+   /*width:60px;
+   height:60px;*/
+   width:120px;
+   height:60px;
+   border-radius:50px;
+   z-index: 998;
    bottom:40px;
-	left:50%;
-   transform: translateX(0px);
+   left:50%;
+   -ms-transform: translateX(-50%);
+   -moz-transform: translateX(-50%);
+   -webkit-transform: translateX(-50%);
+   transform: translateX(-50%);
+   /*box-shadow: 2px 2px 10px #999;*/
 }
 .floatBtnR:hover{
    background-color:#0B8;

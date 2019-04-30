@@ -12,17 +12,17 @@
          <div class="container">
             <div class="row justify-content-md-center">
                <div class="col-md-auto col-nav">
-                  <a class="nav-item nav-link active" href="#"><i class="material-icons md-36">
+                  <a class="nav-item nav-link active" href="/amazonece/" id="nav-home"><i class="material-icons md-36">
                         home
                      </i><br>Accueil</a>
                </div>
                <div class="col-md-auto col-nav">
-                  <a class="nav-item nav-link" href="#"><i class="material-icons md-36">
+                  <a class="nav-item nav-link" href="#" id="nav-panier"><i class="material-icons md-36">
                         shopping_basket
                      </i><br>Panier</a>
                </div>
                <div class="col-md-auto col-nav">
-                  <a class="nav-item nav-link" href="#"><i class="material-icons md-36">
+                  <a class="nav-item nav-link" href="#" id="nav-compte"><i class="material-icons md-36">
                         account_circle
                      </i><br>Compte</a>
                </div>
@@ -83,3 +83,6 @@
       </ul>
 
 </nav>
+<script type="text/javascript">
+
+</script>
