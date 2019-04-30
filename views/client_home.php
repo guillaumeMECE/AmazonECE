@@ -1,4 +1,9 @@
 <!--BEST SELL-->
+<?php // include the configs / constants for the database connection
+  require_once("config/db.php");
+
+   ?>
+
 
 <div class="container my-5 shadow" id="best-sell">
    <h2>Ventes Flash</h2>
@@ -137,15 +142,36 @@
    <div class="row">
       <div class="col">
          <h3>Musique</h3>
+         <div class="card-deck">
+         <?php
+         // Create connection
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        // Check connection
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
 
-         <div class="card" style="width: 18rem;">
-            <img src="img/who.jpg" class="card-img-top" alt="who">
-            <div class="card-body">
-               <h5 class="card-title">The Who</h5>
-               <p class="card-text">9,85 €</p>
-               <a href="#" class="btn btn-primary">Aperçu</a>
-            </div>
-         </div>
+        // make the request to the DATABASE
+        $sql = "SELECT *
+              FROM produits
+              WHERE categorie = 'Musique';";
+        $result = mysqli_query($conn, $sql); // send the query
+        //$row = mysqli_fetch_assoc($result); // fetch keys with values
+        if (mysqli_num_rows($result) > 0) { // if we get back some values so the request was good
+           while ($row = mysqli_fetch_assoc($result)) {
+               echo "<div class=\"card\" style=\"width: 18rem;\">
+             <img src=\"".$row["photo"]."\" class=\"card-img-top\" alt=\"".$row["nom"]."\">
+             <div class=\"card-body\">
+                <h5 class=\"card-title\">".$row["nom"]."</h5>
+                <p class=\"card-text\">".$row["prix"]." €</p>
+                <a href=\"#\" class=\"btn btn-primary\">Aperçu</a>
+             </div>
+          </div>";
+           }
+        }
+        mysqli_close($conn);
+         ?>
+      </div>
       </div>
    </div>
 </div>
