@@ -177,3 +177,31 @@ img{
 .previous:hover{
    color:#FFF;
 }
+
+.floatBtnAdd{
+   position:fixed;
+   /*width:60px;
+   height:60px;*/
+   width:60px;
+   height:60px;
+   border-radius:50px;
+   z-index: 998;
+   bottom:40px;
+   left:50%;
+   -ms-transform: translateX(-50%);
+   -moz-transform: translateX(-50%);
+   -webkit-transform: translateX(-50%);
+   transform: translateX(-50%);
+   background-color:#0C9;
+
+}
+.floatBtnAdd:hover{
+   background-color:#0B8;
+}
+.add-icon{
+   color:#FFF;
+   margin-left: 12px;
+}
+.add-icon:hover{
+   color:#FFF;
+}

@@ -12,14 +12,23 @@
          <div class="container">
             <div class="row justify-content-md-center">
                <div class="col-md-auto col-nav">
-                  <a class="nav-item nav-link active" href="/amazonece/" id="nav-home"><i class="material-icons md-36">
+                  <a class="nav-item nav-link" href="/amazonece/" id="nav-home"><i class="material-icons md-36">
                         home
                      </i><br>Accueil</a>
                </div>
                <div class="col-md-auto col-nav">
-                  <a class="nav-item nav-link" href="/amazonece/panier" id="nav-panier"><i class="material-icons md-36">
-                        shopping_basket
-                     </i><br>Panier</a>
+                  <?php if (isset($_SESSION['type']) and $_SESSION['type']=="seller") {
+                    $icon="add_circle";
+                    $label="Ajout produit";
+                    $url="/amazonece/seller_add_product";
+                 }else{
+                      $icon="shopping_basket";
+                    $label="Panier";
+                    $url="/amazonece/panier";
+                 }?>
+                  <a class="nav-item nav-link" href="<?php echo $url; ?>" id="nav-panier"><i class="material-icons md-36">
+                        <?php echo $icon; ?>
+                     </i><br><?php echo $label; ?></a>
                </div>
                <div class="col-md-auto col-nav">
                   <?php

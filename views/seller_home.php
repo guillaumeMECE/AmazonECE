@@ -1,3 +1,12 @@
+
+
+   <div class="floatBtnAdd shadow-lg">
+      <a href="seller_add_product.php" class="add-icon">
+            <i class="material-icons md-36" style="margin-top: 11px;">add</i>
+      </a>
+   </div>
+
+
 <div class="container m-5">
    <!--div class="row"-->
 <?php
@@ -60,8 +69,8 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
             $cpt=0;
         }
     }
-   /* if ($cpt!=0) {
-        echo "</div>";
+    /* if ($cpt!=0) {
+         echo "</div>";
   }*/
 }
             /////////
@@ -115,8 +124,8 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
             $cpt=0;
         }
     }
-   /* if ($cpt!=0) {
-        echo "</div>";
+    /* if ($cpt!=0) {
+         echo "</div>";
   }*/
 }
 
@@ -172,8 +181,8 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
             $cpt=0;
         }
     }
-   /* if ($cpt!=0) {
-        echo "</div>";
+    /* if ($cpt!=0) {
+         echo "</div>";
   }*/
 }
 
@@ -228,8 +237,8 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
             $cpt=0;
         }
     }
-   /* if ($cpt!=0) {
-        echo "</div>";
+    /* if ($cpt!=0) {
+         echo "</div>";
   }*/
 }
  ?>
