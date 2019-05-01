@@ -17,10 +17,10 @@ require_once("../config/db.php");
 
 
        else if($conn){
-    if ($nom!="" && $prenom!="" && $mail!=""&& $password!="")
+    if ($name!="" && $prenom!="" && $mail!=""&& $password!="")
     {
     $sql = "INSERT INTO demandevendeur (mail, name, firstname, password, picture, bgpic, type)
-    VALUES('".$mail."', '".$name."', '".$prenom."', '".$password."','".$photo."' ,'".$image."','"seller"');";
+    VALUES('".$mail."', '".$name."', '".$prenom."', '".$password."','".$photo."' ,'".$image."','seller');";
     $result = mysqli_query($conn, $sql);
     header('Location : ../index.php');
     ?>

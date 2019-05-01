@@ -18,7 +18,7 @@ require_once("../config/db.php");
     if ($nom!="" && $prenom!="" && $mail!=""&& $password!="")
     {
     $sql = "INSERT INTO admin (name, firstname, mail, password, type)
-    VALUES('".$name."', '".$prenom."', '".$mail."','".$password."','"admin"');";
+    VALUES('".$name."', '".$prenom."', '".$mail."','".$password."','admin');";
     $result = mysqli_query($conn, $sql);
     header('Location : ../index.php');
     ?>
