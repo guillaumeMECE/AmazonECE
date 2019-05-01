@@ -69,10 +69,11 @@
         mysqli_close($conn);
     } ?>
    <?php
-   include("views/navbar.php") ?>
+   include("views/navbar.php");
+   include("views/seller_home.php"); ?>
 
    <?php include("views/best_sell.html");
-    include("views/client_home.php") ?>
+    include("views/client_home.php"); ?>
 
    <script type="text/javascript">
       var element = document.getElementById("nav-home");
