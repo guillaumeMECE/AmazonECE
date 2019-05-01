@@ -32,12 +32,15 @@ require_once("../config/db.php");
        else if($conn){
          $query="SELECT mail FROM admin WHERE mail = '$mail'";
          $query1 ="SELECT mail FROM seller WHERE mail = '$mail'";
+         $query2 ="SELECT mail FROM buyer WHERE mail = '$mail'";
 
-         $result1  = mysqli_query($conn, $query);
+         $result1= mysqli_query($conn, $query);
          $result2= mysqli_query($conn, $query1);
+         $result3= mysqli_query($conn, $query2);
          $a =mysqli_num_rows($result1);
-         $b =mysqli_num_rows($result1);
-         if ($a>0 && $b>0)
+         $b =mysqli_num_rows($result2);
+         $c =mysqli_num_rows($result3);
+         if ($a>0 && $b>0 && $c>0)
          {
            ?>
 
@@ -57,7 +60,7 @@ require_once("../config/db.php");
     $sql1 = "INSERT INTO card (nomcarte, numero, datefin, crypto, type)
     VALUES('".$nomcard."','".$card."', '".$datefin."', '".$crypto."', '".$typecarte."');";
     $result = mysqli_query($conn, $sql1);
-    header('Location : ../index.php');
+
     ?>
     <div class="alert alert-success" role="alert">
   Felicitation vous avez bien été inscrit!
@@ -75,6 +78,7 @@ else
   require "newclient.php";
 
 }
+  //header('Location : ../index.php');
 }
 }
       mysqli_close($conn);

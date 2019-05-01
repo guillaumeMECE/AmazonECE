@@ -21,12 +21,15 @@ require_once("../config/db.php");
        {
          $query="SELECT mail FROM buyer WHERE mail = '$mail'";
          $query1 ="SELECT mail FROM admin WHERE mail = '$mail'";
+         $query2 ="SELECT mail FROM seller WHERE mail = '$mail'";
 
          $result1  = mysqli_query($conn, $query);
          $result2= mysqli_query($conn, $query1);
+         $result3= mysqli_query($conn, $query2);
          $a =mysqli_num_rows($result1);
          $b =mysqli_num_rows($result1);
-         if ($a>0 && $b>0)
+        $c =mysqli_num_rows($result3);
+         if ($a>0 && $b>0 && $c>0)
          {
            ?>
 
