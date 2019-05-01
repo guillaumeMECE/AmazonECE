@@ -65,7 +65,7 @@
 
       <div class="form-group col-md-6">
         <label for="mail">Mail</label>
-        <input type="Mail" class="form-control" name="mail" placeholder="ex : Lea@edu.ece.fr">
+        <input type="email" class="form-control" name="mail" placeholder="ex : Lea@edu.ece.fr">
       </div>
 
       <div class="form-group col-md-6">

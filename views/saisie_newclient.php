@@ -30,16 +30,37 @@ require_once("../config/db.php");
 
 
        else if($conn){
+         $query="SELECT mail FROM admin WHERE mail = '$mail'";
+         $query1 ="SELECT mail FROM seller WHERE mail = '$mail'";
+         $query2 ="SELECT mail FROM buyer WHERE mail = '$mail'";
+
+         $result1= mysqli_query($conn, $query);
+         $result2= mysqli_query($conn, $query1);
+         $result3= mysqli_query($conn, $query2);
+         $a =mysqli_num_rows($result1);
+         $b =mysqli_num_rows($result2);
+         $c =mysqli_num_rows($result3);
+         if ($a>0 && $b>0 && $c>0)
+         {
+           ?>
+
+           <div class="alert alert-danger" role="alert">
+             Ce mail existe déjà!
+           </div>
+           <?php
+           require "newadmin.php";
+         }
+         else{
     if ($name!="" && $mail!="")
     {
-    $sql = "INSERT INTO buyer (name,firstname, password, mail, adresse, ville, cp, pays, tel)
-    VALUES('".$name."','".$prenom."', '".$password."', '".$mail."', '".$adresse."', '".$ville."', '".$codepostal."','".$pays."','" .$tel."');";
+    $sql = "INSERT INTO buyer (name,firstname, password, mail, adresse, ville, cp, pays, tel, type)
+    VALUES('".$name."','".$prenom."', '".$password."', '".$mail."', '".$adresse."', '".$ville."', '".$codepostal."','".$pays."','" .$tel."','buyer');";
     $result = mysqli_query($conn, $sql);
 
     $sql1 = "INSERT INTO card (nomcarte, numero, datefin, crypto, type)
     VALUES('".$nomcard."','".$card."', '".$datefin."', '".$crypto."', '".$typecarte."');";
     $result = mysqli_query($conn, $sql1);
-    header('Location : ../index.php');
+
     ?>
     <div class="alert alert-success" role="alert">
   Felicitation vous avez bien été inscrit!
@@ -56,6 +77,8 @@ else
   <?php
   require "newclient.php";
 
+}
+  //header('Location : ../index.php');
 }
 }
       mysqli_close($conn);
