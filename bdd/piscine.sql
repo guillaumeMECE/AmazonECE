@@ -247,6 +247,12 @@ INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo
 
 INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'A Horse With No Name', 'America', '2019-04-03', '45', 'img/america.jpg', NULL, 'Album', '27.12', NULL, 'rock', '8', NULL);
 
+/*INSERT SELLER*/
+INSERT INTO `seller` (`id_seller`, `bgpic`, `mail`, `name`, `firstname`,  `password`, `picture`, `type`) VALUES (NULL, '4', 'claire.grouhel@edu.ece.fr', 'Grouhel', 'Claire', 'azerty', '5', NULL);
+
+/*INSERT CARD*/
+INSERT INTO `card`(`id_card`, `nomcarte`, `numero`, `datefin`, `crypto`, `type`) VALUES (NULL, 'Guillaume Maurin', '095', '2019-04-18', '666', 'Master Card');
+
 /*INSERT BOOKS*/
 INSERT INTO `book` (`id_book`, `title`, `auteur`, `date`, `editeur`, `prix`, `photo`, `video`, `description`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'Le Rouge et le Noir', 'Stendhal', '2019-04-17', 'Larousse', '7.4', 'img/retn.jpg', NULL, '', NULL, 'roman', '1', NULL);
 INSERT INTO `book` (`id_book`, `title`, `auteur`, `date`, `editeur`, `prix`, `photo`, `video`, `description`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'Les Misérables', 'Victor Hugo', '2019-04-17', 'Petit furet', '9.87', 'img/miserable.jpg', NULL, '', NULL, 'roman', '1', NULL);

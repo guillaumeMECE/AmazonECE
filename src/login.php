@@ -1,6 +1,6 @@
 <?php
 // include the configs / constants for the database connection
-      require_once("../config/db.php");
+      require_once("config/db.php");
 // Create connection
 $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 // Check connection
