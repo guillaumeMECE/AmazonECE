@@ -27,25 +27,15 @@
         }
 
         // make the request to the DATABASE
-<<<<<<< HEAD
-        $sql = "SELECT mail,password,name,id_buyer
-=======
+
         $sql = "SELECT mail,password,name,id_buyer,id_card
->>>>>>> ft_client_account
        FROM buyer
        WHERE mail ='" . $_POST['email'] . "' AND password = '" . $_POST['mdp'] . "';";
         $result = mysqli_query($conn, $sql); // send the query
          $row = mysqli_fetch_assoc($result); // fetch keys with values
          if (mysqli_num_rows($result) > 0) { // if we get back some values so the request was good
             $_SESSION["email"]=$_POST['email'];
-<<<<<<< HEAD
-             $_SESSION["name"]=$row['name'];
-             $_SESSION["id"]=$row['id_buyer'];
-         }
 
-        mysqli_close($conn);
-    } ?>
-=======
             $_SESSION["name"]=$row['name'];
             $_SESSION["id"]=$row['id_buyer'];
             $_SESSION["idcb"]=$row['id_card'];
@@ -56,7 +46,6 @@
 
          mysqli_close($conn);
       } ?>
->>>>>>> ft_client_account
    <?php
    include("views/navbar.php") ?>
 
