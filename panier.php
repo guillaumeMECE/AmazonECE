@@ -61,7 +61,8 @@ include("views/navbar.php") ?>
                FROM cart
                INNER JOIN music ON cart.id_produit = music.id_music
                WHERE cart.user_id = '" . $_SESSION['id'] . "'
-               AND cart.type = 'music';";
+               AND cart.type = 'music'
+               AND cart.type_user = '" . $_SESSION['type'] . "';";
                $result = mysqli_query($conn, $sql); // send the query
          while ($row = mysqli_fetch_assoc($result)) {
              $photo=$row['photo'];
@@ -87,7 +88,8 @@ include("views/navbar.php") ?>
                FROM cart
                INNER JOIN book ON cart.id_produit = book.id_book
                WHERE cart.user_id = '" . $_SESSION['id'] . "'
-               AND cart.type = 'book';";
+               AND cart.type = 'book'
+               AND cart.type_user = '" . $_SESSION['type'] . "';";
                $result = mysqli_query($conn, $sql); // send the query
          while ($row = mysqli_fetch_assoc($result)) {
              $photo=$row['photo'];
@@ -114,7 +116,8 @@ include("views/navbar.php") ?>
                FROM cart
                INNER JOIN vetements ON cart.id_produit = vetements.id_vetement
                WHERE cart.user_id = '" . $_SESSION['id'] . "'
-               AND cart.type = 'cloth';";
+               AND cart.type = 'cloth'
+               AND cart.type_user = '" . $_SESSION['type'] . "';";
                $result = mysqli_query($conn, $sql); // send the query
          while ($row = mysqli_fetch_assoc($result)) {
              $photo=$row['photo'];
@@ -141,7 +144,8 @@ include("views/navbar.php") ?>
                FROM cart
                INNER JOIN sportsloisirs ON cart.id_produit = sportsloisirs.id_sl
                WHERE cart.user_id = '" . $_SESSION['id'] . "'
-               AND cart.type = 'sports';";
+               AND cart.type = 'sports'
+               AND cart.type_user = '" . $_SESSION['type'] . "';";
                $result = mysqli_query($conn, $sql); // send the query
          while ($row = mysqli_fetch_assoc($result)) {
              $photo=$row['photo'];
@@ -171,7 +175,9 @@ include("views/navbar.php") ?>
                <td></td>
                <td><?php
                // SQL request
-                  $sql = "SELECT prix_unit,nombre_cart FROM cart;";
+                  $sql = "SELECT prix_unit,nombre_cart FROM cart
+                  WHERE user_id = '".$_SESSION["id"]."'
+                  AND type_user = '".$_SESSION["type"]."';";
                      $result = mysqli_query($conn, $sql); // send the query
                      $prixTot=0;
                while ($row = mysqli_fetch_assoc($result)) {

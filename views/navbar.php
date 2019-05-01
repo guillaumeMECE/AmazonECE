@@ -22,8 +22,25 @@
                      </i><br>Panier</a>
                </div>
                <div class="col-md-auto col-nav">
-
-                  <a class="nav-item nav-link" href="/AmazonECE/client_account.php" id="nav-compte"><i class="material-icons md-36">
+                  <?php
+                  $url_account="#";
+                   if (isset($_SESSION["name"]) and isset($_SESSION["type"])) {
+                       switch ($_SESSION["type"]) {
+                        case 'admin':
+                           $url_account="/AmazonECE/admin_account.php";
+                           break;
+                        case 'buyer':
+                           $url_account="/AmazonECE/client_account.php";
+                           break;
+                        case 'seller':
+                           $url_account="/AmazonECE/seller_account.php";
+                           break;
+                        default:
+                           $url_account="/AmazonECE/client_account.php";
+                           break;
+                     }
+                   } ?>
+                  <a class="nav-item nav-link" href="<?php echo $url_account; ?>" id="nav-compte"><i class="material-icons md-36">
                         account_circle
                      </i><br>Compte</a>
                </div>
@@ -36,10 +53,10 @@
       <li class="dropdown">
          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>
                <?php if (isset($_SESSION["name"])) {
-    echo "Connecté en tant que <br>".$_SESSION["name"];
-} else {
-    echo "Login";
-} ?></b></a>
+                       echo "Connecté en tant que <br>".$_SESSION["type"]." (".$_SESSION["name"].")";
+                   } else {
+                       echo "Login";
+                   } ?></b></a>
          <ul id="login-dp" class="dropdown-menu dropdown-menu-right">
             <li>
                <div class="row">
@@ -75,8 +92,6 @@
                        </div>";
                         }
                          ?>
-
-
                   </div>
             </li>
          </ul>
