@@ -14,6 +14,7 @@
 <body>
    <?php
    session_start();
+   require_once("config/db.php");
    include("views/navbar.php"); ?>
 
    <div class="container my-5">
@@ -24,16 +25,14 @@
                <!--img src="/amazonece/img/AM.jpg" class="card-img-top" alt="..."-->
                <i class="material-icons md-48">add</i>
                <div class="card-body">
-                  <form class="form" action="index.html" method="post">
+                  <form class="form" action="seller_add_product.php" method="post" enctype="multipart/form-data">
 
-                     <div class="form-group">
                         <label>Image</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                            <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                            <input type="file" class="custom-file-input" name="path" id="path" required>
+                            <label class="custom-file-label" for="validatedCustomFile">Choix de l'image...</label>
                             <div class="invalid-feedback">Example invalid custom file feedback</div>
                        </div>
-                     </div>
 
                      <div class="form-group">
                         <label for="FormControlSelectType">Catégorie</label>
@@ -85,7 +84,7 @@
                      </div>
                      <div class="form-group" id="date" style="display:none;">
                         <label>Date de Sortie</label>
-                        <input class="form-control form-control-sm" type="date" name="date" id="date">
+                        <input class="form-control form-control-sm" type="date" name="date">
                      </div>
                      <div class="form-group" id="tours" style="display:none;">
                         <label>Tours</label>
@@ -96,7 +95,7 @@
                      </div>
                      <div class="form-group">
                         <label>Description</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description" name="description"></textarea>
                      </div>
                      <div class="form-group">
                         <label>Prix</label>
@@ -107,7 +106,7 @@
                         <input class="form-control form-control-sm" type="text" placeholder="Nombre d'unité" name="quantite">
                      </div>
                      <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
-                     <input type="submit" class="btn btn-success" value="Ajouter">
+                     <input type="submit" class="btn btn-success" name="submit" value="Ajouter">
                   </form>
                </div>
             </div>
@@ -115,6 +114,125 @@
          </div>
       </div>
    </div>
+
+   <?php
+
+   function add_pic()
+   {
+       // Create connection
+
+       $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+       // Check connection
+
+       if ($conn->connect_error) {
+           die("Connection failed: " . $conn->connect_error);
+       }
+
+       extract($_POST);
+if (isset($_FILES['path'])) {
+   $UploadedFileName = $_FILES["path"]["name"];
+}
+
+
+       if ($UploadedFileName != '') {
+           $upload_directory = "img/"; //This is the folder which img will be stored
+
+           $filename=$_POST['nom'];
+           if (file_exists($filename)) {
+               if ($filename != "res/user-img.jpg") {
+                   unlink($filename);
+               }
+           }
+           $TargetPath = time().$_POST['nom'].".jpg";
+           echo $upload_directory.$TargetPath;
+           $temp_file = $_FILES['path']['tmp_name'];
+           $max_size = 4000000;
+           $size = filesize($temp_file);
+           echo "size : " . $size . " ";
+           if ($size < $max_size) {
+               if (move_uploaded_file($_FILES['path']['tmp_name'], $upload_directory.$TargetPath)) {
+                  switch ($_POST['type']) {
+                   case 'Musique':
+                   $query="SELECT id_music FROM music WHERE id_seller='" . $_POST["id"] . "' AND nom ='" . $_POST["nom"] . "' AND description ='" . $_POST["description"] . "'AND nombre ='" . $_POST["quantite"] . "';";
+                   echo $query;
+                   $result = mysqli_query($conn, $query); // send the query
+                  $row = mysqli_fetch_assoc($result);
+                  //echo "ATTTTTENNNNTION:".$row['id_music'];
+
+                   // make the request to the DATABASE
+                   $sql = "UPDATE music SET photo = '" . $upload_directory.$TargetPath . "' WHERE id_music='" .$row["id_music"] . "' ";
+
+                     break;
+                   case 'Livre':
+                     // code...
+                     break;
+                    case 'Vetement':
+                    // code...
+                       break;
+                   case 'Sports & Loisirs':
+                      // code...
+                      break;
+                   default:
+                      // code...
+                      break;
+                }
+
+                   if ($conn->query($sql) === true) {
+                       $_POST['submit'] = null;
+                       //header("Refresh:0");
+                   } else {
+                       echo "Error updating path: ".$conn->error;
+                   }
+               } else {
+                   echo "Error move upload";
+               }
+           } else {
+               echo "Error move upload : Your picture is too Big";
+           }
+
+           $conn->close();
+       }
+   }
+   function create_product()
+   {
+
+      // Create connection
+       $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+       // Check connection
+       if (!$conn) {
+           die("Connection failed: " . mysqli_connect_error());
+       }
+
+       switch ($_POST['type']) {
+        case 'Musique':
+        // make the request to the DATABASE
+      $sql = "INSERT INTO music(nom, auteur, datesortie, taille,description, prix, genre, nombre, id_seller) VALUES ('" . $_POST["nom"] . "','" . $_POST["auteur"] . "','" . $_POST["date"] . "','" . $_POST["tours"] . "','" . $_POST["description"] . "','" . $_POST["prix"] . "','" . $_POST["genre"] . "','" . $_POST["quantite"] . "','" . $_POST["id"] . "')";
+           break;
+        case 'Livre':
+          // code...
+          break;
+         case 'Vetement':
+         // code...
+            break;
+        case 'Sports & Loisirs':
+           // code...
+           break;
+        default:
+           // code...
+           break;
+     }
+       if (mysqli_query($conn, $sql)) {
+           echo "New record created successfully UPDATE";
+       } else {
+           echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+       }
+       mysqli_close($conn);
+    }
+   if (isset($_POST['submit'])) {
+       create_product();
+       add_pic();
+   } ?>
 
    <script type="text/javascript">
       $(document).ready(function() {
