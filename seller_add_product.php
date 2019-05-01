@@ -21,9 +21,20 @@
          <div class="col-md-auto">
 
             <div class="card" style="width: 20rem;">
-               <img src="/amazonece/img/AM.jpg" class="card-img-top" alt="...">
+               <!--img src="/amazonece/img/AM.jpg" class="card-img-top" alt="..."-->
+               <i class="material-icons md-48">add</i>
                <div class="card-body">
                   <form class="form" action="index.html" method="post">
+
+                     <div class="form-group">
+                        <label>Image</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                            <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                            <div class="invalid-feedback">Example invalid custom file feedback</div>
+                       </div>
+                     </div>
+
                      <div class="form-group">
                         <label for="FormControlSelectType">Catégorie</label>
                         <select class="form-control" id="FormControlSelectType" name="type">
