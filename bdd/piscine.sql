@@ -33,8 +33,9 @@ CREATE TABLE IF NOT EXISTS `buyer` (
   `id_buyer` int(255) NOT NULL AUTO_INCREMENT,
   `id_card` int(255) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `picture` varchar(255) NOT NULL,
+  `picture` varchar(255) DEFAULT NULL,
   `mail` varchar(255) NOT NULL,
   `adresse` varchar(255) NOT NULL,
   `ville` varchar(255) NOT NULL,
@@ -74,6 +75,7 @@ CREATE TABLE IF NOT EXISTS `demandevendeur` (
   `id_demvendeur` int(255) NOT NULL AUTO_INCREMENT,
   `mail` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `picture` varchar(255) NOT NULL,
   `bgpic` varchar(255) NOT NULL,
@@ -143,9 +145,10 @@ CREATE TABLE IF NOT EXISTS `seller` (
   `bg_pic` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `picture` varchar(255) NOT NULL,
-  `type` varchar(255) NOT NULL,
+  `picture` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
  PRIMARY KEY (`id_seller`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -171,7 +174,19 @@ CREATE TABLE IF NOT EXISTS `sportsloisirs` (
   PRIMARY KEY (`id_sl`),
   KEY `id_seller` (`id_seller`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+-- --------------------------------------------------------
 
+--
+-- Structure de la table `cart`
+--
+
+DROP TABLE IF EXISTS `cart`;
+CREATE TABLE IF NOT EXISTS `cart` (
+  `id_cart` int(255) NOT NULL AUTO_INCREMENT,
+  `id_produit` int(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
+  PRIMARY KEY (`id_cart`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -211,8 +226,11 @@ INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo
 INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'Hot Sugar', 'Red Hot Chili Peppers', '2019-04-03', '45', 'img/rhcp.jpg', NULL, 'Album', '8.32', NULL, 'pop rock', '5', NULL);
 INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'A Quick One', 'the Who', '2019-04-03', '45', 'img/who.jpg', NULL, 'Album', '4.5', NULL, 'rock', '12', NULL);
 INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'Greatest Hit - the Police', 'The Police', '2019-04-03', '45', 'img/tp.jpg', NULL, 'Album', '11.42', NULL, 'rock', '9', NULL);
+INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'A Horse With No Name', 'America', '2019-04-03', '45', 'img/america.jpg', NULL, 'Album', '27.12', NULL, 'rock', '8', NULL);
 /*INSERT BOOKS*/
-INSERT INTO `book` (`id_book`, `title`, `auteur`, `date`, `editeur`, `prix`, `photo`, `video`, `description`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'Le Rouge et le Noir', 'Stendhal', '2019-04-17', '', '7.4', 'img/retn.jpg', NULL, '', NULL, 'roman', '1', NULL);
+INSERT INTO `book` (`id_book`, `title`, `auteur`, `date`, `editeur`, `prix`, `photo`, `video`, `description`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'Le Rouge et le Noir', 'Stendhal', '2019-04-17', 'Larousse', '7.4', 'img/retn.jpg', NULL, '', NULL, 'roman', '1', NULL);
+INSERT INTO `book` (`id_book`, `title`, `auteur`, `date`, `editeur`, `prix`, `photo`, `video`, `description`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'Les Misérables', 'Victor Hugo', '2019-04-17', 'Petit furet', '9.87', 'img/miserable.jpg', NULL, '', NULL, 'roman', '1', NULL);
+
 /*INSERT CLOTHING*/
 INSERT INTO `vetements` (`id_vetement`, `nom`, `taille`, `couleur`, `sexe`, `marque`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'T-Shirt Champion', 'M', 'Blanc', 'M', 'Champion', 'img/champion.jpg', NULL, '', '21.00', '', '', '7', NULL);
 /*INSERT SPORTS*/

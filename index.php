@@ -27,7 +27,7 @@
         }
 
         // make the request to the DATABASE
-        $sql = "SELECT mail,password,name
+        $sql = "SELECT mail,password,name,id_buyer
        FROM buyer
        WHERE mail ='" . $_POST['email'] . "' AND password = '" . $_POST['mdp'] . "';";
         $result = mysqli_query($conn, $sql); // send the query
@@ -35,6 +35,7 @@
          if (mysqli_num_rows($result) > 0) { // if we get back some values so the request was good
             $_SESSION["email"]=$_POST['email'];
              $_SESSION["name"]=$row['name'];
+             $_SESSION["id"]=$row['id_buyer'];
          }
 
         mysqli_close($conn);
@@ -42,7 +43,8 @@
    <?php
    include("views/navbar.php") ?>
 
-   <?php include("views/client_home.php") ?>
+   <?php include("views/best_sell.html");
+    include("views/client_home.php") ?>
 
    <script type="text/javascript">
       var element = document.getElementById("nav-home");
