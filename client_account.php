@@ -50,12 +50,12 @@ require_once("config/db.php");
     <h2>Informations générales</h2>
     <form>
       <div class="form-group">
-        <label for="mdp">Nom</label>
+        <label for="nom">Nom</label>
         <input type="text" class="form-control" id="nom" value="<?php echo $nom;?>">
       </div>
 
       <div class="form-group">
-          <label for="mdp">Prénom</label>
+          <label for="prenom">Prénom</label>
           <input type="text" class="form-control" id="prénom" value="<?php echo $prenom;?>">
       </div>
 
@@ -65,22 +65,22 @@ require_once("config/db.php");
       </div>
 
       <div class="form-group">
-        <label for="mdp">Adresse</label>
+        <label for="adresse">Adresse</label>
         <input type="text" class="form-control" id="adresse" value="<?php echo $adresse;?>">
       </div>
 
       <div class="form-group">
-          <label for="mdp">Ville</label>
+          <label for="ville">Ville</label>
           <input type="text" class="form-control" id="ville" value="<?php echo $ville;?>">
       </div>
 
       <div class="form-group">
-          <label for="mdp">Code Postale</label>
+          <label for="cp">Code Postale</label>
           <input type="number" class="form-control" id="cp" value="<?php echo $cp;?>">
       </div>
 
       <div class="form-group">
-          <label for="mdp">Pays</label>
+          <label for="pays">Pays</label>
           <input type="text" class="form-control" id="pays" value="<?php echo $pays;?>">
       </div>
 
@@ -140,27 +140,27 @@ $sql = "SELECT *
   <form>
 
     <div class="form-group">
-      <label for="mdp">Nom du titulaire de la carte</label>
+      <label for="nomcarte">Nom du titulaire de la carte</label>
       <input type="text" class="form-control" id="nomcarte" value="<?php echo $nomcarte;?>">
     </div>
 
     <div class="form-group">
-      <label for="mdp">Numéro</label>
+      <label for="num">Numéro</label>
       <input type="password" class="form-control" id="num" value="<?php echo $num;?>">
     </div>
 
     <div class="form-group">
-      <label for="mdp">Date d'expiration</label>
+      <label for="date">Date d'expiration</label>
       <input type="date" class="form-control" id="date" value="<?php echo $date;?>">
     </div>
 
     <div class="form-group">
-      <label for="mdp">Cryptogramme</label>
+      <label for="crypto">Cryptogramme</label>
       <input type="password" class="form-control" id="crypto" value="<?php echo $crypto;?>">
     </div>
 
     <div class="form-group">
-      <label for="mdp">Type</label>
+      <label for="type">Type</label>
       <input type="text" class="form-control" id="type" value="<?php echo $type;?>">
     </div>
 
