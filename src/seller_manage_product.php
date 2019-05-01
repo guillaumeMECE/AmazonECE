@@ -44,7 +44,7 @@ function traitement_data()
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
     } elseif ($_POST["action"]=="supprimer") {
-      switch ($_POST["cat"]) {
+        switch ($_POST["cat"]) {
          case 'book':
          $sql ="DELETE FROM `book`
        WHERE id_book = '" . $_POST['id'] . "'
@@ -70,7 +70,6 @@ function traitement_data()
             break;
 
       }
-
 
         if (mysqli_query($conn, $sql)) {
             echo "New record created successfully UPDATE";
