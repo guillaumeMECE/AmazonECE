@@ -30,6 +30,24 @@ require_once("../config/db.php");
 
 
        else if($conn){
+         $query="SELECT mail FROM admin WHERE mail = '$mail'";
+         $query1 ="SELECT mail FROM seller WHERE mail = '$mail'";
+
+         $result1  = mysqli_query($conn, $query);
+         $result2= mysqli_query($conn, $query1);
+         $a =mysqli_num_rows($result1);
+         $b =mysqli_num_rows($result1);
+         if ($a>0 && $b>0)
+         {
+           ?>
+
+           <div class="alert alert-danger" role="alert">
+             Ce mail existe déjà!
+           </div>
+           <?php
+           require "newadmin.php";
+         }
+         else{
     if ($name!="" && $mail!="")
     {
     $sql = "INSERT INTO buyer (name,firstname, password, mail, adresse, ville, cp, pays, tel, type)
@@ -56,6 +74,7 @@ else
   <?php
   require "newclient.php";
 
+}
 }
 }
       mysqli_close($conn);

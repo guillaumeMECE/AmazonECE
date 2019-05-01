@@ -6,7 +6,7 @@
   </head>
 
   <body>
-<div class="p-3 mb-2 bg-secondary text-white">Nouvel Administrateurr</div>
+<div class="p-3 mb-2 bg-secondary text-white">Nouvel Administrateur</div>
 <form name ="formulaire_admin" method = "post" action = "saisie_newadmin.php">
   <div class="container">
     <div class="row">

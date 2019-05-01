@@ -33,15 +33,15 @@
   <div class="col">
     <br> <br>
   <div class="custom-file">
-  <input type="file" class="custom-file-input" name = "photo" id="customFile">
-  <label class="custom-file-label" for="photo">Photo de profil</label>
+  <label class="custom-file-label" for="photo">Photo de Profil</label><br />
+    <input type="file" class="custom-file-input" name="photo" id="photo" /><br />
 </div>
 </div>
   <div class="col">
     <br><br>
     <div class="custom-file">
-    <input type="file" class="custom-file-input" name = "image" id="customFile">
     <label class="custom-file-label" for="image">Image de fond</label>
+    <input type="file" class="custom-file-input" name = "image" id="customFile">
   </div>
   </div>
 </div>
