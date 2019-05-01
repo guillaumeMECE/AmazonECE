@@ -22,7 +22,11 @@
                      </i><br>Panier</a>
                </div>
                <div class="col-md-auto col-nav">
+<<<<<<< HEAD
                   <a class="nav-item nav-link" href="#" id="nav-compte"><i class="material-icons md-36">
+=======
+                  <a class="nav-item nav-link" href="/AmazonECE/client_account.php"><i class="material-icons md-36">
+>>>>>>> ft_client_account
                         account_circle
                      </i><br>Compte</a>
                </div>
