@@ -10,7 +10,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    </head>
    <body>
-
+<?php session_start(); ?>
       <!--a href="#" class="floatBtn previous shadow-lg">
             <i class="material-icons md-36" style="margin-top:15px;">arrow_back_ios</i>
       </a>
@@ -25,7 +25,12 @@
             </a>
          </div>
          <div class="floatBtnR">
-            <a href="#" class="cart">
+            <?php if (isset($_SESSION["email"]) and isset($_SESSION["name"]) and isset($_SESSION["id"])) {
+               $url= "/amazonece/src/add_panier?cat=".$_GET["cat"]."&id=".$_GET["id"]."&add=true";
+            }else{
+               $url= "/amazonece/views/newclient?cat=".$_GET["cat"]."&id=".$_GET["id"]."&add=true&cart=true";
+            } ?>
+            <a href="<?php echo $url; ?>" class="cart">
                   <i class="material-icons md-36" style="margin-top:12px;">add_shopping_cart</i>
             </a>
          </div>
