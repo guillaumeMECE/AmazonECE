@@ -1,4 +1,5 @@
 <?php session_start();
+echo $_SESSION["type"];
    if (isset($_GET["cat"]) and isset($_GET["id"]) and isset($_GET["add"])=="true") {
        require_once("../config/db.php");
        // Create connection
@@ -19,7 +20,8 @@
               $sql2 = "SELECT nombre_cart
                    FROM cart
                    WHERE id_produit = '".$row["id_music"]."'
-                   AND type = 'music';";
+                   AND type = 'music'
+                   AND user_id = '".$_SESSION["id"]."';";
               $result2 = mysqli_query($conn, $sql2); // send the query
               $row2 = mysqli_fetch_assoc($result2);
 
@@ -32,7 +34,7 @@
                       echo "Error: " . $sql3 . "<br>" . mysqli_error($conn);
                   }
               } else {
-                  $sql2 = "INSERT INTO cart(id_produit, user_id,type,nombre_cart,prix_unit) VALUES ('".$_GET["id"]."','".$_SESSION["id"]."','music','1','".$row["prix"]."');";
+                  $sql2 = "INSERT INTO cart(id_produit, user_id,type,nombre_cart,prix_unit,type_user) VALUES ('".$_GET["id"]."','".$_SESSION["id"]."','music','1','".$row["prix"]."','".$_SESSION["type"]."');";
                   if (mysqli_query($conn, $sql2)) {
                       echo "New record created successfully INSERT";
                   } else {
@@ -56,7 +58,8 @@
               $sql2 = "SELECT nombre_cart
                    FROM cart
                    WHERE id_produit = '".$row["id_book"]."'
-                   AND type = 'book';";
+                   AND type = 'book'
+                   AND user_id = '".$_SESSION["id"]."';";
               $result2 = mysqli_query($conn, $sql2); // send the query
               $row2 = mysqli_fetch_assoc($result2);
 
@@ -69,7 +72,7 @@
                       echo "Error: " . $sql3 . "<br>" . mysqli_error($conn);
                   }
               } else {
-                  $sql2 = "INSERT INTO cart(id_produit, user_id,type,nombre_cart,prix_unit) VALUES ('".$_GET["id"]."','".$_SESSION["id"]."','book','1','".$row["prix"]."');";
+                  $sql2 = "INSERT INTO cart(id_produit, user_id,type,nombre_cart,prix_unit,type_user) VALUES ('".$_GET["id"]."','".$_SESSION["id"]."','book','1','".$row["prix"]."','".$_SESSION["type"]."');";
                   if (mysqli_query($conn, $sql2)) {
                       echo "New record created successfully INSERT";
                   } else {
@@ -94,7 +97,8 @@
                  $sql2 = "SELECT nombre_cart
                       FROM cart
                       WHERE id_produit = '".$row["id_vetement"]."'
-                      AND type = 'cloth';";
+                      AND type = 'cloth'
+                      AND user_id = '".$_SESSION["id"]."';";
                  $result2 = mysqli_query($conn, $sql2); // send the query
                  $row2 = mysqli_fetch_assoc($result2);
 
@@ -107,7 +111,7 @@
                          echo "Error: " . $sql3 . "<br>" . mysqli_error($conn);
                      }
                  } else {
-                     $sql2 = "INSERT INTO cart(id_produit, user_id,type,nombre_cart,prix_unit) VALUES ('".$_GET["id"]."','".$_SESSION["id"]."','cloth','1','".$row["prix"]."');";
+                     $sql2 = "INSERT INTO cart(id_produit, user_id,type,nombre_cart,prix_unit,type_user) VALUES ('".$_GET["id"]."','".$_SESSION["id"]."','cloth','1','".$row["prix"]."','".$_SESSION["type"]."');";
                      if (mysqli_query($conn, $sql2)) {
                          echo "New record created successfully INSERT";
                      } else {
@@ -132,7 +136,8 @@
                     $sql2 = "SELECT nombre_cart
                          FROM cart
                          WHERE id_produit = '".$row["id_sl"]."'
-                         AND type = 'sports';";
+                         AND type = 'sports'
+                         AND user_id = '".$_SESSION["id"]."';";
                     $result2 = mysqli_query($conn, $sql2); // send the query
                     $row2 = mysqli_fetch_assoc($result2);
 
@@ -145,7 +150,7 @@
                             echo "Error: " . $sql3 . "<br>" . mysqli_error($conn);
                         }
                     } else {
-                        $sql2 = "INSERT INTO cart(id_produit, user_id,type,nombre_cart,prix_unit) VALUES ('".$_GET["id"]."','".$_SESSION["id"]."','sports','1','".$row["prix"]."');";
+                        $sql2 = "INSERT INTO cart(id_produit, user_id,type,nombre_cart,prix_unit,type_user) VALUES ('".$_GET["id"]."','".$_SESSION["id"]."','sports','1','".$row["prix"]."','".$_SESSION["type"]."');";
                         if (mysqli_query($conn, $sql2)) {
                             echo "New record created successfully INSERT";
                         } else {

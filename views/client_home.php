@@ -444,7 +444,7 @@ if (isset($_GET["cat"])) {
             while ($row = mysqli_fetch_assoc($result)) {
                 if ($cpt==0) {
                     echo "<div class=\"card-deck\">";
-                 }
+                }
                 echo "<div class=\"card my-3\" style=\"width: 18rem;\">
              <img src=\"".$row["photo"]."\" class=\"card-img-top\" alt=\"".$row["title"]."\">
              <div class=\"card-body\">
@@ -458,9 +458,8 @@ if (isset($_GET["cat"])) {
                     echo "</div>";
                     $cpt=0;
                 }
-
-         }
-      }else{
+            }
+        } else {
             echo "<p>Il n'y a pas encore d'articles en ventes</p>";
         }
         mysqli_close($conn);

@@ -27,25 +27,47 @@
         }
 
         // make the request to the DATABASE
-
         $sql = "SELECT mail,password,name,id_buyer,id_card
-       FROM buyer
-       WHERE mail ='" . $_POST['email'] . "' AND password = '" . $_POST['mdp'] . "';";
+          FROM buyer
+          WHERE mail ='" . $_POST['email'] . "' AND password = '" . $_POST['mdp'] . "';";
         $result = mysqli_query($conn, $sql); // send the query
          $row = mysqli_fetch_assoc($result); // fetch keys with values
          if (mysqli_num_rows($result) > 0) { // if we get back some values so the request was good
             $_SESSION["email"]=$_POST['email'];
-
-            $_SESSION["name"]=$row['name'];
-            $_SESSION["id"]=$row['id_buyer'];
-            $_SESSION["idcb"]=$row['id_card'];
+             $_SESSION["name"]=$row['name'];
+             $_SESSION["id"]=$row['id_buyer'];
+             $_SESSION["idcb"]=$row['id_card'];
+             $_SESSION["type"]="buyer";
+         } else {
+             // make the request to the DATABASE
+             $sql2 = "SELECT mail,password,name,id_seller
+               FROM seller
+              WHERE mail ='" . $_POST['email'] . "' AND password = '" . $_POST['mdp'] . "';";
+             $result2 = mysqli_query($conn, $sql2); // send the query
+             $row2 = mysqli_fetch_assoc($result2); // fetch keys with values
+             if (mysqli_num_rows($result2) > 0) { // if we get back some values so the request was good
+                $_SESSION["email"]=$_POST['email'];
+                 $_SESSION["name"]=$row2['name'];
+                 $_SESSION["id"]=$row2['id_seller'];
+                // $_SESSION["idcb"]=$row['id_card'];
+                 $_SESSION["type"]="seller";
+             } else {
+                 // make the request to the DATABASE
+                 $sql3 = "SELECT mail,password,name,id_admin
+                  FROM admin
+                 WHERE mail ='" . $_POST['email'] . "' AND password = '" . $_POST['mdp'] . "';";
+                 $result3 = mysqli_query($conn, $sql3); // send the query
+                $row3 = mysqli_fetch_assoc($result3); // fetch keys with values
+                if (mysqli_num_rows($result3) > 0) { // if we get back some values so the request was good
+                   $_SESSION["email"]=$_POST['email'];
+                    $_SESSION["name"]=$row3['name'];
+                    $_SESSION["id"]=$row3['id_admin'];
+                    $_SESSION["type"]="admin";
+                }
+             }
          }
-
-
-
-
-         mysqli_close($conn);
-      } ?>
+        mysqli_close($conn);
+    } ?>
    <?php
    include("views/navbar.php") ?>
 
