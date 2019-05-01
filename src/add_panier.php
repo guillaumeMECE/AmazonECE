@@ -32,7 +32,7 @@
                       echo "Error: " . $sql3 . "<br>" . mysqli_error($conn);
                   }
               } else {
-                  $sql2 = "INSERT INTO cart(id_produit, user_id,type,nombre_cart) VALUES ('".$_GET["id"]."','".$_SESSION["id"]."','music','1');";
+                  $sql2 = "INSERT INTO cart(id_produit, user_id,type,nombre_cart,prix_unit) VALUES ('".$_GET["id"]."','".$_SESSION["id"]."','music','1','".$row["prix"]."');";
                   if (mysqli_query($conn, $sql2)) {
                       echo "New record created successfully INSERT";
                   } else {
@@ -69,7 +69,7 @@
                       echo "Error: " . $sql3 . "<br>" . mysqli_error($conn);
                   }
               } else {
-                  $sql2 = "INSERT INTO cart(id_produit, user_id,type,nombre_cart) VALUES ('".$_GET["id"]."','".$_SESSION["id"]."','book','1');";
+                  $sql2 = "INSERT INTO cart(id_produit, user_id,type,nombre_cart,prix_unit) VALUES ('".$_GET["id"]."','".$_SESSION["id"]."','book','1','".$row["prix"]."');";
                   if (mysqli_query($conn, $sql2)) {
                       echo "New record created successfully INSERT";
                   } else {
@@ -107,7 +107,7 @@
                          echo "Error: " . $sql3 . "<br>" . mysqli_error($conn);
                      }
                  } else {
-                     $sql2 = "INSERT INTO cart(id_produit, user_id,type,nombre_cart) VALUES ('".$_GET["id"]."','".$_SESSION["id"]."','cloth','1');";
+                     $sql2 = "INSERT INTO cart(id_produit, user_id,type,nombre_cart,prix_unit) VALUES ('".$_GET["id"]."','".$_SESSION["id"]."','cloth','1','".$row["prix"]."');";
                      if (mysqli_query($conn, $sql2)) {
                          echo "New record created successfully INSERT";
                      } else {
@@ -145,7 +145,7 @@
                             echo "Error: " . $sql3 . "<br>" . mysqli_error($conn);
                         }
                     } else {
-                        $sql2 = "INSERT INTO cart(id_produit, user_id,type,nombre_cart) VALUES ('".$_GET["id"]."','".$_SESSION["id"]."','sports','1');";
+                        $sql2 = "INSERT INTO cart(id_produit, user_id,type,nombre_cart,prix_unit) VALUES ('".$_GET["id"]."','".$_SESSION["id"]."','sports','1','".$row["prix"]."');";
                         if (mysqli_query($conn, $sql2)) {
                             echo "New record created successfully INSERT";
                         } else {

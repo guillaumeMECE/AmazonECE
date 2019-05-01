@@ -12,8 +12,26 @@
 </head>
 
 <body>
+
 <?php session_start();
 include("views/navbar.php") ?>
+<div class="floatBtn shadow-lg">
+   <div class="floatBtnL">
+      <a href="/amazonece" class="previous">
+            <i class="material-icons md-36" style="margin-top:12px;">arrow_back_ios</i>
+      </a>
+   </div>
+   <div class="floatBtnR">
+      <?php /*if (isset($_SESSION["email"]) and isset($_SESSION["name"]) and isset($_SESSION["id"])) {
+         $url= "/amazonece/src/add_panier?cat=".$_GET["cat"]."&id=".$_GET["id"]."&add=true";
+      }else{
+         $url= "/amazonece/views/newclient?cat=".$_GET["cat"]."&id=".$_GET["id"]."&add=true&cart=true";
+      } */?>
+      <a href="#<?php //echo $url; ?>" class="cart">
+            <i class="material-icons md-36" style="margin-top:12px;">payment</i>
+      </a>
+   </div>
+</div>
    <div class="container my-5">
       <table class="table table-hover">
          <thead>
@@ -23,6 +41,7 @@ include("views/navbar.php") ?>
                <th scope="col">Description</th>
                <th scope="col">Prix</th>
                <th scope="col">Nombre d'unités</th>
+               <th scope="col">PRIX TOTAL</th>
             </tr>
          </thead>
          <tbody>
@@ -53,11 +72,12 @@ include("views/navbar.php") ?>
 
              echo "<tr>
 
-                  <td><img src=\"$photo\" alt=\"user pic\" class=\"img-thumbnail shadow-sm\" style=\"max-width:100px\"></th>
+                  <td><img src=\"$photo\" alt=\"user pic\" class=\"img-thumbnail shadow-sm\" style=\"max-width:100px\"></td>
                    <td>$nom</td>
                    <td>$description</td>
                    <td>$prix €</td>
                    <td>$nbre</td>
+                   <td></td>
                    </tr>
                    ";
          }
@@ -78,11 +98,12 @@ include("views/navbar.php") ?>
 
              echo "<tr>
 
-                  <td><img src=\"$photo\" alt=\"user pic\" class=\"img-thumbnail shadow-sm\" style=\"max-width:100px\"></th>
+                  <td><img src=\"$photo\" alt=\"user pic\" class=\"img-thumbnail shadow-sm\" style=\"max-width:100px\"></td>
                    <td>$nom</td>
                    <td>$description</td>
                    <td>$prix €</td>
                    <td>$nbre</td>
+                   <td></td>
                    </tr>
                    ";
          }
@@ -104,11 +125,12 @@ include("views/navbar.php") ?>
 
              echo "<tr>
 
-                  <td><img src=\"$photo\" alt=\"user pic\" class=\"img-thumbnail shadow-sm\" style=\"max-width:100px\"></th>
+                  <td><img src=\"$photo\" alt=\"user pic\" class=\"img-thumbnail shadow-sm\" style=\"max-width:100px\"></td>
                    <td>$nom</td>
                    <td>$description</td>
                    <td>$prix €</td>
                    <td>$nbre</td>
+                   <td></td>
                    </tr>
                    ";
          }
@@ -130,15 +152,39 @@ include("views/navbar.php") ?>
 
              echo "<tr>
 
-                  <td><img src=\"$photo\" alt=\"user pic\" class=\"img-thumbnail shadow-sm\" style=\"max-width:100px\"></th>
+                  <td><img src=\"$photo\" alt=\"user pic\" class=\"img-thumbnail shadow-sm\" style=\"max-width:100px\"></td>
                    <td>$nom</td>
                    <td>$description</td>
                    <td>$prix €</td>
                    <td>$nbre</td>
+                   <td></td>
                    </tr>
                    ";
          }
          ?>
+         <tr>
+
+              <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td><?php
+               // SQL request
+                  $sql = "SELECT prix_unit,nombre_cart FROM cart;";
+                     $result = mysqli_query($conn, $sql); // send the query
+                     $prixTot=0;
+               while ($row = mysqli_fetch_assoc($result)) {
+                  $prixTot += $row["prix_unit"] * $row["nombre_cart"];
+               }
+               if (isset($prixTot)) {
+                  echo $prixTot;
+               }else{
+                  echo "0";
+               }
+
+                ?> €</td>
+               </tr>
          </tbody>
       </table>
    </div>
