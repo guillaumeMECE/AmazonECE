@@ -423,8 +423,8 @@ if (isset($_GET["cat"])) {
 <div class="container" id="book" <?php if (!$isbook) {
                      echo "style=\" display:none\"";
                  } ?>>
-   <div class="row">
-      <div class="col">
+   <!--div class="row"-->
+      <!--div class="col"-->
          <h3>Livres</h3>
          <?php
          // Create connection
@@ -443,14 +443,16 @@ if (isset($_GET["cat"])) {
            $cpt=0;
             while ($row = mysqli_fetch_assoc($result)) {
                 if ($cpt==0) {
-                    echo "<div class=\"card-deck\">";
+                    echo "<div class=\"row\">";
                 }
-                echo "<div class=\"card my-3\" style=\"width: 18rem;\">
+                echo "<div class=\"col-md-3 my-2\">
+                <div class=\"card my-3\" style=\"width: 17rem;\">
              <img src=\"".$row["photo"]."\" class=\"card-img-top\" alt=\"".$row["title"]."\">
              <div class=\"card-body\">
                 <h5 class=\"card-title\">".$row["title"]."</h5>
                 <p class=\"card-text\">".$row["prix"]." €</p>
                 <a href=\"article.php?cat=book&id=".$row["id_book"]."\" class=\"btn btn-primary\">Aperçu</a>
+                </div>
              </div>
           </div>";
                 $cpt++;
@@ -459,21 +461,24 @@ if (isset($_GET["cat"])) {
                     $cpt=0;
                 }
             }
+             if ($cpt!=0) {
+                 echo "</div>";
+          }
         } else {
             echo "<p>Il n'y a pas encore d'articles en ventes</p>";
         }
         mysqli_close($conn);
          ?>
-      </div>
-      </div>
-   </div>
+      <!--/div-->
+      <!--/div-->
+   <!--/div-->
 </div>
 
 <div class="container" id="music" <?php if (!$ismusic) {
              echo "style=\" display:none\"";
          } ?>>
-   <div class="row">
-      <div class="col">
+   <!--div class="row">
+      <div class="col"-->
          <h3>Musique</h3>
 
          <?php
@@ -494,14 +499,16 @@ if (isset($_GET["cat"])) {
 
             while ($row = mysqli_fetch_assoc($result)) {
                 if ($cpt==0) {
-                    echo "<div class=\"card-deck\">";
+                    echo "<div class=\"row\">";
                 }
-                echo "<div class=\"card my-3\" style=\"width: 18rem;\">
+                echo "<div class=\"col-md-3 my-2\">
+                <div class=\"card my-3\" style=\"width: 17rem;\">
              <img src=\"".$row["photo"]."\" class=\"card-img-top\" alt=\"".$row["nom"]."\">
              <div class=\"card-body\">
                 <h5 class=\"card-title\">".$row["nom"]."</h5>
                 <p class=\"card-text\">".$row["prix"]." €</p>
                 <a href=\"article.php?cat=music&id=".$row["id_music"]."\" class=\"btn btn-primary\">Aperçu</a>
+             </div>
              </div>
           </div>";
                 $cpt++;
@@ -510,21 +517,24 @@ if (isset($_GET["cat"])) {
                     $cpt=0;
                 }
             }
+            if ($cpt!=0) {
+                echo "</div>";
+         }
         } else {
             echo "<p>Il n'y a pas encore d'articles en ventes</p>";
         }
         mysqli_close($conn);
          ?>
-         </div>
+         <!--/div>
       </div>
-   </div>
+   </div-->
 </div>
 
 <div class="container" id="cloth" <?php if (!$iscloth) {
              echo "style=\" display:none\"";
          } ?>>
-   <div class="row">
-      <div class="col">
+   <!--div class="row">
+      <div class="col"-->
          <h3>Vêtements</h3>
          <?php
          // Create connection
@@ -543,14 +553,16 @@ if (isset($_GET["cat"])) {
             $cpt=0;
             while ($row = mysqli_fetch_assoc($result)) {
                 if ($cpt==0) {
-                    echo "<div class=\"card-deck\">";
+                    echo "<div class=\"row\">";
                 }
-                echo "<div class=\"card my-3\" style=\"width: 18rem;\">
+                echo "<div class=\"col-md-3 my-2\">
+                <div class=\"card my-3\" style=\"width: 17rem;\">
              <img src=\"".$row["photo"]."\" class=\"card-img-top\" alt=\"".$row["nom"]."\">
              <div class=\"card-body\">
                 <h5 class=\"card-title\">".$row["nom"]."</h5>
                 <p class=\"card-text\">".$row["prix"]." €</p>
                 <a href=\"article.php?cat=cloth&id=".$row["id_vetement"]."\" class=\"btn btn-primary\">Aperçu</a>
+             </div>
              </div>
           </div>";
                 $cpt++;
@@ -559,21 +571,24 @@ if (isset($_GET["cat"])) {
                     $cpt=0;
                 }
             }
+            if ($cpt!=0) {
+                echo "</div>";
+         }
         } else {
             echo "<p>Il n'y a pas encore d'articles en ventes</p>";
         }
         mysqli_close($conn);
          ?>
+      <!--/div>
       </div>
-      </div>
-   </div>
+   </div-->
 </div>
 
 <div class="container" id="sports" <?php if (!$issports) {
              echo "style=\" display:none\"";
          } ?>>
-   <div class="row">
-      <div class="col">
+   <!--div class="row">
+      <div class="col"-->
          <h3>Sports</h3>
          <?php
          // Create connection
@@ -592,14 +607,16 @@ if (isset($_GET["cat"])) {
             $cpt=0;
             while ($row = mysqli_fetch_assoc($result)) {
                 if ($cpt==0) {
-                    echo "<div class=\"card-deck\">";
+                    echo "<div class=\"row\">";
                 }
-                echo "<div class=\"card my-3\" style=\"width: 18rem;\">
+                echo "<div class=\"col-md-3 my-2\">
+                <div class=\"card my-3\" style=\"width: 17rem;\">
              <img src=\"".$row["photo"]."\" class=\"card-img-top\" alt=\"".$row["nom"]."\">
              <div class=\"card-body\">
                 <h5 class=\"card-title\">".$row["nom"]."</h5>
                 <p class=\"card-text\">".$row["prix"]." €</p>
                 <a href=\"article.php?cat=sports&id=".$row["id_sl"]."\" class=\"btn btn-primary\">Aperçu</a>
+             </div>
              </div>
           </div>";
                 $cpt++;
@@ -608,14 +625,17 @@ if (isset($_GET["cat"])) {
                     $cpt=0;
                 }
             }
+            if ($cpt!=0) {
+                echo "</div>";
+         }
         } else {
             echo "<p>Il n'y a pas encore d'articles en ventes</p>";
         }
         mysqli_close($conn);
          ?>
+      <!--/div>
       </div>
-      </div>
-   </div>
+   </div-->
 </div>
 
 <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@14/dist/smooth-scroll.polyfills.min.js"></script>
