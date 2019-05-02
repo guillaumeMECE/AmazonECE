@@ -43,7 +43,7 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
          <input type=\"hidden\" name=\"cat\" value=\"music\">
             <div class=\"form-group\">
                <label>Nom</label>
-               <input class=\"form-control form-control-sm\" type=\"text\" name=\"nom\" placeholder=\"Nom\" value=\"".$row["nom"]."\">
+               <input class=\"form-control form-control-sm\" type=\"text\" name=\"nom\" placeholder=\"Nom\" value=\"".$row["nom"]."\" required>
             </div>
             <div class=\"form-group\">
                <label>Description</label>
@@ -51,11 +51,11 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
             </div>
             <div class=\"form-group\">
                <label>Prix</label>
-               <input class=\"form-control form-control-sm\" name=\"prix\" type=\"text\" placeholder=\"Prix\" value=\"".$row["prix"]."\">
+               <input class=\"form-control form-control-sm\" name=\"prix\" type=\"text\" placeholder=\"Prix\" value=\"".$row["prix"]."\" required>
             </div>
             <div class=\"form-group\">
                <label>Nombre d'unité</label>
-               <input class=\"form-control form-control-sm\" name=\"quantite\" type=\"text\" placeholder=\"Nombre d'unité\" value=\"".$row["nombre"]."\">
+               <input class=\"form-control form-control-sm\" name=\"quantite\" type=\"text\" placeholder=\"Nombre d'unité\" value=\"".$row["nombre"]."\" required>
             </div>
                <input type=\"submit\" class=\"btn btn-primary\" name=\"action\" value=\"modifier\">
                <input type=\"submit\" class=\"btn btn-danger\" name=\"action\" value=\"supprimer\">
@@ -98,7 +98,7 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
          <input type=\"hidden\" name=\"cat\" value=\"book\">
             <div class=\"form-group\">
                <label>Nom</label>
-               <input class=\"form-control form-control-sm\" type=\"text\" name=\"nom\" placeholder=\"Nom\" value=\"".$row["title"]."\">
+               <input class=\"form-control form-control-sm\" type=\"text\" name=\"nom\" placeholder=\"Nom\" value=\"".$row["title"]."\" required>
             </div>
             <div class=\"form-group\">
                <label>Description</label>
@@ -106,11 +106,11 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
             </div>
             <div class=\"form-group\">
                <label>Prix</label>
-               <input class=\"form-control form-control-sm\" name=\"prix\" type=\"text\" placeholder=\"Prix\" value=\"".$row["prix"]."\">
+               <input class=\"form-control form-control-sm\" name=\"prix\" type=\"text\" placeholder=\"Prix\" value=\"".$row["prix"]."\" required>
             </div>
             <div class=\"form-group\">
                <label>Nombre d'unité</label>
-               <input class=\"form-control form-control-sm\" name=\"quantite\" type=\"text\" placeholder=\"Nombre d'unité\" value=\"".$row["nombre"]."\">
+               <input class=\"form-control form-control-sm\" name=\"quantite\" type=\"text\" placeholder=\"Nombre d'unité\" value=\"".$row["nombre"]."\" required>
             </div>
                <input type=\"submit\" class=\"btn btn-primary\" name=\"action\" value=\"modifier\">
                <input type=\"submit\" class=\"btn btn-danger\" name=\"action\" value=\"supprimer\">
@@ -155,7 +155,7 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
          <input type=\"hidden\" name=\"cat\" value=\"cloth\">
             <div class=\"form-group\">
                <label>Nom</label>
-               <input class=\"form-control form-control-sm\" type=\"text\" name=\"nom\" placeholder=\"Nom\" value=\"".$row["nom"]."\">
+               <input class=\"form-control form-control-sm\" type=\"text\" name=\"nom\" placeholder=\"Nom\" value=\"".$row["nom"]."\" required>
             </div>
             <div class=\"form-group\">
                <label>Description</label>
@@ -163,11 +163,11 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
             </div>
             <div class=\"form-group\">
                <label>Prix</label>
-               <input class=\"form-control form-control-sm\" name=\"prix\" type=\"text\" placeholder=\"Prix\" value=\"".$row["prix"]."\">
+               <input class=\"form-control form-control-sm\" name=\"prix\" type=\"text\" placeholder=\"Prix\" value=\"".$row["prix"]."\" required>
             </div>
             <div class=\"form-group\">
                <label>Nombre d'unité</label>
-               <input class=\"form-control form-control-sm\" name=\"quantite\" type=\"text\" placeholder=\"Nombre d'unité\" value=\"".$row["nombre"]."\">
+               <input class=\"form-control form-control-sm\" name=\"quantite\" type=\"text\" placeholder=\"Nombre d'unité\" value=\"".$row["nombre"]."\" required>
             </div>
                <input type=\"submit\" class=\"btn btn-primary\" name=\"action\" value=\"modifier\">
                <input type=\"submit\" class=\"btn btn-danger\" name=\"action\" value=\"supprimer\">
@@ -211,7 +211,7 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
          <input type=\"hidden\" name=\"cat\" value=\"sports\">
             <div class=\"form-group\">
                <label>Nom</label>
-               <input class=\"form-control form-control-sm\" type=\"text\" name=\"nom\" placeholder=\"Nom\" value=\"".$row["nom"]."\">
+               <input class=\"form-control form-control-sm\" type=\"text\" name=\"nom\" placeholder=\"Nom\" value=\"".$row["nom"]."\" required>
             </div>
             <div class=\"form-group\">
                <label>Description</label>
@@ -219,11 +219,11 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
             </div>
             <div class=\"form-group\">
                <label>Prix</label>
-               <input class=\"form-control form-control-sm\" name=\"prix\" type=\"text\" placeholder=\"Prix\" value=\"".$row["prix"]."\">
+               <input class=\"form-control form-control-sm\" name=\"prix\" type=\"text\" placeholder=\"Prix\" value=\"".$row["prix"]."\" required>
             </div>
             <div class=\"form-group\">
                <label>Nombre d'unité</label>
-               <input class=\"form-control form-control-sm\" name=\"quantite\" type=\"text\" placeholder=\"Nombre d'unité\" value=\"".$row["nombre"]."\">
+               <input class=\"form-control form-control-sm\" name=\"quantite\" type=\"text\" placeholder=\"Nombre d'unité\" value=\"".$row["nombre"]."\" required>
             </div>
                <input type=\"submit\" class=\"btn btn-primary\" name=\"action\" value=\"modifier\">
                <input type=\"submit\" class=\"btn btn-danger\" name=\"action\" value=\"supprimer\">

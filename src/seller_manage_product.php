@@ -46,27 +46,27 @@ function traitement_data()
     } elseif ($_POST["action"]=="supprimer") {
         switch ($_POST["cat"]) {
          case 'book':
-         $sql ="DELETE FROM `book`
-       WHERE id_book = '" . $_POST['id'] . "'
-       AND id_seller = '" . $_SESSION['id'] . "';";
+         $sql ="DELETE FROM book
+       WHERE id_book = '" . $_POST["id"] . "'
+       AND id_seller = '" . $_SESSION["id"] . "';";
             break;
 
          case 'music':
-         $sql ="DELETE FROM `music`
-       WHERE id_music = '" . $_POST['id'] . "'
-       AND id_seller = '" . $_SESSION['id'] . "';";
+         $sql ="DELETE FROM music
+       WHERE id_music = '" . $_POST["id"] . "'
+       AND id_seller = '" . $_SESSION["id"] . "';";
             break;
 
          case 'cloth':
-         $sql ="DELETE FROM `vetements`
-       WHERE id_vetement = '" . $_POST['id'] . "'
-       AND id_seller = '" . $_SESSION['id'] . "';";
+         $sql ="DELETE FROM vetements
+       WHERE id_vetement = '" . $_POST["id"] . "'
+       AND id_seller = '" . $_SESSION["id"] . "';";
             break;
 
          case 'sports':
-         $sql ="DELETE FROM `sportsloisirs`
-       WHERE id_sl = '" . $_POST['id'] . "'
-       AND id_seller = '" . $_SESSION['id'] . "';";
+            $sql ="DELETE FROM sportsloisirs
+             WHERE id_sl = '" . $_POST["id"] . "'
+             AND id_seller = '" . $_SESSION["id"] . "';";
             break;
 
       }
