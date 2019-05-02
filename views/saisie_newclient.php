@@ -26,61 +26,44 @@ require_once("../config/db.php");
        // Check connection
        if (!$conn) {
            die("Connection failed: " . mysqli_connect_error());
-       }
+       } elseif ($conn) {
+           $query="SELECT mail FROM admin WHERE mail = '$mail'";
+           $query1 ="SELECT mail FROM seller WHERE mail = '$mail'";
+           $query2 ="SELECT mail FROM buyer WHERE mail = '$mail'";
 
-
-       else if($conn){
-         $query="SELECT mail FROM admin WHERE mail = '$mail'";
-         $query1 ="SELECT mail FROM seller WHERE mail = '$mail'";
-         $query2 ="SELECT mail FROM buyer WHERE mail = '$mail'";
-
-         $result1= mysqli_query($conn, $query);
-         $result2= mysqli_query($conn, $query1);
-         $result3= mysqli_query($conn, $query2);
-         $a =mysqli_num_rows($result1);
-         $b =mysqli_num_rows($result2);
-         $c =mysqli_num_rows($result3);
-         if ($a>0 && $b>0 && $c>0)
-         {
-           ?>
-
-           <div class="alert alert-danger" role="alert">
-             Ce mail existe déjà!
-           </div>
-           <?php
-           require "newadmin.php";
-         }
-         else{
-    if ($name!="" && $mail!="")
-    {
-    $sql = "INSERT INTO buyer (name,firstname, password, mail, adresse, ville, cp, pays, tel, type)
-    VALUES('".$name."','".$prenom."', '".$password."', '".$mail."', '".$adresse."', '".$ville."', '".$codepostal."','".$pays."','" .$tel."','buyer');";
-    $result = mysqli_query($conn, $sql);
-
-    $sql1 = "INSERT INTO card (nomcarte, numero, datefin, crypto, type)
+           $result1= mysqli_query($conn, $query);
+           $result2= mysqli_query($conn, $query1);
+           $result3= mysqli_query($conn, $query2);
+           $a =mysqli_num_rows($result1);
+           $b =mysqli_num_rows($result2);
+           $c =mysqli_num_rows($result3);
+           if ($a>0 && $b>0 && $c>0) {
+               header('Location : ../inscription.php');
+           } else {
+               if ($name!="" && $mail!="") {
+                   //INSERT CB
+                   $sql1 = "INSERT INTO card (nomcarte, numero, datefin, crypto, type)
     VALUES('".$nomcard."','".$card."', '".$datefin."', '".$crypto."', '".$typecarte."');";
-    $result = mysqli_query($conn, $sql1);
+                   $result = mysqli_query($conn, $sql1);
 
-    ?>
-    <div class="alert alert-success" role="alert">
-  Felicitation vous avez bien été inscrit!
-</div>
-<?php
-}
-else
-{
-  ?>
-
-  <div class="alert alert-danger" role="alert">
-    Veuillez remplir tous les champs requis
-  </div>
-  <?php
-  require "newclient.php";
-
-}
-  //header('Location : ../index.php');
-}
-}
+                   //RECUP CB ID
+                   $sql_cb = "SELECT id_card FROM card
+                   WHERE nomcarte ='".$nomcard."'
+                   AND numero = '".$card."'
+                   AND datefin= '".$datefin."'
+                   AND crypto = '".$crypto."'
+                   AND type = '".$typecarte."';";
+                   $result_cb = mysqli_query($conn, $sql_cb);
+                   $row = mysqli_fetch_assoc($result_cb);
+                   //INSERT BUYER
+                   $sql = "INSERT INTO buyer (name,firstname, password, mail, adresse, ville, cp, pays, tel, type,id_card)
+  VALUES('".$name."','".$prenom."', '".$password."', '".$mail."', '".$adresse."', '".$ville."', '".$codepostal."','".$pays."','" .$tel."','buyer','".$row['id_card']."');";
+                   $result = mysqli_query($conn, $sql);
+               } else {
+                   header('Location : ../inscription.php');
+               }
+           }
+       }
       mysqli_close($conn);
 
 

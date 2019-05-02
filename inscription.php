@@ -19,14 +19,13 @@
             <form class="form" action="" method="post">
                <select class="custom-select custom-select-lg mb-3" name="userType" onchange="this.form.submit()">
                   <option selected>Selection du type de compte</option>
-                  <option value="buyer">Client</option>
-                  <option value="seller">Vendeur</option>
-                  <option value="admin">Administrateur</option>
+                  <option value="buyer" <?php if (isset($_POST["userType"]) and $_POST["userType"]=="buyer") {echo "selected";} ?>>Client</option>
+                  <option value="seller" <?php if (isset($_POST["userType"]) and $_POST["userType"]=="seller") {echo "selected";} ?>>Vendeur</option>
+                  <option value="admin" <?php if (isset($_POST["userType"]) and $_POST["userType"]=="admin") {echo "selected";} ?> >Administrateur</option>
                </select>
             </form>
          </div>
       </div>
-
    </div>
    <?php if (isset($_POST['userType'])) {
           switch ($_POST['userType']) {

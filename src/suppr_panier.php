@@ -11,35 +11,35 @@ function suppr_product()
     }
     //echo $_POST['supprAll'];
     //if ($_POST['supprAll']) {
-        // SQL request
-       // $query="DELETE FROM cart
-         //      WHERE id_user='".$_SESSION['id']."'";
-       /* if (mysqli_query($conn, $query)) {
-            echo "New record created successfully UPDATE";
-        } else {
-            echo "Error: " . $query . "<br>" . mysqli_error($query);
-        }*/
-   // } else {
-        // SQL request
-        $sql = "SELECT id_cart
+    // SQL request
+    // $query="DELETE FROM cart
+    //      WHERE id_user='".$_SESSION['id']."'";
+    /* if (mysqli_query($conn, $query)) {
+         echo "New record created successfully UPDATE";
+     } else {
+         echo "Error: " . $query . "<br>" . mysqli_error($query);
+     }*/
+    // } else {
+    // SQL request
+    $sql = "SELECT id_cart
          FROM cart
          WHERE user_id = '" . $_SESSION['id'] . "';";
 
-        $result = mysqli_query($conn, $sql); // send the query
-        while ($row = mysqli_fetch_assoc($result)) {
-            if (isset($_POST[$row["id_cart"]])) {
-                if ($_POST[$row["id_cart"]]) { // if product check
-                    $query="DELETE FROM cart
+    $result = mysqli_query($conn, $sql); // send the query
+    while ($row = mysqli_fetch_assoc($result)) {
+        if (isset($_POST[$row["id_cart"]])) {
+            if ($_POST[$row["id_cart"]]) { // if product check
+                $query="DELETE FROM cart
                 WHERE id_cart='".$row["id_cart"]."'";
-                    if (mysqli_query($conn, $query)) {
-                        echo "New record created successfully UPDATE";
-                    } else {
-                        echo "Error: " . $query . "<br>" . mysqli_error($query);
-                    }
+                if (mysqli_query($conn, $query)) {
+                    echo "New record created successfully UPDATE";
+                } else {
+                    echo "Error: " . $query . "<br>" . mysqli_error($query);
                 }
             }
         }
-   // }
+    }
+    // }
 }
 if (isset($_POST['submit'])) {
     suppr_product();
