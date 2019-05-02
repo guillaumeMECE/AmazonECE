@@ -8,6 +8,7 @@
 
 
 <div class="container m-5">
+   <h2>Mes Produits en Ventes</h2>
    <!--div class="row"-->
 <?php
 // include the configs / constants for the database connection

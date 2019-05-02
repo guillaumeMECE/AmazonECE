@@ -17,39 +17,57 @@
                      </i><br>Accueil</a>
                </div>
                <div class="col-md-auto col-nav">
-                  <?php if (isset($_SESSION['type']) and $_SESSION['type']=="seller") {
-                    $icon="add_circle";
-                    $label="Ajout produit";
-                    $url="/amazonece/seller_add_product";
-                 }else{
-                      $icon="shopping_basket";
-                    $label="Panier";
-                    $url="/amazonece/panier";
-                 }?>
-                  <a class="nav-item nav-link" href="<?php echo $url; ?>" id="nav-panier"><i class="material-icons md-36">
+                  <?php
+                  $url="#";
+                  $icon="shopping_basket";
+                  $label="Panier";
+                  $class_panier="loginToggle";
+                  if (isset($_SESSION["name"]) and isset($_SESSION["type"])) {
+                      switch ($_SESSION["type"]) {
+                        case 'seller':
+                        $icon="add_circle";
+                       $label="Ajout produit";
+                       $url="/amazonece/seller_add_product";
+                       $class_panier="";
+                           break;
+                        case 'buyer':
+                        $icon="shopping_basket";
+                     $label="Panier";
+                     $url="/amazonece/panier";
+                     $class_panier="";
+                           break;
+                        case 'admin':
+                           $url="/AmazonECE/seller_account.php";
+                           $class_panier="";
+                           break;
+                     }
+                  }  ?>
+                  <a class="nav-item nav-link <?php echo $class_panier; ?>" href="<?php echo $url; ?>" id=""><i class="material-icons md-36">
                         <?php echo $icon; ?>
                      </i><br><?php echo $label; ?></a>
                </div>
                <div class="col-md-auto col-nav">
                   <?php
                   $url_account="#";
+                  $class_account="loginToggle";
+                  //$id_panier="nav-panier-collapse-login";
                    if (isset($_SESSION["name"]) and isset($_SESSION["type"])) {
                        switch ($_SESSION["type"]) {
                         case 'admin':
                            $url_account="/AmazonECE/admin_account.php";
+                           $class_account="";
                            break;
                         case 'buyer':
                            $url_account="/AmazonECE/client_account.php";
+                           $class_account="";
                            break;
                         case 'seller':
                            $url_account="/AmazonECE/seller_account.php";
-                           break;
-                        default:
-                           $url_account="/AmazonECE/client_account.php";
+                           $class_account="";
                            break;
                      }
                    } ?>
-                  <a class="nav-item nav-link" href="<?php echo $url_account; ?>" id="nav-compte"><i class="material-icons md-36">
+                  <a class="nav-item nav-link <?php echo $class_account; ?>" href="<?php echo $url_account; ?>" id="nav-compte"><i class="material-icons md-36">
                         account_circle
                      </i><br>Compte</a>
                </div>
@@ -60,7 +78,7 @@
    <ul class="nav navbar-nav navbar-right">
       <!--li><p class="navbar-text">Déjà un compte ?</p></li-->
       <li class="dropdown">
-         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>
+         <a href="#" class="dropdown-toggle loginToggle" data-toggle="dropdown"><b>
                <?php if (isset($_SESSION["name"])) {
                        echo "Connecté en tant que <br>".$_SESSION["type"]." (".$_SESSION["name"].")";
                    } else {
@@ -81,7 +99,7 @@
                             echo "<p class=\"m-3\">Connecté en tant que ".$_SESSION["name"]."
                               <br><a href=\"src/logout.php\">Déconnexion</a></p>";
                         } else {
-                            echo "<form class=\"form\" role=\"form\" method=\"post\" action=\"\" accept-charset=\"UTF-8\" id=\"login-nav\">
+                            echo "<form class=\"form\" role=\"form\" method=\"post\" action=\"/amazonece/index.php\" accept-charset=\"UTF-8\" id=\"login-nav\">
                                 <div class=\"form-group\">
                                     <label class=\"sr-only\" for=\"InputEmail\">Email</label>
                                     <input type=\"email\" class=\"form-control\" name=\"email\" id=\"InputEmail\" placeholder=\"Email\" required>
@@ -108,6 +126,11 @@
    </ul>
 
 </nav>
-<script type="text/javascript">
 
+<script type="text/javascript">
+   $(document).ready(function() {
+      $(".loginToggle").click(function() {
+         $("#login-dp").toggle();
+      });
+   });
 </script>
