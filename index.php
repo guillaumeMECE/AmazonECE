@@ -69,10 +69,17 @@
         mysqli_close($conn);
     } ?>
    <?php
-   include("views/navbar.php") ?>
+   include("views/navbar.php");
+    ?>
 
-   <?php include("views/best_sell.html");
-    include("views/client_home.php") ?>
+   <?php
+   if (isset($_SESSION["type"]) and $_SESSION["type"]=="seller") {
+      include("views/seller_home.php");
+   }else{
+      include("views/best_sell.html");
+      include("views/client_home.php");
+   }
+    ?>
 
    <script type="text/javascript">
       var element = document.getElementById("nav-home");
