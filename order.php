@@ -66,7 +66,7 @@ require_once("config/db.php");
     <input type="password" class="form-control" name = "crypto" id="crypto" placeholder="Cryptogramme">
   </div>
 
-  <button type="submit" class="btn btn-primary mb-2">Valider</button>
+  <button type="submit" name="valider" class="btn btn-primary mb-2">Valider</button>
 </form>
 </div>
 

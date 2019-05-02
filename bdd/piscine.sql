@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 29 avr. 2019 à 17:52
+-- Généré le :  jeu. 02 mai 2019 à 15:20
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -23,9 +23,11 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
+
 --
 -- Structure de la table `admin`
 --
+
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
   `id_admin` int(255) NOT NULL AUTO_INCREMENT,
@@ -35,8 +37,47 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `password` varchar(255) NOT NULL,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_admin`)
-)ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `admin`
+--
+
+INSERT INTO `admin` (`id_admin`, `name`, `firstname`, `mail`, `password`, `type`) VALUES
+(1, 'Benzakine', 'Clara', 'clara.benzakine@edu.ece.fr', 'azerty', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `book`
+--
+
+DROP TABLE IF EXISTS `book`;
+CREATE TABLE IF NOT EXISTS `book` (
+  `id_book` int(255) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `auteur` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `editeur` varchar(255) NOT NULL,
+  `prix` float NOT NULL,
+  `photo` varchar(255) DEFAULT NULL,
+  `video` varchar(255) DEFAULT NULL,
+  `description` varchar(255) NOT NULL,
+  `categorie` varchar(255) DEFAULT NULL,
+  `genre` varchar(255) NOT NULL,
+  `nombre` int(11) NOT NULL,
+  `id_seller` int(255) DEFAULT NULL,
+  PRIMARY KEY (`id_book`),
+  KEY `id_seller` (`id_seller`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `book`
+--
+
+INSERT INTO `book` (`id_book`, `title`, `auteur`, `date`, `editeur`, `prix`, `photo`, `video`, `description`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES
+(1, 'Le Rouge et le Noir', 'Stendhal', '2019-04-17', 'Larousse', 7.4, 'img/retn.jpg', NULL, '', NULL, 'roman', 1, NULL),
+(2, 'Les Misérables', 'Victor Hugo', '2019-04-17', 'Petit furet', 9.87, 'img/miserable.jpg', NULL, '', NULL, 'roman', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -61,7 +102,15 @@ CREATE TABLE IF NOT EXISTS `buyer` (
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_buyer`),
   KEY `id_card` (`id_card`)
- ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `buyer`
+--
+
+INSERT INTO `buyer` (`id_buyer`, `id_card`, `name`, `firstname`, `password`, `picture`, `mail`, `adresse`, `ville`, `cp`, `pays`, `tel`, `type`) VALUES
+(1, 1, 'Guillaume', '', 'azerty', '', 'guillaume.maurin@edu.ece.fr', '11 Rue de Gramont', 'Chambourcy', '78240', 'France', '0760577499', 'MasterCard'),
+(2, 2, 'tst', 'tstf', 'azerty', NULL, 'tst@gmail.com', '', '', '', '', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -78,7 +127,46 @@ CREATE TABLE IF NOT EXISTS `card` (
   `crypto` varchar(255) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_card`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `card`
+--
+
+INSERT INTO `card` (`id_card`, `nomcarte`, `numero`, `datefin`, `crypto`, `type`) VALUES
+(1, 'Guillaume Maurin', '095', '2019-04-18', '666', 'Master Card');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cart`
+--
+
+DROP TABLE IF EXISTS `cart`;
+CREATE TABLE IF NOT EXISTS `cart` (
+  `id_cart` int(255) NOT NULL AUTO_INCREMENT,
+  `id_produit` int(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
+  `nombre_cart` int(11) DEFAULT NULL,
+  `prix_unit` float DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `type_user` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_cart`)
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `cart`
+--
+
+INSERT INTO `cart` (`id_cart`, `id_produit`, `user_id`, `nombre_cart`, `prix_unit`, `type`, `type_user`) VALUES
+(11, 1, 1, 5, 21, 'cloth', 'buyer'),
+(10, 1, 1, 1, 169.9, 'sports', 'buyer'),
+(9, 4, 1, 2, 11.42, 'music', 'buyer'),
+(8, 1, 1, 3, 7.4, 'book', 'buyer'),
+(7, 2, 1, 5, 9.87, 'book', 'admin'),
+(12, 2, 1, 1, 8.32, 'music', 'seller'),
+(13, 2, 2, 1, 8.32, 'music', 'buyer'),
+(14, 1, 2, 1, 169.9, 'sports', 'buyer');
 
 -- --------------------------------------------------------
 
@@ -102,31 +190,6 @@ CREATE TABLE IF NOT EXISTS `demandevendeur` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `livre`
---
-
-DROP TABLE IF EXISTS `book`;
-CREATE TABLE IF NOT EXISTS `book` (
-  `id_book` int(255) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL,
-  `auteur` varchar(255) NOT NULL,
-  `date` date NOT NULL,
-  `editeur` varchar(255) NOT NULL,
-  `prix` float(11) NOT NULL,
-  `photo` varchar(255) DEFAULT NULL,
-  `video` varchar(255) DEFAULT NULL,
-  `description` varchar(255) NOT NULL,
-  `categorie` varchar(255) DEFAULT NULL,
-  `genre` varchar(255) NOT NULL,
-  `nombre` int(11) NOT NULL,
-  `id_seller` int(255) DEFAULT NULL,
-  PRIMARY KEY (`id_book`),
-  KEY `id_seller` (`id_seller`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `music`
 --
 
@@ -140,14 +203,25 @@ CREATE TABLE IF NOT EXISTS `music` (
   `photo` varchar(255) DEFAULT NULL,
   `video` varchar(255) DEFAULT NULL,
   `description` varchar(255) NOT NULL,
-  `prix` float(11) NOT NULL,
+  `prix` float NOT NULL,
   `categorie` varchar(255) DEFAULT NULL,
   `genre` varchar(255) NOT NULL,
   `nombre` int(11) NOT NULL,
   `id_seller` int(255) DEFAULT NULL,
   PRIMARY KEY (`id_music`),
   KEY `id_seller` (`id_seller`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `music`
+--
+
+INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES
+(1, 'Suck it and See', 'Arctic Monkeys', '2019-04-03', '45', 'img/am.jpg', NULL, 'Album', 9.98, NULL, 'indie rock', 3, NULL),
+(2, 'Hot Sugar', 'Red Hot Chili Peppers', '2019-04-03', '45', 'img/rhcp.jpg', NULL, 'Album', 8.32, NULL, 'pop rock', 5, NULL),
+(3, 'A Quick One', 'the Who', '2019-04-03', '45', 'img/who.jpg', NULL, 'Album', 4.5, NULL, 'rock', 12, NULL),
+(4, 'Greatest Hit - the Police', 'The Police', '2019-04-03', '45', 'img/tp.jpg', NULL, 'Album', 11.42, NULL, 'rock', 9, NULL),
+(5, 'A Horse With No Name', 'America', '2019-04-03', '45', 'img/america.jpg', NULL, 'Album', 27.12, NULL, 'rock', 8, NULL);
 
 -- --------------------------------------------------------
 
@@ -165,8 +239,15 @@ CREATE TABLE IF NOT EXISTS `seller` (
   `password` varchar(255) NOT NULL,
   `picture` varchar(255) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
- PRIMARY KEY (`id_seller`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id_seller`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `seller`
+--
+
+INSERT INTO `seller` (`id_seller`, `bgpic`, `mail`, `name`, `firstname`, `password`, `picture`, `type`) VALUES
+(1, '', 'claire.grouhel@edu.ece.fr', 'grouhel', 'claire', 'azerty', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -182,27 +263,21 @@ CREATE TABLE IF NOT EXISTS `sportsloisirs` (
   `photo` varchar(255) DEFAULT NULL,
   `video` varchar(255) DEFAULT NULL,
   `description` varchar(255) NOT NULL,
-  `prix` float(11) NOT NULL,
+  `prix` float NOT NULL,
   `categorie` varchar(255) DEFAULT NULL,
   `genre` varchar(255) NOT NULL,
   `nombre` int(11) NOT NULL,
   `id_seller` int(255) DEFAULT NULL,
   PRIMARY KEY (`id_sl`),
   KEY `id_seller` (`id_seller`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
--- --------------------------------------------------------
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
--- Structure de la table `cart`
+-- Déchargement des données de la table `sportsloisirs`
 --
 
-DROP TABLE IF EXISTS `cart`;
-CREATE TABLE IF NOT EXISTS `cart` (
-  `id_cart` int(255) NOT NULL AUTO_INCREMENT,
-  `id_produit` int(255) NOT NULL,
-  `user_id` int(255) NOT NULL,
-  PRIMARY KEY (`id_cart`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+INSERT INTO `sportsloisirs` (`id_sl`, `nom`, `marque`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES
+(1, 'Pure Drive 2017', 'Babolat', 'img/babolat.jpg', NULL, 'Offrant une combinaison incroyable de vitesse, de puissance et d\'effets, la Pure Drive est l\'une des raquettes les plus populaires et polyvalentes jamais créées !', 169.9, NULL, '', 23, NULL);
 
 -- --------------------------------------------------------
 
@@ -221,43 +296,23 @@ CREATE TABLE IF NOT EXISTS `vetements` (
   `photo` varchar(255) DEFAULT NULL,
   `video` varchar(255) DEFAULT NULL,
   `description` varchar(255) NOT NULL,
-  `prix` float(11) NOT NULL,
+  `prix` float NOT NULL,
   `categorie` varchar(255) NOT NULL,
   `genre` varchar(255) NOT NULL,
   `nombre` int(11) NOT NULL,
   `id_seller` int(255) DEFAULT NULL,
-  PRIMARY KEY(`id_vetement`),
+  PRIMARY KEY (`id_vetement`),
   KEY `id_seller` (`id_seller`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `vetements`
+--
+
+INSERT INTO `vetements` (`id_vetement`, `nom`, `taille`, `couleur`, `sexe`, `marque`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES
+(1, 'T-Shirt Champion', 'M', 'Blanc', 'M', 'Champion', 'img/champion.jpg', NULL, '', 21, '', '', 7, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-/*INSERT ADMIN*/
-INSERT INTO `admin` (`id_admin`, `name`, `firstname`, `mail`, `password`, `type`) VALUES (NULL, 'Benzakine', 'Clara', 'clara.benzakine@edu.ece.fr', 'azerty', NULL);
-/*INSERT USER*/
-INSERT INTO `buyer` (`id_buyer`, `id_card`, `name`, `password`, `picture`, `mail`, `adresse`, `ville`, `cp`, `pays`, `tel`, `type`) VALUES (NULL, NULL, 'Guillaume', 'azerty', '', 'guillaume.maurin@edu.ece.fr', '11 Rue de Gramont', 'Chambourcy', '78240', 'France', '0760577499', 'MasterCard');
-/*INSERT MUSIC*/
-INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'Suck it and See', 'Arctic Monkeys', '2019-04-03', '45', 'img/am.jpg', NULL, 'Album', '9.98', NULL, 'indie rock', '3', NULL);
-INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'Hot Sugar', 'Red Hot Chili Peppers', '2019-04-03', '45', 'img/rhcp.jpg', NULL, 'Album', '8.32', NULL, 'pop rock', '5', NULL);
-INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'A Quick One', 'the Who', '2019-04-03', '45', 'img/who.jpg', NULL, 'Album', '4.5', NULL, 'rock', '12', NULL);
-INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'Greatest Hit - the Police', 'The Police', '2019-04-03', '45', 'img/tp.jpg', NULL, 'Album', '11.42', NULL, 'rock', '9', NULL);
-
-INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'A Horse With No Name', 'America', '2019-04-03', '45', 'img/america.jpg', NULL, 'Album', '27.12', NULL, 'rock', '8', NULL);
-
-/*INSERT SELLER*/
-INSERT INTO `seller` (`id_seller`, `bgpic`, `mail`, `name`, `firstname`,  `password`, `picture`, `type`) VALUES (NULL, '4', 'claire.grouhel@edu.ece.fr', 'Grouhel', 'Claire', 'azerty', '5', NULL);
-
-/*INSERT CARD*/
-INSERT INTO `card`(`id_card`, `nomcarte`, `numero`, `datefin`, `crypto`, `type`) VALUES (NULL, 'Guillaume Maurin', '095', '2019-04-18', '666', 'Master Card');
-
-/*INSERT BOOKS*/
-INSERT INTO `book` (`id_book`, `title`, `auteur`, `date`, `editeur`, `prix`, `photo`, `video`, `description`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'Le Rouge et le Noir', 'Stendhal', '2019-04-17', 'Larousse', '7.4', 'img/retn.jpg', NULL, '', NULL, 'roman', '1', NULL);
-INSERT INTO `book` (`id_book`, `title`, `auteur`, `date`, `editeur`, `prix`, `photo`, `video`, `description`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'Les Misérables', 'Victor Hugo', '2019-04-17', 'Petit furet', '9.87', 'img/miserable.jpg', NULL, '', NULL, 'roman', '1', NULL);
-
-/*INSERT CLOTHING*/
-INSERT INTO `vetements` (`id_vetement`, `nom`, `taille`, `couleur`, `sexe`, `marque`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'T-Shirt Champion', 'M', 'Blanc', 'M', 'Champion', 'img/champion.jpg', NULL, '', '21.00', '', '', '7', NULL);
-/*INSERT SPORTS*/
-INSERT INTO `sportsloisirs` (`id_sl`, `nom`, `marque`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES (NULL, 'Pure Drive 2017', 'Babolat', 'img/babolat.jpg', NULL, 'Offrant une combinaison incroyable de vitesse, de puissance et d\'effets, la Pure Drive est l\'une des raquettes les plus populaires et polyvalentes jamais créées !', '169.90', NULL, '', '23', NULL);
