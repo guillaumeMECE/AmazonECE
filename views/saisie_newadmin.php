@@ -25,7 +25,8 @@ require_once("../config/db.php");
          $result3= mysqli_query($conn, $query2);
          $a =mysqli_num_rows($result1);
          $b =mysqli_num_rows($result1);
-        $c =mysqli_num_rows($result3);
+         $c =mysqli_num_rows($result3);
+
          if ($a>0 && $b>0 && $c>0)
          {
            ?>
