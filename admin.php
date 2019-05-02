@@ -96,7 +96,7 @@
 
                            <input type=\"submit\" class=\"btn btn-primary\" name=\"Accepter\" value=\"Accepter\">
 
-                           <input type=\"submit\" class=\"btn btn-danger\" name=\"Supprimer\" value=\"Supprimer\">
+                           <input type=\"submit\" class=\"btn btn-danger\" name=\"Refuser\" value=\"Supprimer\">
 
                      </div>
 
