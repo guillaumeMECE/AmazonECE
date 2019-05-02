@@ -1,7 +1,7 @@
 <?php
  session_start();
 require_once("../config/db.php");
-  function add_pic()
+function add_pic()
 {
     // Create connection
 

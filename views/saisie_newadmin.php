@@ -1,4 +1,128 @@
 <?php
+
+function add_profil_pic()
+{
+    // Create connection
+
+    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+    // Check connection
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    extract($_POST);
+    if (isset($_FILES['path_profil'])) {
+        $UploadedFileName = $_FILES["path_profil"]["name"];
+    }
+
+
+    if ($UploadedFileName != '') {
+        $upload_directory = "../img/"; //This is the folder which img will be stored from src
+        $upload_directoryF = "img/"; //This is the folder which img is stored
+
+        $filename=$_POST['nom'].$_POST['prenom'];
+        if (file_exists($filename)) {
+            if ($filename != "res/user-img.jpg") {
+                unlink($filename);
+            }
+        }
+        $TargetPath = time().$_POST['nom'].$_POST['prenom'].".jpg";
+        echo $upload_directory.$TargetPath;
+        $temp_file = $_FILES['path_profil']['tmp_name'];
+        $max_size = 4000000;
+        $size = filesize($temp_file);
+        echo "size : " . $size . " ";
+        if ($size < $max_size) {
+            if (move_uploaded_file($_FILES['path_profil']['tmp_name'], $upload_directory.$TargetPath)) {
+                $query="SELECT id_admin FROM admin WHERE name='" . $_POST["nom"] . "' AND firstname ='" . $_POST["prenom"] . "' AND mail ='" . $_POST["mail"] . "'AND password ='" . $_POST["password"] . "';";
+                echo $query;
+                $result = mysqli_query($conn, $query); // send the query
+                $row = mysqli_fetch_assoc($result);
+                //echo "ATTTTTENNNNTION:".$row['id_music'];
+
+                // make the request to the DATABASE
+                $sql = "UPDATE admin SET photoProfil = '" . $upload_directoryF.$TargetPath . "' WHERE id_admin='" .$row["id_admin"] . "' ";
+
+                if ($conn->query($sql) === true) {
+                    $_POST['submit'] = null;
+                //header("Refresh:0");
+                } else {
+                    echo "Error updating path: ".$conn->error;
+                }
+            } else {
+                echo "Error move upload";
+            }
+        } else {
+            echo "Error move upload : Your picture is too Big";
+        }
+
+        $conn->close();
+    }
+}
+function add_bg_pic()
+{
+    // Create connection
+
+    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+    // Check connection
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    extract($_POST);
+    if (isset($_FILES['path_bg'])) {
+        $UploadedFileName = $_FILES["path_bg"]["name"];
+    }
+
+
+    if ($UploadedFileName != '') {
+        $upload_directory = "../img/"; //This is the folder which img will be stored from src
+        $upload_directoryF = "img/"; //This is the folder which img is stored
+
+        $filename=$_POST['nom'].$_POST['prenom'];
+        if (file_exists($filename)) {
+            if ($filename != "res/user-img.jpg") {
+                unlink($filename);
+            }
+        }
+        $TargetPath = time()."bg".$_POST['nom'].$_POST['prenom'].".jpg";
+        echo $upload_directory.$TargetPath;
+        $temp_file = $_FILES['path_bg']['tmp_name'];
+        $max_size = 4000000;
+        $size = filesize($temp_file);
+        echo "size : " . $size . " ";
+        if ($size < $max_size) {
+            if (move_uploaded_file($_FILES['path_bg']['tmp_name'], $upload_directory.$TargetPath)) {
+                $query="SELECT id_admin FROM admin WHERE name='" . $_POST["nom"] . "' AND firstname ='" . $_POST["prenom"] . "' AND mail ='" . $_POST["mail"] . "'AND password ='" . $_POST["password"] . "';";
+                echo $query;
+                $result = mysqli_query($conn, $query); // send the query
+                $row = mysqli_fetch_assoc($result);
+                //echo "ATTTTTENNNNTION:".$row['id_music'];
+
+                // make the request to the DATABASE
+                $sql = "UPDATE admin SET photoBg = '" . $upload_directoryF.$TargetPath . "' WHERE id_admin='" .$row["id_admin"] . "' ";
+
+                if ($conn->query($sql) === true) {
+                    $_POST['submit'] = null;
+                //header("Refresh:0");
+                } else {
+                    echo "Error updating path: ".$conn->error;
+                }
+            } else {
+                echo "Error move upload";
+            }
+        } else {
+            echo "Error move upload : Your picture is too Big";
+        }
+
+        $conn->close();
+    }
+}
+
     //si le BDD existe, faire le traitement
 
     $name = isset($_POST["nom"])? $_POST["nom"] : "";
@@ -11,60 +135,35 @@ require_once("../config/db.php");
        // Check connection
        if (!$conn) {
            die("Connection failed: " . mysqli_connect_error());
-       }
-
-       else if($conn)
-       {
-         $query="SELECT mail FROM buyer WHERE mail = '$mail'";
-         $query1 ="SELECT mail FROM seller WHERE mail = '$mail'";
-         $query2 ="SELECT mail FROM admin WHERE mail = '$mail'";
+       } elseif ($conn) {
+           $query="SELECT mail FROM buyer WHERE mail = '$mail'";
+           $query1 ="SELECT mail FROM seller WHERE mail = '$mail'";
+           $query2 ="SELECT mail FROM admin WHERE mail = '$mail'";
 
 
-         $result1  = mysqli_query($conn, $query);
-         $result2= mysqli_query($conn, $query1);
-         $result3= mysqli_query($conn, $query2);
-         $a =mysqli_num_rows($result1);
-         $b =mysqli_num_rows($result1);
-         $c =mysqli_num_rows($result3);
+           $result1  = mysqli_query($conn, $query);
+           $result2= mysqli_query($conn, $query1);
+           $result3= mysqli_query($conn, $query2);
+           $a =mysqli_num_rows($result1);
+           $b =mysqli_num_rows($result1);
+           $c =mysqli_num_rows($result3);
 
-         if ($a>0 && $b>0 && $c>0)
-         {
-           ?>
-
-           <div class="alert alert-danger" role="alert">
-             Ce mail existe déjà!
-           </div>
-           <?php
-           require "newadmin.php";
-         }
-else{
-
-    if ($name!="" && $prenom!="" && $mail!=""&& $password!="")
-    {
-    $sql = "INSERT INTO admin (name, firstname, mail, password, type)
+           if ($a>0 && $b>0 && $c>0) {
+               header('Location : ../inscription.php');
+           } else {
+               if ($name!="" && $prenom!="" && $mail!=""&& $password!="") {
+                   $sql = "INSERT INTO admin (name, firstname, mail, password, type)
     VALUES('".$name."', '".$prenom."', '".$mail."','".$password."','admin');";
-    $result = mysqli_query($conn, $sql);
-  //  header('Location : ../index.php');
-    ?>
-    <div class="alert alert-success" role="alert">
-  Votre inscription a été effectuée!
-</div>
-<?php
-}
-else
-{
-  ?>
+                   $result = mysqli_query($conn, $sql);
 
-  <div class="alert alert-danger" role="alert">
-    Veuillez remplir tous les champs requis
-  </div>
-  <?php
-  require "newadmin.php";
+               //  header('Location : ../index.php');
+               } else {
 
-}
-}
-}
+
+                   header('Location : ../inscription.php');
+               }
+           }
+       }
       mysqli_close($conn);
-
-
-?>
+      add_profil_pic();
+      add_bg_pic();

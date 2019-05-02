@@ -40,12 +40,19 @@ require_once("config/db.php");
                        $prenom = $row['firstname'];
                        $mail = $row['mail'];
                        $mdp = $row['password'];
+                       $photo_profil=$row['photoProfil'];
+                       $photo_bg=$row['photoBg'];
                    }
                 mysqli_close($conn);
                   ?>
 
    <div class="container m-5 p-5 shadow " id="Infogéné">
       <h2>Informations générales</h2>
+      <p>Photo de profil</p>
+      <img src="<?php echo $photo_profil; ?>" alt="<?php echo $nom; ?>" class="img-thumbnail">
+      <p>Bannière</p>
+      <img src="<?php echo $photo_bg; ?>" alt="<?php echo $nom; ?>" class="img-thumbnail">
+
       <form>
          <div class="form-group">
             <label for="nom">Nom</label>
