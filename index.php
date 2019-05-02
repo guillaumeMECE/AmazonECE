@@ -16,7 +16,6 @@
    <!--NAVBAR-->
    <?php session_start();
     if (isset($_POST['email']) and isset($_POST['mdp'])) {
-
         // include the configs / constants for the database connection
         require_once("config/db.php");
         // Create connection
@@ -25,7 +24,6 @@
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-
         // make the request to the DATABASE
         $sql = "SELECT mail,password,name,id_buyer,id_card
           FROM buyer

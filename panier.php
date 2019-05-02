@@ -22,12 +22,12 @@ include("views/navbar.php") ?>
       </a>
    </div>
    <div class="floatBtnR">
-      <?php /*if (isset($_SESSION["email"]) and isset($_SESSION["name"]) and isset($_SESSION["id"])) {
-         $url= "/amazonece/src/add_panier?cat=".$_GET["cat"]."&id=".$_GET["id"]."&add=true";
+      <?php if (isset($_SESSION["email"]) and isset($_SESSION["name"]) and isset($_SESSION["id"])) {
+         $url= "/amazonece/order";
       }else{
-         $url= "/amazonece/views/newclient?cat=".$_GET["cat"]."&id=".$_GET["id"]."&add=true&cart=true";
-      } */?>
-      <a href="#<?php //echo $url;?>" class="cart">
+         $url= "/amazonece/views/newclient";
+      } ?>
+      <a href="<?php echo $url; ?>" class="cart">
             <i class="material-icons md-36" style="margin-top:12px;">payment</i>
       </a>
    </div>

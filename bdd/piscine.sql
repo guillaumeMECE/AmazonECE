@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `buyer` (
 --
 
 INSERT INTO `buyer` (`id_buyer`, `id_card`, `name`, `firstname`, `password`, `picture`, `mail`, `adresse`, `ville`, `cp`, `pays`, `tel`, `type`) VALUES
-(1, NULL, 'Guillaume', '', 'azerty', '', 'guillaume.maurin@edu.ece.fr', '11 Rue de Gramont', 'Chambourcy', '78240', 'France', '0760577499', 'MasterCard'),
+(1, 1, 'Guillaume', '', 'azerty', '', 'guillaume.maurin@edu.ece.fr', '11 Rue de Gramont', 'Chambourcy', '78240', 'France', '0760577499', 'MasterCard'),
 (2, 2, 'tst', 'tstf', 'azerty', NULL, 'tst@gmail.com', '', '', '', '', '', NULL);
 
 -- --------------------------------------------------------
@@ -128,7 +128,46 @@ CREATE TABLE IF NOT EXISTS `card` (
   `crypto` varchar(255) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_card`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `card`
+--
+
+INSERT INTO `card` (`id_card`, `nomcarte`, `numero`, `datefin`, `crypto`, `type`) VALUES
+(1, 'Guillaume Maurin', '095', '2019-04-18', '666', 'Master Card');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cart`
+--
+
+DROP TABLE IF EXISTS `cart`;
+CREATE TABLE IF NOT EXISTS `cart` (
+  `id_cart` int(255) NOT NULL AUTO_INCREMENT,
+  `id_produit` int(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
+  `nombre_cart` int(11) DEFAULT NULL,
+  `prix_unit` float DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `type_user` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_cart`)
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `cart`
+--
+
+INSERT INTO `cart` (`id_cart`, `id_produit`, `user_id`, `nombre_cart`, `prix_unit`, `type`, `type_user`) VALUES
+(11, 1, 1, 5, 21, 'cloth', 'buyer'),
+(10, 1, 1, 1, 169.9, 'sports', 'buyer'),
+(9, 4, 1, 2, 11.42, 'music', 'buyer'),
+(8, 1, 1, 3, 7.4, 'book', 'buyer'),
+(7, 2, 1, 5, 9.87, 'book', 'admin'),
+(12, 2, 1, 1, 8.32, 'music', 'seller'),
+(13, 2, 2, 1, 8.32, 'music', 'buyer'),
+(14, 1, 2, 1, 169.9, 'sports', 'buyer');
 
 -- --------------------------------------------------------
 
