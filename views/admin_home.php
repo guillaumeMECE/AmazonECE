@@ -60,15 +60,15 @@
 
                   <div class=\"card\" style=\"width: 17rem;\">
 
-                     <img src=\"".$row["picture"]."\" class=\"card-img-top\">
+                     <img src=\"".$row["photoProfil"]."\" class=\"card-img-top\">
 
                      <div class=\"card-body\">
 
-                     <form action=\"add_seller.php\" method=\"post\">
+                     <form action=\"src/add_seller.php\" method=\"post\">
 
-                     <input type=\"hidden\" name=\"bgpic\" value=\"".$row["bgpic"]."\">
+                     <input type=\"hidden\" name=\"photoBg\" value=\"".$row["photoBg"]."\">
                      <input type=\"hidden\" name=\"password\" value=\"".$row["password"]."\">
-                     <input type=\"hidden\" name=\"picture\" value=\"".$row["picture"]."\">
+                     <input type=\"hidden\" name=\"photoProfil\" value=\"".$row["photoProfil"]."\">
                      <input type=\"hidden\" name=\"id_demvendeur\" value=\"".$row["id_demvendeur"]."\">
                       <input type=\"hidden\" name=\"name\" value=\"".$row["name"]."\">
                         <input type=\"hidden\" name=\"mail\" value=\"".$row["mail"]."\">
@@ -96,7 +96,7 @@
 
                            <input type=\"submit\" class=\"btn btn-primary\" name=\"Accepter\" value=\"Accepter\">
 
-                           <input type=\"submit\" class=\"btn btn-danger\" name=\"Refuser\" value=\"Supprimer\">
+                           <input type=\"submit\" class=\"btn btn-danger\" name=\"Refuser\" value=\"Refuser\">
 
                      </div>
 
@@ -144,16 +144,16 @@
 
                   <div class=\"card\" style=\"width: 17rem;\">
 
-                     <img src=\"".$row["picture"]."\" class=\"card-img-top\">
+                     <img src=\"".$row["photoProfil"]."\" class=\"card-img-top\">
 
                      <div class=\"card-body\">
 
-                     <form action=\"add_seller.php\" method=\"post\" >
+                     <form action=\"src/add_seller.php\" method=\"post\" >
 
 
-                     <input type=\"hidden\" name=\"bgpic\" value=\"".$row["bgpic"]."\">
+                     <input type=\"hidden\" name=\"bgpic\" value=\"".$row["photoBg"]."\">
                      <input type=\"hidden\" name=\"password\" value=\"".$row["password"]."\">
-                     <input type=\"hidden\" name=\"picture\" value=\"".$row["picture"]."\">
+                     <input type=\"hidden\" name=\"picture\" value=\"".$row["photoProfil"]."\">
                      <input type=\"hidden\" name=\"mail\" value=\"".$row["mail"]."\">
                      <input type=\"hidden\" name=\"id_seller\" value=\"".$row["id_seller"]."\">
                      <input type=\"hidden\" name=\"firstname\" value=\"".$row["firstname"]."\">

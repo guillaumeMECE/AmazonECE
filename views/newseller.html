@@ -2,7 +2,7 @@
 
 
    <div class="p-3 mb-2 bg-secondary text-white">Inscription nouveau vendeur</div>
-   <form name="formulaire_vendeur" method="post" action="views/saisie_newseller.php">
+   <form name="formulaire_vendeur" method="post" action="views/saisie_newseller.php" enctype="multipart/form-data">
       <div class="container">
          <div class="row">
             <div class="col">
@@ -28,20 +28,20 @@
             <div class="col">
                <br> <br>
                <div class="custom-file">
-                  <label class="custom-file-label" for="photo">Photo de Profil</label><br />
-                  <input type="file" class="custom-file-input" name="photo" id="photo" /><br />
+                  <label class="custom-file-label" for="path_profil">Photo de Profil</label><br />
+                  <input type="file" class="custom-file-input" name="path_profil" id="path_profil" /><br />
                </div>
             </div>
             <div class="col">
                <br><br>
                <div class="custom-file">
-                  <label class="custom-file-label" for="image">Image de fond</label>
-                  <input type="file" class="custom-file-input" name="image" id="customFile">
+                  <label class="custom-file-label" for="path_bg">Image de fond</label>
+                  <input type="file" class="custom-file-input" name="path_bg" id="path_bg">
                </div>
             </div>
          </div>
          <br><br>
-         <button type="submit" class="btn btn-primary">M'inscrire</button>
+         <button type="submit" name="submit" class="btn btn-primary">M'inscrire</button>
       </div>
    </form>
 </div>

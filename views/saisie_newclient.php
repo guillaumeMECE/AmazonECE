@@ -65,5 +65,5 @@ require_once("../config/db.php");
            }
        }
       mysqli_close($conn);
-
+header('Location : /amazonece/');
 ?>

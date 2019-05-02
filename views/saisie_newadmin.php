@@ -167,3 +167,4 @@ require_once("../config/db.php");
       mysqli_close($conn);
       add_profil_pic();
       add_bg_pic();
+      header('Location : /amazonece/');

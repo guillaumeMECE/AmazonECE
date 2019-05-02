@@ -1,6 +1,6 @@
 <?php
 
-require_once("config/db.php");
+require_once("../config/db.php");
 
 
        // Create connection
@@ -20,7 +20,8 @@ if (isset($_POST['Accepter']))
   $id = isset($_POST["id_demvendeur"])? $_POST["id_demvendeur"] : "";
   $bgpic = isset($_POST["bgpic"])? $_POST["bgpic"] : "";
   $password = isset($_POST["password"])? $_POST["password"] : "";
-  $picture = isset($_POST["picture"])? $_POST["picture"] : "";
+  $photoProfil = isset($_POST["photoProfil"])? $_POST["photoProfil"] : "";
+  $photoBg = isset($_POST["photoBg"])? $_POST["photoBg"] : "";
   $name = isset($_POST["name"])? $_POST["name"] : "";
   $firstname = isset($_POST["firstname"])? $_POST["firstname"] : "";
   $mail = isset($_POST["mail"])? $_POST["mail"] : "";
@@ -31,9 +32,9 @@ if (isset($_POST['Accepter']))
       $result1= mysqli_query($conn, $query);
 
       // make the request to the DATABASE
-      $sql = "INSERT INTO seller(bgpic, mail, name, firstname, password, picture, type)
+      $sql = "INSERT INTO seller(mail, name, firstname, password, photoProfil,photoBg, type)
 
-      VALUES('".$bgpic."','".$mail."', '".$name."', '".$firstname."', '".$password."', '".$picture."', 'buyer');";
+      VALUES('".$mail."', '".$name."', '".$firstname."', '".$password."', '".$photoProfil."','".$photoBg."', 'buyer');";
       $result = mysqli_query($conn, $sql);
 
       $sql1 = "DELETE FROM demandevendeur WHERE id_demvendeur = '$id'";
@@ -44,9 +45,9 @@ if (isset($_POST['Accepter']))
 if (isset($_POST['Supprimervendeur']))
 {
   $idsell = isset($_POST["id_seller"])? $_POST["id_seller"] : "";
-  $bgpic = isset($_POST["bgpic"])? $_POST["bgpic"] : "";
   $password = isset($_POST["password"])? $_POST["password"] : "";
-  $picture = isset($_POST["picture"])? $_POST["picture"] : "";
+  $photoProfil = isset($_POST["photoProfil"])? $_POST["photoProfil"] : "";
+  $photoBg = isset($_POST["photoBg"])? $_POST["photoBg"] : "";
   $name = isset($_POST["name"])? $_POST["name"] : "";
   $firstname = isset($_POST["firstname"])? $_POST["firstname"] : "";
   $mail = isset($_POST["mail"])? $_POST["mail"] : "";
@@ -55,19 +56,19 @@ if (isset($_POST['Supprimervendeur']))
       $sql2 = "DELETE FROM seller WHERE id_seller = '$idsell';";
       $result2 = mysqli_query($conn, $sql2);
 }
-if (isset($_POST['Supprimer']))
+if (isset($_POST['Refuser']))
 {
   $id = isset($_POST["id_demvendeur"])? $_POST["id_demvendeur"] : "";
-  $bgpic = isset($_POST["bgpic"])? $_POST["bgpic"] : "";
   $password = isset($_POST["password"])? $_POST["password"] : "";
-  $picture = isset($_POST["picture"])? $_POST["picture"] : "";
+  $photoProfil = isset($_POST["photoProfil"])? $_POST["photoProfil"] : "";
+  $photoBg = isset($_POST["photoBg"])? $_POST["photoBg"] : "";
   $name = isset($_POST["name"])? $_POST["name"] : "";
   $firstname = isset($_POST["firstname"])? $_POST["firstname"] : "";
   $mail = isset($_POST["mail"])? $_POST["mail"] : "";
   echo "hello3";
 
 
-      $sql1 = "DELETE * FROM demandevendeur WHERE id_demvendeur = '$id'";
+      $sql1 = "DELETE FROM demandevendeur WHERE id_demvendeur = '$id'";
       $result1 = mysqli_query($conn, $sql1);
 
 }
@@ -76,5 +77,5 @@ if (isset($_POST['Supprimer']))
 
 
       mysqli_close($conn);
-header("location:/amazonece/views/admin_home.php");
+header("location:/amazonece/");
        ?>
