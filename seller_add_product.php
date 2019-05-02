@@ -19,8 +19,7 @@
          <div class="col-md-auto">
 
             <div class="card" style="width: 20rem;">
-               <!--img src="/amazonece/img/AM.jpg" class="card-img-top" alt="..."-->
-               <i class="material-icons md-48">add</i>
+               <img src="/amazonece/img/res/music.jpg" class="card-img-top" id="img-cat" alt="img_categorie">
                <div class="card-body">
                   <form class="form" action="src/add_product.php" method="post" enctype="multipart/form-data">
 
@@ -137,6 +136,7 @@
          $("#taille").hide();
          $("#FormControlSelectType").change(function() {
             if ($("#FormControlSelectType").val() == "Musique") {
+               $("#img-cat").attr('src','/amazonece/img/res/music.jpg');
                $("#auteur").show();
                $("#date").show();
                $("#tours").show();
@@ -147,6 +147,7 @@
                $("#marque").hide();
                $("#taille").hide();
             } else if ($("#FormControlSelectType").val() == "Livre") {
+               $("#img-cat").attr('src','/amazonece/img/res/book.jpg');
                $("#auteur").show();
                $("#date").show();
                $("#tours").hide();
@@ -157,6 +158,7 @@
                $("#marque").hide();
                $("#taille").hide();
             } else if ($("#FormControlSelectType").val() == "Vetement") {
+               $("#img-cat").attr('src','/amazonece/img/res/cloth.jpg');
                $("#auteur").hide();
                $("#date").hide();
                $("#tours").hide();
@@ -167,6 +169,7 @@
                $("#marque").show();
                $("#taille").show();
             } else {
+               $("#img-cat").attr('src','/amazonece/img/res/sports.jpg');
                $("#auteur").hide();
                $("#date").hide();
                $("#tours").hide();
