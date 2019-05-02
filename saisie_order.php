@@ -16,6 +16,7 @@ require_once("config/db.php");
 
     <?php
     include("views/navbar.php");
+
     // Create connection
    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
    // Check connection
@@ -40,7 +41,7 @@ require_once("config/db.php");
          if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
          }
-
+         else if($conn){
          // make the request to the DATABASE
          $sql = "SELECT *
                FROM card
@@ -77,9 +78,18 @@ require_once("config/db.php");
 </div>
 <?php
                 }
-                else {
-                  echo "Erreur de saisie!";}
+                else
+                {
+                  ?>
 
-            mysqli_close($conn); ?>
+                  <div class="alert alert-danger" role="alert">
+                    Erreur de saisie des données bancaires
+                  </div>
+                  <?php
+                  //require "order.php";
 
+
+                }
+}
+                ?>
 </body>
