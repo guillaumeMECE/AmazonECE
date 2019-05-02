@@ -73,6 +73,8 @@
    <?php
    if (isset($_SESSION["type"]) and $_SESSION["type"]=="seller") {
       include("views/seller_home.php");
+   }elseif(isset($_SESSION["type"]) and $_SESSION["type"]=="admin"){
+      include("views/admin_home.php");
    }else{
       include("views/best_sell.html");
       include("views/client_home.php");

@@ -76,5 +76,5 @@ if (isset($_POST['Supprimer']))
 
 
       mysqli_close($conn);
-header("location:/amazonece/admin.php");
+header("location:/amazonece/views/admin_home.php");
        ?>
