@@ -27,12 +27,15 @@
          <div class="floatBtnR">
             <?php if (isset($_SESSION["email"]) and isset($_SESSION["name"]) and isset($_SESSION["id"])) {
                $url= "/amazonece/src/add_panier?cat=".$_GET["cat"]."&id=".$_GET["id"]."&add=true";
+               echo "<a href=\" $url\" class=\"cart\">
+                     <i class=\"material-icons md-36\" style=\"margin-top:12px;\">add_shopping_cart</i>
+               </a>";
             }else{
-               $url= "/amazonece/views/newclient?cat=".$_GET["cat"]."&id=".$_GET["id"]."&add=true&cart=true";
+               echo "<a href=\"#\" class=\"cart\">
+                     <i class=\"material-icons md-36 loginToggle\" style=\"margin-top:12px;\">add_shopping_cart</i>
+               </a>";
             } ?>
-            <a href="<?php echo $url; ?>" class="cart">
-                  <i class="material-icons md-36" style="margin-top:12px;">add_shopping_cart</i>
-            </a>
+
          </div>
       </div>
 
@@ -156,7 +159,12 @@
                <p>Genre : <?php echo $genre;  ?></p>
                <p>Description : <?php echo $description; ?></p>
                <p>Prix : <?php echo $prix; ?> €</p>
-               <p><small>Produits restants : <?php echo $nombre; ?></small> </p>
+               <?php if ($nombre > 0) {
+                  echo "<p><small>Produits restants : $nombre</small> </p>";
+               }else {
+                  echo "<p style=\"color:red\"><small>Rupture de Stock</small> </p>";
+               } ?>
+               <!--p><small>Produits restants : <!-?php echo $nombre; ?></small> </p-->
             </div>
          </div>
       </div>
