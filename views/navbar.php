@@ -115,7 +115,7 @@
                            </form>
                        </div>
                        <div class=\"bottom text-center\">
-                          Nouveau ? <a href=\"views/newclient.html\"><b>Inscription</b></a>
+                          Nouveau ? <a href=\"/amazonece/inscription.php\"><b>Inscription</b></a>
                        </div>";
                         }
                          ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 02 mai 2019 à 12:16
+-- Généré le :  jeu. 02 mai 2019 à 19:39
 -- Version du serveur :  5.7.21
 -- Version de PHP :  7.2.4
 
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `book` (
 --
 
 INSERT INTO `book` (`id_book`, `title`, `auteur`, `date`, `editeur`, `prix`, `photo`, `video`, `description`, `categorie`, `genre`, `nombre`, `id_seller`) VALUES
-(1, 'Le Rouge et le Noir', 'Stendhal', '2019-04-17', 'Larousse', 7.4, 'img/retn.jpg', NULL, 'Roman', NULL, 'roman', 3, 1),
+(1, 'Le Rouge et le Noir', 'Stendhal', '2019-04-17', 'Larousse', 7.4, 'img/retn.jpg', NULL, 'Roman', NULL, 'roman', 0, 1),
 (2, 'Les Misérables', 'Victor Hugo', '2019-04-17', 'Petit furet', 9.87, 'img/miserable.jpg', NULL, '', NULL, 'roman', 1, NULL),
 (3, 'Assommoire', 'Zola', '2019-05-04', '', 4, 'img/1556789084Assommoire.jpg', NULL, '', NULL, 'Roman', 22, 1);
 
@@ -146,22 +146,20 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `type` varchar(255) DEFAULT NULL,
   `type_user` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_cart`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `cart`
 --
 
 INSERT INTO `cart` (`id_cart`, `id_produit`, `user_id`, `nombre_cart`, `prix_unit`, `type`, `type_user`) VALUES
-(11, 1, 1, 5, 21, 'cloth', 'buyer'),
-(10, 1, 1, 1, 169.9, 'sports', 'buyer'),
-(9, 4, 1, 1, 11.42, 'music', 'buyer'),
-(8, 1, 1, 3, 7.4, 'book', 'buyer'),
-(7, 2, 1, 5, 9.87, 'book', 'admin'),
+(21, 3, 1, 1, 4.5, 'music', 'buyer'),
+(22, 2, 1, 1, 75.95, 'cloth', 'buyer'),
+(7, 2, 1, 6, 9.87, 'book', 'admin'),
 (12, 2, 1, 2, 8.32, 'music', 'seller'),
 (13, 2, 2, 2, 8.32, 'music', 'buyer'),
 (14, 1, 2, 1, 169.9, 'sports', 'buyer'),
-(15, 3, 1, 1, 4.5, 'music', 'buyer');
+(23, 1, 1, 1, 169.9, 'sports', 'buyer');
 
 -- --------------------------------------------------------
 
