@@ -27,15 +27,19 @@ include("views/navbar.php") ?>
       }else{
          $url= "/amazonece/views/newclient?cat=".$_GET["cat"]."&id=".$_GET["id"]."&add=true&cart=true";
       } */?>
-      <a href="#<?php //echo $url; ?>" class="cart">
+      <a href="#<?php //echo $url;?>" class="cart">
             <i class="material-icons md-36" style="margin-top:12px;">payment</i>
       </a>
    </div>
 </div>
    <div class="container my-5">
-      <table class="table table-hover">
+      <form class="" action="src/suppr_panier.php" method="post">
+
+
+      <table class="table table-hover shadow border">
          <thead>
             <tr>
+               <th scope="col"></th>
                <th scope="col">Produit</th>
                <th scope="col">Nom</th>
                <th scope="col">Description</th>
@@ -70,9 +74,10 @@ include("views/navbar.php") ?>
              $description=$row["description"];
              $prix=$row["prix"];
              $nbre=$row["nombre_cart"];
+             $idCheckbox=$row["id_cart"];
 
              echo "<tr>
-
+             <td><div class=\"custom-control custom-checkbox\"><input type=\"checkbox\" class=\"custom-control-input\" name=\"$idCheckbox\" id=\"$idCheckbox\"><label class=\"custom-control-label\" for=\"$idCheckbox\"></label></div></td>
                   <td><img src=\"$photo\" alt=\"user pic\" class=\"img-thumbnail shadow-sm\" style=\"max-width:100px\"></td>
                    <td>$nom</td>
                    <td>$description</td>
@@ -97,9 +102,10 @@ include("views/navbar.php") ?>
              $description=$row["description"];
              $prix=$row["prix"];
              $nbre=$row["nombre_cart"];
+             $idCheckbox=$row["id_cart"];
 
              echo "<tr>
-
+            <td><div class=\"custom-control custom-checkbox\"><input type=\"checkbox\" class=\"custom-control-input\" name=\"$idCheckbox\" id=\"$idCheckbox\"><label class=\"custom-control-label\" for=\"$idCheckbox\"></label></div></td>
                   <td><img src=\"$photo\" alt=\"user pic\" class=\"img-thumbnail shadow-sm\" style=\"max-width:100px\"></td>
                    <td>$nom</td>
                    <td>$description</td>
@@ -125,9 +131,10 @@ include("views/navbar.php") ?>
              $description=$row["description"];
              $prix=$row["prix"];
              $nbre=$row["nombre_cart"];
+             $idCheckbox=$row["id_cart"];
 
              echo "<tr>
-
+             <td><div class=\"custom-control custom-checkbox\"><input type=\"checkbox\" class=\"custom-control-input\" name=\"$idCheckbox\" id=\"$idCheckbox\"><label class=\"custom-control-label\" for=\"$idCheckbox\"></label></div></td>
                   <td><img src=\"$photo\" alt=\"user pic\" class=\"img-thumbnail shadow-sm\" style=\"max-width:100px\"></td>
                    <td>$nom</td>
                    <td>$description</td>
@@ -153,9 +160,10 @@ include("views/navbar.php") ?>
              $description=$row["description"];
              $prix=$row["prix"];
              $nbre=$row["nombre_cart"];
+            $idCheckbox=$row["id_cart"];
 
              echo "<tr>
-
+               <td><div class=\"custom-control custom-checkbox\"><input type=\"checkbox\" class=\"custom-control-input\" name=\"$idCheckbox\" id=\"$idCheckbox\"><label class=\"custom-control-label\" for=\"$idCheckbox\"></label></div></td>
                   <td><img src=\"$photo\" alt=\"user pic\" class=\"img-thumbnail shadow-sm\" style=\"max-width:100px\"></td>
                    <td>$nom</td>
                    <td>$description</td>
@@ -167,8 +175,11 @@ include("views/navbar.php") ?>
          }
          ?>
          <tr>
-
-              <td></td>
+            <td>  <div class="custom-control custom-checkbox my-1 mr-sm-2">
+    <input type="checkbox" class="custom-control-input" name="supprAll" id="supprAll">
+    <label class="custom-control-label" for="supprAll"></label>
+  </div></td>
+             <td><input type="submit" class="btn btn-danger" name="submit" value="Supprimer"> </td>
                <td></td>
                <td></td>
                <td></td>
@@ -181,19 +192,32 @@ include("views/navbar.php") ?>
                      $result = mysqli_query($conn, $sql); // send the query
                      $prixTot=0;
                while ($row = mysqli_fetch_assoc($result)) {
-                  $prixTot += $row["prix_unit"] * $row["nombre_cart"];
+                   $prixTot += $row["prix_unit"] * $row["nombre_cart"];
                }
                if (isset($prixTot)) {
-                  echo $prixTot;
-               }else{
-                  echo "0";
+                   echo $prixTot;
+               } else {
+                   echo "0";
                }
-
                 ?> €</td>
                </tr>
          </tbody>
       </table>
+      </form>
    </div>
+
+   <script type="text/javascript">
+   $(document).ready(function() {
+      // Check or unCheck all box with the supprAll checkbox
+      $("#supprAll").click(function() {
+         if ($("#supprAll").prop('checked')) {
+            $('.custom-control-input').prop('checked', true);
+         }else {
+            $('.custom-control-input').prop('checked', false);
+         }
+      });
+   });
+   </script>
 
    <script type="text/javascript">
       var element = document.getElementById("nav-home");
