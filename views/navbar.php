@@ -42,7 +42,7 @@
                            break;
                      }
                   }  ?>
-                  <a class="nav-item nav-link <?php echo $class_panier; ?>" href="<?php echo $url; ?>" id=""><i class="material-icons md-36">
+                  <a class="nav-item nav-link <?php echo $class_panier; ?>" href="<?php echo $url; ?>" id="nav-panier"><i class="material-icons md-36">
                         <?php echo $icon; ?>
                      </i><br><?php echo $label; ?></a>
                </div>
