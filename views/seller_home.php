@@ -44,9 +44,15 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
       <div class=\"card\" style=\"width: 17rem;\">
          <img src=\"".$row["photo"]."\" class=\"card-img-top\" alt=\"".$row["nom"]."\">
          <div class=\"card-body\">
-         <form action=\"src/seller_manage_product.php\" method=\"post\">
+         <form action=\"src/seller_manage_product.php\" method=\"post\" enctype=\"multipart/form-data\">
          <input type=\"hidden\" name=\"id\" value=\"".$row["id_music"]."\">
          <input type=\"hidden\" name=\"cat\" value=\"music\">
+         <label>Image</label>
+         <div class=\"custom-file\">
+             <input type=\"file\" class=\"custom-file-input\" name=\"path\" id=\"path\">
+             <label class=\"custom-file-label\" for=\"validatedCustomFile\">Choix de l'image...</label>
+             <div class=\"invalid-feedback\">Example invalid custom file feedback</div>
+        </div>
             <div class=\"form-group\">
                <label>Nom</label>
                <input class=\"form-control form-control-sm\" type=\"text\" name=\"nom\" placeholder=\"Nom\" value=\"".$row["nom"]."\" required>
@@ -99,9 +105,15 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
       <div class=\"card\" style=\"width: 17rem;\">
          <img src=\"".$row["photo"]."\" class=\"card-img-top\" alt=\"".$row["title"]."\">
          <div class=\"card-body\">
-         <form action=\"src/seller_manage_product.php\" method=\"post\">
+         <form action=\"src/seller_manage_product.php\" method=\"post\" enctype=\"multipart/form-data\">
          <input type=\"hidden\" name=\"id\" value=\"".$row["id_book"]."\">
          <input type=\"hidden\" name=\"cat\" value=\"book\">
+         <label>Image</label>
+         <div class=\"custom-file\">
+             <input type=\"file\" class=\"custom-file-input\" name=\"path\" id=\"path\">
+             <label class=\"custom-file-label\" for=\"validatedCustomFile\">Choix de l'image...</label>
+             <div class=\"invalid-feedback\">Example invalid custom file feedback</div>
+        </div>
             <div class=\"form-group\">
                <label>Nom</label>
                <input class=\"form-control form-control-sm\" type=\"text\" name=\"nom\" placeholder=\"Nom\" value=\"".$row["title"]."\" required>
@@ -218,9 +230,15 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
       <div class=\"card\" style=\"width: 17rem;\">
          <img src=\"".$row["photo"]."\" class=\"card-img-top\" alt=\"".$row["nom"]."\">
          <div class=\"card-body\">
-         <form action=\"src/seller_manage_product.php\" method=\"post\">
+         <form action=\"src/seller_manage_product.php\" method=\"post\" enctype=\"multipart/form-data\">
          <input type=\"hidden\" name=\"id\" value=\"".$row["id_sl"]."\">
          <input type=\"hidden\" name=\"cat\" value=\"sports\">
+         <label>Image</label>
+         <div class=\"custom-file\">
+             <input type=\"file\" class=\"custom-file-input\" name=\"path\" id=\"path\">
+             <label class=\"custom-file-label\" for=\"validatedCustomFile\">Choix de l'image...</label>
+             <div class=\"invalid-feedback\">Example invalid custom file feedback</div>
+        </div>
             <div class=\"form-group\">
                <label>Nom</label>
                <input class=\"form-control form-control-sm\" type=\"text\" name=\"nom\" placeholder=\"Nom\" value=\"".$row["nom"]."\" required>

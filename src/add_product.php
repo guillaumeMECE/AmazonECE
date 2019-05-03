@@ -113,16 +113,16 @@ function create_product()
     switch ($_POST['type']) {
      case 'Musique':
      // make the request to the DATABASE
-   $sql = "INSERT INTO music(nom, auteur, datesortie, taille,description, prix, genre, nombre, id_seller) VALUES ('" . $_POST["nom"] . "','" . $_POST["auteur"] . "','" . $_POST["date"] . "','" . $_POST["tours"] . "','" . $_POST["description"] . "','" . $_POST["prix"] . "','" . $_POST["genre"] . "','" . $_POST["quantite"] . "','" . $_POST["id"] . "')";
+   $sql = "INSERT INTO music(nom, auteur, datesortie, taille,description, prix, genre, nombre,nbPhoto, id_seller) VALUES ('" . $_POST["nom"] . "','" . $_POST["auteur"] . "','" . $_POST["date"] . "','" . $_POST["tours"] . "','" . $_POST["description"] . "','" . $_POST["prix"] . "','" . $_POST["genre"] . "','" . $_POST["quantite"] . "','1','" . $_POST["id"] . "');";
         break;
      case 'Livre':
-      $sql = "INSERT INTO book(title, auteur, date,editeur,description, prix, genre, nombre, id_seller) VALUES ('" . $_POST["nom"] . "','" . $_POST["auteur"] . "','" . $_POST["date"] . "','" . $_POST["editeur"] . "','" . $_POST["description"] . "','" . $_POST["prix"] . "','" . $_POST["genre"] . "','" . $_POST["quantite"] . "','" . $_POST["id"] . "')";
+      $sql = "INSERT INTO book(title, auteur, date,editeur,description, prix, genre, nombre,nbPhoto, id_seller) VALUES ('" . $_POST["nom"] . "','" . $_POST["auteur"] . "','" . $_POST["date"] . "','" . $_POST["editeur"] . "','" . $_POST["description"] . "','" . $_POST["prix"] . "','" . $_POST["genre"] . "','" . $_POST["quantite"] . "','1','" . $_POST["id"] . "')";
        break;
       case 'Vetement':
       $sql = "INSERT INTO vetements(nom,couleur,sexe,marque, taille,description, prix, genre, nombre, nbPhoto, id_seller) VALUES ('" . $_POST["nom"] . "','" . $_POST["couleur"] . "','" . $_POST["sexe"] . "','" . $_POST["marque"] . "','" . $_POST["taille"] . "','" . $_POST["description"] . "','" . $_POST["prix"] . "','" . $_POST["genre"] . "','" . $_POST["quantite"] . "','1','" . $_POST["id"] . "')";
          break;
      case 'Sports & Loisirs':
-      $sql = "INSERT INTO sportsloisirs(nom,marque,description, prix, genre, nombre, id_seller) VALUES ('" . $_POST["nom"] . "','" . $_POST["marque"] . "','" . $_POST["description"] . "','" . $_POST["prix"] . "','" . $_POST["genre"] . "','" . $_POST["quantite"] . "','" . $_POST["id"] . "')";
+      $sql = "INSERT INTO sportsloisirs(nom,marque,description, prix, genre, nombre,nbPhoto, id_seller) VALUES ('" . $_POST["nom"] . "','" . $_POST["marque"] . "','" . $_POST["description"] . "','" . $_POST["prix"] . "','" . $_POST["genre"] . "','" . $_POST["quantite"] . "','1','" . $_POST["id"] . "')";
         break;
   }
     if (mysqli_query($conn, $sql)) {

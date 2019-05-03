@@ -16,7 +16,21 @@ function add_new_pic()
          WHERE id_vetement = '" . $_POST['id'] . "'
          AND id_seller = '" . $_SESSION['id'] . "' ;";
          break;
-
+      case 'music':
+         $sql_data ="SELECT photo,nbPhoto FROM music
+         WHERE id_music = '" . $_POST['id'] . "'
+         AND id_seller = '" . $_SESSION['id'] . "' ;";
+         break;
+      case 'book':
+         $sql_data ="SELECT photo,nbPhoto FROM book
+         WHERE id_book = '" . $_POST['id'] . "'
+         AND id_seller = '" . $_SESSION['id'] . "' ;";
+         break;
+      case 'sports':
+         $sql_data ="SELECT photo,nbPhoto FROM sportsloisirs
+         WHERE id_sl = '" . $_POST['id'] . "'
+         AND id_seller = '" . $_SESSION['id'] . "' ;";
+         break;
       default:
          // code...
          break;
@@ -79,7 +93,21 @@ function add_pic($name_photo="", $nb_photo="")
                    WHERE id_vetement = '" . $_POST['id'] . "'
                    AND id_seller = '" . $_SESSION['id'] . "';";
                      break;
-
+                  case 'book':
+                  $sql = "UPDATE book SET nbPhoto = nbPhoto+'1'
+                  WHERE id_book = '" . $_POST['id'] . "'
+                  AND id_seller = '" . $_SESSION['id'] . "';";
+                     break;
+                  case 'music':
+                   $sql = "UPDATE music SET nbPhoto = nbPhoto+'1'
+                   WHERE id_music = '" . $_POST['id'] . "'
+                   AND id_seller = '" . $_SESSION['id'] . "';";
+                     break;
+                  case 'sports':
+                   $sql = "UPDATE sportsloisirs SET nbPhoto = nbPhoto+'1'
+                   WHERE id_sl = '" . $_POST['id'] . "'
+                   AND id_seller = '" . $_SESSION['id'] . "';";
+                     break;
                   default:
                      // code...
                      break;
@@ -127,12 +155,18 @@ function traitement_data()
            $sql ="UPDATE music SET `nom`='" . $_POST['nom'] . "',`description`='" . $_POST['description'] . "',`prix`='" . $_POST['prix'] . "',`nombre`='" . $_POST['quantite'] . "'
              WHERE id_music = '" . $_POST['id'] . "'
              AND id_seller = '" . $_SESSION['id'] . "';";
+             if (isset($_FILES["path"]["name"])) {
+                 add_new_pic();
+             }
               break;
 
            case 'book':
            $sql ="UPDATE book SET `title`='" . $_POST['nom'] . "',`description`='" . $_POST['description'] . "',`prix`='" . $_POST['prix'] . "',`nombre`='" . $_POST['quantite'] . "'
              WHERE id_book = '" . $_POST['id'] . "'
              AND id_seller = '" . $_SESSION['id'] . "';";
+             if (isset($_FILES["path"]["name"])) {
+                 add_new_pic();
+             }
               break;
 
            case 'cloth':
@@ -151,6 +185,9 @@ function traitement_data()
            $sql ="UPDATE sportsloisirs SET `nom`='" . $_POST['nom'] . "',`description`='" . $_POST['description'] . "',`prix`='" . $_POST['prix'] . "',`nombre`='" . $_POST['quantite'] . "'
              WHERE id_sl = '" . $_POST['id'] . "'
              AND id_seller = '" . $_SESSION['id'] . "';";
+             if (isset($_FILES["path"]["name"])) {
+                 add_new_pic();
+             }
               break;
         }
 

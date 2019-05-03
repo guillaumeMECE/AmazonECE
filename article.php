@@ -69,6 +69,7 @@
                  $nombre=$row["nombre"];
                  $photo=$row["photo"];
                  $genre=$row["genre"];
+                 $nb_photo=$row["nbPhoto"];
              } else {
                  $isLost=true;
                  echo "<div class=\"alert alert-danger\" role=\"alert\">
@@ -90,6 +91,7 @@
                  $nombre=$row["nombre"];
                  $photo=$row["photo"];
                  $genre=$row["genre"];
+                 $nb_photo=$row["nbPhoto"];
              } else {
                  $isLost=true;
                  echo "<div class=\"alert alert-danger\" role=\"alert\">
@@ -112,6 +114,7 @@
                  $nombre=$row["nombre"];
                  $photo=$row["photo"];
                  $genre=$row["genre"];
+                 $nb_photo=$row["nbPhoto"];
              } else {
                  $isLost=true;
                  echo "<div class=\"alert alert-danger\" role=\"alert\">
@@ -172,7 +175,7 @@
                         echo "<div class=\"carousel-item\">
                            <img src=\"".substr($photo, 0, -4).$i.".jpg"."\" class=\"d-block w-100\" alt=\"". $nom ."\">
                         </div>";
-                        echo substr($photo, 0, -4).$i.".jpg";
+                        
                      }
                    ?>
                </div>
