@@ -152,7 +152,13 @@ function traitement_data()
         // make the request to the DATABASE
         switch ($_POST["cat"]) {
            case 'music':
-           $sql ="UPDATE music SET `nom`='" . $_POST['nom'] . "',`description`='" . $_POST['description'] . "',`prix`='" . $_POST['prix'] . "',`nombre`='" . $_POST['quantite'] . "'
+           $auteur = isset($_POST["auteur"])? $_POST["auteur"] : "null";
+            $taille = isset($_POST["tours"])? $_POST["tours"] : "null";
+            $date = isset($_POST["date"])? $_POST["date"] : "null";
+            $genre = isset($_POST["genre"])? $_POST["genre"] : "null";
+
+           $sql ="UPDATE music SET `nom`='" . $_POST['nom'] . "',`description`='" . $_POST['description'] . "',`prix`='" . $_POST['prix'] . "',
+           `nombre`='" . $_POST['quantite'] . "',`taille`='" . $taille . "',`datesortie`='" . $date . "',`auteur`='" . $auteur . "',`genre`='" . $genre . "'
              WHERE id_music = '" . $_POST['id'] . "'
              AND id_seller = '" . $_SESSION['id'] . "';";
              if (isset($_FILES["path"]["name"])) {
@@ -161,7 +167,12 @@ function traitement_data()
               break;
 
            case 'book':
+           $auteur = isset($_POST["auteur"])? $_POST["auteur"] : "null";
+           $editeur = isset($_POST["editeur"])? $_POST["editeur"] : "null";
+           $date = isset($_POST["date"])? $_POST["date"] : "null";
+           $genre = isset($_POST["genre"])? $_POST["genre"] : "null";
            $sql ="UPDATE book SET `title`='" . $_POST['nom'] . "',`description`='" . $_POST['description'] . "',`prix`='" . $_POST['prix'] . "',`nombre`='" . $_POST['quantite'] . "'
+           ,`genre`='" . $genre . "',`date`='" . $date . "',`editeur`='" . $editeur . "',`auteur`='" . $auteur . "'
              WHERE id_book = '" . $_POST['id'] . "'
              AND id_seller = '" . $_SESSION['id'] . "';";
              if (isset($_FILES["path"]["name"])) {
@@ -170,7 +181,12 @@ function traitement_data()
               break;
 
            case 'cloth':
+           $sexe = isset($_POST["sexe"])? $_POST["sexe"] : "null";
+          $couleur = isset($_POST["couleur"])? $_POST["couleur"] : "null";
+          $taille = isset($_POST["taille"])? $_POST["taille"] : "null";
+          $marque = isset($_POST["marque"])? $_POST["marque"] : "null";
            $sql ="UPDATE vetements SET `nom`='" . $_POST['nom'] . "',`description`='" . $_POST['description'] . "',`prix`='" . $_POST['prix'] . "',`nombre`='" . $_POST['quantite'] . "'
+           ,`sexe`='" . $sexe . "',`couleur`='" . $couleur . "',`taille`='" . $taille . "',`marque`='" . $marque . "'
              WHERE id_vetement = '" . $_POST['id'] . "'
              AND id_seller = '" . $_SESSION['id'] . "';";
 
@@ -182,7 +198,10 @@ function traitement_data()
               break;
 
            case 'sports':
+           $genre = isset($_POST["genre"])? $_POST["genre"] : "null";
+          $marque = isset($_POST["marque"])? $_POST["marque"] : "null";
            $sql ="UPDATE sportsloisirs SET `nom`='" . $_POST['nom'] . "',`description`='" . $_POST['description'] . "',`prix`='" . $_POST['prix'] . "',`nombre`='" . $_POST['quantite'] . "'
+           ,`genre`='" . $genre . "',`marque`='" . $marque . "'
              WHERE id_sl = '" . $_POST['id'] . "'
              AND id_seller = '" . $_SESSION['id'] . "';";
              if (isset($_FILES["path"]["name"])) {

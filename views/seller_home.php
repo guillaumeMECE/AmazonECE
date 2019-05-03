@@ -94,6 +94,22 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
                <input class=\"form-control form-control-sm\" type=\"text\" name=\"nom\" placeholder=\"Nom\" value=\"".$row["nom"]."\" required>
             </div>
             <div class=\"form-group\">
+               <label>Auteur</label>
+               <input class=\"form-control form-control-sm\" type=\"text\" name=\"auteur\" placeholder=\"Auteur\" value=\"".$row["auteur"]."\">
+            </div>
+            <div class=\"form-group\">
+               <label>Genre</label>
+               <input class=\"form-control form-control-sm\" type=\"text\" name=\"genre\" placeholder=\"Genre\" value=\"".$row["genre"]."\">
+            </div>
+            <div class=\"form-group\">
+               <label>Tours</label>
+               <input class=\"form-control form-control-sm\" type=\"text\" name=\"tours\" placeholder=\"Tours\" value=\"".$row["taille"]."\">
+            </div>
+            <div class=\"form-group\">
+               <label>Date de Sortie</label>
+               <input class=\"form-control form-control-sm\" type=\"date\" name=\"date\" placeholder=\"Date\" value=\"".$row["datesortie"]."\">
+            </div>
+            <div class=\"form-group\">
                <label>Description</label>
                <textarea class=\"form-control\" name=\"description\" id=\"exampleFormControlTextarea1\" rows=\"3\">".$row["description"]."</textarea>
             </div>
@@ -188,6 +204,22 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
             <div class=\"form-group\">
                <label>Nom</label>
                <input class=\"form-control form-control-sm\" type=\"text\" name=\"nom\" placeholder=\"Nom\" value=\"".$row["title"]."\" required>
+            </div>
+            <div class=\"form-group\">
+               <label>Auteur</label>
+               <input class=\"form-control form-control-sm\" type=\"text\" name=\"auteur\" placeholder=\"Auteur\" value=\"".$row["auteur"]."\">
+            </div>
+            <div class=\"form-group\">
+               <label>Editeur</label>
+               <input class=\"form-control form-control-sm\" type=\"text\" name=\"editeur\" placeholder=\"Editeur\" value=\"".$row["editeur"]."\">
+            </div>
+            <div class=\"form-group\">
+               <label>Date de Parution</label>
+               <input class=\"form-control form-control-sm\" type=\"date\" name=\"date\" placeholder=\"Genre\" value=\"".$row["date"]."\">
+            </div>
+            <div class=\"form-group\">
+               <label>Genre</label>
+               <input class=\"form-control form-control-sm\" type=\"text\" name=\"genre\" placeholder=\"Genre\" value=\"".$row["genre"]."\">
             </div>
             <div class=\"form-group\">
                <label>Description</label>
@@ -286,6 +318,22 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
                <input class=\"form-control form-control-sm\" type=\"text\" name=\"nom\" placeholder=\"Nom\" value=\"".$row["nom"]."\" required>
             </div>
             <div class=\"form-group\">
+               <label>Marque</label>
+               <input class=\"form-control form-control-sm\" type=\"text\" name=\"marque\" placeholder=\"Marque\" value=\"".$row["marque"]."\">
+            </div>
+            <div class=\"form-group\">
+               <label>Couleur</label>
+               <input class=\"form-control form-control-sm\" type=\"text\" name=\"couleur\" placeholder=\"Couleur\" value=\"".$row["couleur"]."\">
+            </div>
+            <div class=\"form-group\">
+               <label>Taille</label>
+               <input class=\"form-control form-control-sm\" type=\"text\" name=\"taille\" placeholder=\"Taille (XS/S/M/L/XL...)\" value=\"".$row["taille"]."\">
+            </div>
+            <div class=\"form-group\">
+               <label>Sexe</label>
+               <input class=\"form-control form-control-sm\" type=\"text\" name=\"sexe\" placeholder=\"Sexe\" value=\"".$row["sexe"]."\">
+            </div>
+            <div class=\"form-group\">
                <label>Description</label>
                <textarea class=\"form-control\" name=\"description\" id=\"exampleFormControlTextarea1\" rows=\"3\">".$row["description"]."</textarea>
             </div>
@@ -381,6 +429,14 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
             <div class=\"form-group\">
                <label>Nom</label>
                <input class=\"form-control form-control-sm\" type=\"text\" name=\"nom\" placeholder=\"Nom\" value=\"".$row["nom"]."\" required>
+            </div>
+            <div class=\"form-group\">
+               <label>Marque</label>
+               <input class=\"form-control form-control-sm\" type=\"text\" name=\"marque\" placeholder=\"Marque\" value=\"".$row["marque"]."\">
+            </div>
+            <div class=\"form-group\">
+               <label>Genre</label>
+               <input class=\"form-control form-control-sm\" type=\"text\" name=\"genre\" placeholder=\"Genre\" value=\"".$row["genre"]."\">
             </div>
             <div class=\"form-group\">
                <label>Description</label>
