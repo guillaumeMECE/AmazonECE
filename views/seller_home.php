@@ -5,20 +5,25 @@
             <i class="material-icons md-36" style="margin-top: 11px;">add</i>
       </a>
    </div>
+   <?php // include the configs / constants for the database connection
+   require_once("config/db.php");
+   // Create connection
+   $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+   // Check connection
+   if (!$conn) {
+       die("Connection failed: " . mysqli_connect_error());
+   }
+   $sql_pic="SELECT photoBg FROM seller WHERE id_seller = '".$_SESSION['id']."';";
+   $result_pic = mysqli_query($conn, $sql_pic); // send the query
+   $row_pic=mysqli_fetch_assoc($result_pic);
+    ?>
 
 
-<div class="container m-5">
+<div class="container m-5" style="background-image:url(<?php echo $row_pic['photoBg'] ?>)" >
    <h2>Mes Produits en Ventes</h2>
    <!--div class="row"-->
 <?php
-// include the configs / constants for the database connection
-require_once("config/db.php");
-// Create connection
-$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+
             /////////
             //MUSIC//
             /////////

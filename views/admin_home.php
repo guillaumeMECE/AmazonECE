@@ -16,10 +16,19 @@
 
   require_once("config/db.php");
 
+  // Create connection
+  $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+  // Check connection
+  if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+  }
+  $sql_pic="SELECT photoBg FROM admin WHERE id_admin = '".$_SESSION['id']."';";
+  $result_pic = mysqli_query($conn, $sql_pic); // send the query
+  $row_pic=mysqli_fetch_assoc($result_pic);
+  $photoBg=$row_pic['photoBg'];
+  ?>
 
-
-   ?>
-   <div class="container my-5 py-3 shadow" id="best-sell" style="background:#cdebff ">
+   <div class="container my-5 py-3 shadow" id="best-sell" style="background:#cdebff; background-image:url(<?php echo $photoBg ?>) ">
 <div class="container" id="demandevendeur">
 
 
@@ -119,7 +128,7 @@
        </div>
        </div>
           </div>
-        <div class="container my-5 shadow " id="liste_vendeurs">
+        <div class="container my-5 shadow " id="liste_vendeurs" style="background-image:url(<?php echo $photoBg ?>) ">
 
    <h2>Liste des vendeurs</h2>
 

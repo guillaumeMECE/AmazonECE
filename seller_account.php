@@ -38,18 +38,20 @@ require_once("config/db.php");
                $prenom = $row['firstname'];
                $mdp = $row['password'];
                $mail = $row['mail'];
-               $picture = $row['picture'];
+               $photoProfil = $row['photoProfil'];
+               $photoBg = $row['photoBg'];
            }
        mysqli_close($conn);
           ?>
 
-   <div class="container m-5 p-5 shadow " id="Infogéné">
+   <div class="container m-5 p-5 shadow " id="Infogéné" style="background-image:url(<?php echo $photoBg ?>)">
       <h2>Informations générales</h2>
       <form>
 
          <div class="form-group">
-            <label for="picture">Photo</label>
-            <input type="text" class="form-control" id="picture" value="<?php echo $picture;?>">
+            <!--label for="picture">Photo</label-->
+            <img src="<?php echo $photoProfil;?>" class="img-thumbnail" width="200px" alt="<?php echo $nom;?>">
+            <!--input type="text" class="form-control" id="picture" value="<!?php echo $photoProfil;?>"-->
          </div>
 
          <div class="form-group">
@@ -59,7 +61,7 @@ require_once("config/db.php");
 
          <div class="form-group">
             <label for="prenom">Prénom</label>
-            <input type="text" class="form-control" id="prénom" value="<?php echo $prenom;?>">
+            <input type="text" class="form-control" id="prenom" value="<?php echo $prenom;?>">
          </div>
 
          <div class="form-group">
