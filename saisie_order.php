@@ -105,6 +105,8 @@ while ($row = mysqli_fetch_assoc($result))
     {
       case 'music':
       // on met à jour le nombre de musique dans la BDD
+      while($row["nombre"]>$row["nombre_cart"])
+      {
       $sql2 = "UPDATE music
                SET nombre = nombre - '".$row["nombre_cart"]."'
                WHERE id_music = '".$row["id_produit"]."';";
@@ -116,9 +118,12 @@ while ($row = mysqli_fetch_assoc($result))
       $sql3 = "DELETE
                FROM cart
                WHERE id_cart = '".$row["id_cart"]."';";
+      }
       break;
 
       case 'book':
+      while($row["nombre"]>$row["nombre_cart"])
+      {
       // on met à jour le nombre de livres dans la BDD
       $sql2 = "UPDATE book
                SET nombre = nombre - '".$row["nombre_cart"]."'
@@ -131,9 +136,12 @@ while ($row = mysqli_fetch_assoc($result))
       $sql3 = "DELETE
                FROM cart
                WHERE id_cart = '".$row["id_cart"]."';";
+      }
       break;
 
       case 'cloth':
+      while($row["nombre"]>$row["nombre_cart"])
+      {
       // on met à jour le nombre de vetements dans la BDD
       $sql2 = "UPDATE vetements
                SET nombre = nombre - '".$row["nombre_cart"]."'
@@ -148,9 +156,12 @@ while ($row = mysqli_fetch_assoc($result))
       $sql3 = "DELETE
                FROM cart
                WHERE id_cart = '".$row["id_cart"]."';";
+      }
       break;
 
       case 'sports':
+      while($row["nombre"]>$row["nombre_cart"])
+      {
       // on met à jour le nombre de sportsloisirs dans la BDD
       $sql2 = "UPDATE sportsloisirs
                SET nombre = nombre - '".$row["nombre_cart"]."'
@@ -165,6 +176,7 @@ while ($row = mysqli_fetch_assoc($result))
       $sql3 = "DELETE
                FROM cart
                WHERE id_cart = '".$row["id_cart"]."';";
+      }
       break;
 
     }
