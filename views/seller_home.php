@@ -23,6 +23,7 @@
    <h2>Mes Produits en Ventes</h2>
    <!--div class="row"-->
 <?php
+$idCarousel=0;
 
             /////////
             //MUSIC//
@@ -40,13 +41,54 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
         if ($cpt==0) {
             echo "<div class=\"row\">";
         }
+
+         // <!--img src=\"".$row["photo"]."\" class=\"card-img-top\" alt=\"".$row["nom"]."\"-->
         echo "<div class=\"col-3 my-2\">
       <div class=\"card\" style=\"width: 17rem;\">
-         <img src=\"".$row["photo"]."\" class=\"card-img-top\" alt=\"".$row["nom"]."\">
+
+         <div id=\"carouselExampleIndicators".$idCarousel."\" class=\"carousel slide\" data-ride=\"carousel\">
+            <ol class=\"carousel-indicators\">
+               <li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"0\" class=\"active\"></li>";
+
+                  for ($i=1; $i < $row["nbPhoto"] ; $i++) {
+                     echo "<li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"".$i."\"></li>\"";
+                  }
+                echo"
+            </ol>
+            <div class=\"carousel-inner\">
+               <div class=\"carousel-item active\">
+                  <img src=\"".$row["photo"]."\" class=\"card-img-top d-block w-100\" alt=\"".$row["nom"]."\">
+               </div>";
+                  for ($i=1; $i < $row["nbPhoto"] ; $i++) {
+                     echo "<div class=\"carousel-item\">
+                        <img src=\"".substr($row["photo"], 0, -4).$i.".jpg"."\" class=\"card-img-top d-block w-100\" alt=\"". $row["photo"] ."\">
+                     </div>";
+
+                  }
+                echo"
+            </div>
+            <a class=\"carousel-control-prev\" href=\"#carouselExampleIndicators".$idCarousel."\" role=\"button\" data-slide=\"prev\">
+               <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\" ></span>
+               <span class=\"sr-only\">Previous</span>
+            </a>
+            <a class=\"carousel-control-next\" href=\"#carouselExampleIndicators".$idCarousel."\" role=\"button\" data-slide=\"next\">
+               <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>
+               <span class=\"sr-only\">Next</span>
+            </a>
+         </div>
+
+
+
          <div class=\"card-body\">
-         <form action=\"src/seller_manage_product.php\" method=\"post\">
+         <form action=\"src/seller_manage_product.php\" method=\"post\" enctype=\"multipart/form-data\">
          <input type=\"hidden\" name=\"id\" value=\"".$row["id_music"]."\">
          <input type=\"hidden\" name=\"cat\" value=\"music\">
+         <label>Image</label>
+         <div class=\"custom-file\">
+             <input type=\"file\" class=\"custom-file-input\" name=\"path\" id=\"path\">
+             <label class=\"custom-file-label\" for=\"validatedCustomFile\">Choix de l'image...</label>
+             <div class=\"invalid-feedback\">Example invalid custom file feedback</div>
+        </div>
             <div class=\"form-group\">
                <label>Nom</label>
                <input class=\"form-control form-control-sm\" type=\"text\" name=\"nom\" placeholder=\"Nom\" value=\"".$row["nom"]."\" required>
@@ -70,6 +112,7 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
       </div>
    </div>";
         $cpt++;
+        $idCarousel++;
         if ($cpt==4) {
             echo "</div>";
             $cpt=0;
@@ -95,13 +138,53 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
         if ($cpt==0) {
             echo "<div class=\"row\">";
         }
+        //<img src=\"".$row["photo"]."\" class=\"card-img-top\" alt=\"".$row["title"]."\">
         echo "<div class=\"col-3 my-2\">
       <div class=\"card\" style=\"width: 17rem;\">
-         <img src=\"".$row["photo"]."\" class=\"card-img-top\" alt=\"".$row["title"]."\">
+
+
+         <div id=\"carouselExampleIndicators".$idCarousel."\" class=\"carousel slide\" data-ride=\"carousel\">
+            <ol class=\"carousel-indicators\">
+               <li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"0\" class=\"active\"></li>";
+
+                  for ($i=1; $i < $row["nbPhoto"] ; $i++) {
+                     echo "<li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"".$i."\"></li>\"";
+                  }
+               echo"
+            </ol>
+            <div class=\"carousel-inner\">
+               <div class=\"carousel-item active\">
+                  <img src=\"".$row["photo"]."\" class=\"card-img-top d-block w-100\" alt=\"".$row["title"]."\">
+               </div>";
+                  for ($i=1; $i < $row["nbPhoto"] ; $i++) {
+                     echo "<div class=\"carousel-item\">
+                        <img src=\"".substr($row["photo"], 0, -4).$i.".jpg"."\" class=\"card-img-top d-block w-100\" alt=\"". $row["photo"] ."\">
+                     </div>";
+
+                  }
+               echo"
+            </div>
+            <a class=\"carousel-control-prev\" href=\"#carouselExampleIndicators".$idCarousel."\" role=\"button\" data-slide=\"prev\">
+               <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\" ></span>
+               <span class=\"sr-only\">Previous</span>
+            </a>
+            <a class=\"carousel-control-next\" href=\"#carouselExampleIndicators".$idCarousel."\" role=\"button\" data-slide=\"next\">
+               <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>
+               <span class=\"sr-only\">Next</span>
+            </a>
+         </div>
+
+
          <div class=\"card-body\">
-         <form action=\"src/seller_manage_product.php\" method=\"post\">
+         <form action=\"src/seller_manage_product.php\" method=\"post\" enctype=\"multipart/form-data\">
          <input type=\"hidden\" name=\"id\" value=\"".$row["id_book"]."\">
          <input type=\"hidden\" name=\"cat\" value=\"book\">
+         <label>Image</label>
+         <div class=\"custom-file\">
+             <input type=\"file\" class=\"custom-file-input\" name=\"path\" id=\"path\">
+             <label class=\"custom-file-label\" for=\"validatedCustomFile\">Choix de l'image...</label>
+             <div class=\"invalid-feedback\">Example invalid custom file feedback</div>
+        </div>
             <div class=\"form-group\">
                <label>Nom</label>
                <input class=\"form-control form-control-sm\" type=\"text\" name=\"nom\" placeholder=\"Nom\" value=\"".$row["title"]."\" required>
@@ -125,6 +208,7 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
       </div>
    </div>";
         $cpt++;
+        $idCarousel++;
         if ($cpt==4) {
             echo "</div>";
             $cpt=0;
@@ -152,13 +236,51 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
         if ($cpt==0) {
             echo "<div class=\"row\">";
         }
+        //<img src=\"".$row["photo"]."\" class=\"card-img-top\" alt=\"".$row["nom"]."\">
         echo "<div class=\"col-3 my-2\">
       <div class=\"card\" style=\"width: 17rem;\">
-         <img src=\"".$row["photo"]."\" class=\"card-img-top\" alt=\"".$row["nom"]."\">
+
+         <div id=\"carouselExampleIndicators".$idCarousel."\" class=\"carousel slide\" data-ride=\"carousel\">
+            <ol class=\"carousel-indicators\">
+               <li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"0\" class=\"active\"></li>";
+
+                  for ($i=1; $i < $row["nbPhoto"] ; $i++) {
+                     echo "<li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"".$i."\"></li>\"";
+                  }
+                echo"
+            </ol>
+            <div class=\"carousel-inner\">
+               <div class=\"carousel-item active\">
+                  <img src=\"".$row["photo"]."\" class=\"card-img-top d-block w-100\" alt=\"".$row["nom"]."\">
+               </div>";
+                  for ($i=1; $i < $row["nbPhoto"] ; $i++) {
+                     echo "<div class=\"carousel-item\">
+                        <img src=\"".substr($row["photo"], 0, -4).$i.".jpg"."\" class=\"card-img-top d-block w-100\" alt=\"". $row["photo"] ."\">
+                     </div>";
+
+                  }
+                echo"
+            </div>
+            <a class=\"carousel-control-prev\" href=\"#carouselExampleIndicators".$idCarousel."\" role=\"button\" data-slide=\"prev\">
+               <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\" ></span>
+               <span class=\"sr-only\">Previous</span>
+            </a>
+            <a class=\"carousel-control-next\" href=\"#carouselExampleIndicators".$idCarousel."\" role=\"button\" data-slide=\"next\">
+               <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>
+               <span class=\"sr-only\">Next</span>
+            </a>
+         </div>
+
          <div class=\"card-body\">
-         <form action=\"src/seller_manage_product.php\" method=\"post\">
+         <form action=\"src/seller_manage_product.php\" method=\"post\" enctype=\"multipart/form-data\">
          <input type=\"hidden\" name=\"id\" value=\"".$row["id_vetement"]."\">
          <input type=\"hidden\" name=\"cat\" value=\"cloth\">
+         <label>Image</label>
+         <div class=\"custom-file\">
+             <input type=\"file\" class=\"custom-file-input\" name=\"path\" id=\"path\">
+             <label class=\"custom-file-label\" for=\"validatedCustomFile\">Choix de l'image...</label>
+             <div class=\"invalid-feedback\">Example invalid custom file feedback</div>
+        </div>
             <div class=\"form-group\">
                <label>Nom</label>
                <input class=\"form-control form-control-sm\" type=\"text\" name=\"nom\" placeholder=\"Nom\" value=\"".$row["nom"]."\" required>
@@ -182,6 +304,7 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
       </div>
    </div>";
         $cpt++;
+        $idCarousel++;
         if ($cpt==4) {
             echo "</div>";
             $cpt=0;
@@ -208,13 +331,53 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
         if ($cpt==0) {
             echo "<div class=\"row\">";
         }
+        //<img src=\"".$row["photo"]."\" class=\"card-img-top\" alt=\"".$row["nom"]."\">
         echo "<div class=\"col-3 my-2\">
       <div class=\"card\" style=\"width: 17rem;\">
-         <img src=\"".$row["photo"]."\" class=\"card-img-top\" alt=\"".$row["nom"]."\">
+
+
+
+         <div id=\"carouselExampleIndicators".$idCarousel."\" class=\"carousel slide\" data-ride=\"carousel\">
+            <ol class=\"carousel-indicators\">
+               <li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"0\" class=\"active\"></li>";
+
+                  for ($i=1; $i < $row["nbPhoto"] ; $i++) {
+                     echo "<li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"".$i."\"></li>\"";
+                  }
+               echo"
+            </ol>
+            <div class=\"carousel-inner\">
+               <div class=\"carousel-item active\">
+                  <img src=\"".$row["photo"]."\" class=\"card-img-top d-block w-100\" alt=\"".$row["nom"]."\">
+               </div>";
+                  for ($i=1; $i < $row["nbPhoto"] ; $i++) {
+                     echo "<div class=\"carousel-item\">
+                        <img src=\"".substr($row["photo"], 0, -4).$i.".jpg"."\" class=\"card-img-top d-block w-100\" alt=\"". $row["photo"] ."\">
+                     </div>";
+
+                  }
+               echo"
+            </div>
+            <a class=\"carousel-control-prev\" href=\"#carouselExampleIndicators".$idCarousel."\" role=\"button\" data-slide=\"prev\">
+               <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\" ></span>
+               <span class=\"sr-only\">Previous</span>
+            </a>
+            <a class=\"carousel-control-next\" href=\"#carouselExampleIndicators".$idCarousel."\" role=\"button\" data-slide=\"next\">
+               <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>
+               <span class=\"sr-only\">Next</span>
+            </a>
+         </div>
+
          <div class=\"card-body\">
-         <form action=\"src/seller_manage_product.php\" method=\"post\">
+         <form action=\"src/seller_manage_product.php\" method=\"post\" enctype=\"multipart/form-data\">
          <input type=\"hidden\" name=\"id\" value=\"".$row["id_sl"]."\">
          <input type=\"hidden\" name=\"cat\" value=\"sports\">
+         <label>Image</label>
+         <div class=\"custom-file\">
+             <input type=\"file\" class=\"custom-file-input\" name=\"path\" id=\"path\">
+             <label class=\"custom-file-label\" for=\"validatedCustomFile\">Choix de l'image...</label>
+             <div class=\"invalid-feedback\">Example invalid custom file feedback</div>
+        </div>
             <div class=\"form-group\">
                <label>Nom</label>
                <input class=\"form-control form-control-sm\" type=\"text\" name=\"nom\" placeholder=\"Nom\" value=\"".$row["nom"]."\" required>
@@ -238,6 +401,7 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
       </div>
    </div>";
         $cpt++;
+        $idCarousel++;
         if ($cpt==4) {
             echo "</div>";
             $cpt=0;
