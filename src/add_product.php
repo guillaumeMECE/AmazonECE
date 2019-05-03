@@ -119,7 +119,7 @@ function create_product()
       $sql = "INSERT INTO book(title, auteur, date,editeur,description, prix, genre, nombre, id_seller) VALUES ('" . $_POST["nom"] . "','" . $_POST["auteur"] . "','" . $_POST["date"] . "','" . $_POST["editeur"] . "','" . $_POST["description"] . "','" . $_POST["prix"] . "','" . $_POST["genre"] . "','" . $_POST["quantite"] . "','" . $_POST["id"] . "')";
        break;
       case 'Vetement':
-      $sql = "INSERT INTO vetements(nom,couleur,sexe,marque, taille,description, prix, genre, nombre, id_seller) VALUES ('" . $_POST["nom"] . "','" . $_POST["couleur"] . "','" . $_POST["sexe"] . "','" . $_POST["marque"] . "','" . $_POST["taille"] . "','" . $_POST["description"] . "','" . $_POST["prix"] . "','" . $_POST["genre"] . "','" . $_POST["quantite"] . "','" . $_POST["id"] . "')";
+      $sql = "INSERT INTO vetements(nom,couleur,sexe,marque, taille,description, prix, genre, nombre, nbPhoto, id_seller) VALUES ('" . $_POST["nom"] . "','" . $_POST["couleur"] . "','" . $_POST["sexe"] . "','" . $_POST["marque"] . "','" . $_POST["taille"] . "','" . $_POST["description"] . "','" . $_POST["prix"] . "','" . $_POST["genre"] . "','" . $_POST["quantite"] . "','1','" . $_POST["id"] . "')";
          break;
      case 'Sports & Loisirs':
       $sql = "INSERT INTO sportsloisirs(nom,marque,description, prix, genre, nombre, id_seller) VALUES ('" . $_POST["nom"] . "','" . $_POST["marque"] . "','" . $_POST["description"] . "','" . $_POST["prix"] . "','" . $_POST["genre"] . "','" . $_POST["quantite"] . "','" . $_POST["id"] . "')";
