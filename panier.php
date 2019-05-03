@@ -50,7 +50,6 @@ include("views/navbar.php") ?>
          </thead>
          <tbody>
             <?php
-
             require_once("config/db.php");
             // Create connection
         $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -58,7 +57,6 @@ include("views/navbar.php") ?>
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-
         //MUSIC
         // SQL request
              $sql = "SELECT *
@@ -75,7 +73,6 @@ include("views/navbar.php") ?>
              $prix=$row["prix"];
              $nbre=$row["nombre_cart"];
              $idCheckbox=$row["id_cart"];
-
              echo "<tr>
              <td><div class=\"custom-control custom-checkbox\"><input type=\"checkbox\" class=\"custom-control-input\" name=\"$idCheckbox\" id=\"$idCheckbox\"><label class=\"custom-control-label\" for=\"$idCheckbox\"></label></div></td>
                   <td><img src=\"$photo\" alt=\"user pic\" class=\"img-thumbnail shadow-sm\" style=\"max-width:100px\"></td>
@@ -103,7 +100,6 @@ include("views/navbar.php") ?>
              $prix=$row["prix"];
              $nbre=$row["nombre_cart"];
              $idCheckbox=$row["id_cart"];
-
              echo "<tr>
             <td><div class=\"custom-control custom-checkbox\"><input type=\"checkbox\" class=\"custom-control-input\" name=\"$idCheckbox\" id=\"$idCheckbox\"><label class=\"custom-control-label\" for=\"$idCheckbox\"></label></div></td>
                   <td><img src=\"$photo\" alt=\"user pic\" class=\"img-thumbnail shadow-sm\" style=\"max-width:100px\"></td>
@@ -115,7 +111,6 @@ include("views/navbar.php") ?>
                    </tr>
                    ";
          }
-
          //CLOTH
          // SQL request
              $sql = "SELECT *
@@ -132,7 +127,6 @@ include("views/navbar.php") ?>
              $prix=$row["prix"];
              $nbre=$row["nombre_cart"];
              $idCheckbox=$row["id_cart"];
-
              echo "<tr>
              <td><div class=\"custom-control custom-checkbox\"><input type=\"checkbox\" class=\"custom-control-input\" name=\"$idCheckbox\" id=\"$idCheckbox\"><label class=\"custom-control-label\" for=\"$idCheckbox\"></label></div></td>
                   <td><img src=\"$photo\" alt=\"user pic\" class=\"img-thumbnail shadow-sm\" style=\"max-width:100px\"></td>
@@ -144,7 +138,6 @@ include("views/navbar.php") ?>
                    </tr>
                    ";
          }
-
          //SPORTS
          // SQL request
              $sql = "SELECT *
@@ -161,7 +154,6 @@ include("views/navbar.php") ?>
              $prix=$row["prix"];
              $nbre=$row["nombre_cart"];
             $idCheckbox=$row["id_cart"];
-
              echo "<tr>
                <td><div class=\"custom-control custom-checkbox\"><input type=\"checkbox\" class=\"custom-control-input\" name=\"$idCheckbox\" id=\"$idCheckbox\"><label class=\"custom-control-label\" for=\"$idCheckbox\"></label></div></td>
                   <td><img src=\"$photo\" alt=\"user pic\" class=\"img-thumbnail shadow-sm\" style=\"max-width:100px\"></td>
