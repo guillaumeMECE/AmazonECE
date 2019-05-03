@@ -70,7 +70,6 @@
              }
          }
         mysqli_close($conn);
-
     } ?>
    <?php
    include("views/navbar.php");
