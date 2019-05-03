@@ -17,7 +17,7 @@ echo $_SESSION["type"];
            die("Connection failed: " . mysqli_connect_error());
 
        }
-
+       $rupture =0;
        switch ($_GET["cat"]) {
 
          case 'music':
@@ -68,6 +68,10 @@ echo $_SESSION["type"];
                       echo "Error: " . $sql3 . "<br>" . mysqli_error($conn);
 
                   }
+                }
+                else
+                {
+                  $rupture =1;
                 }
 
               } else {
@@ -149,6 +153,10 @@ echo $_SESSION["type"];
                       echo "Error: " . $sql3 . "<br>" . mysqli_error($conn);
 
                   }
+                }
+                else
+                {
+                  $rupture =1;
                 }
 
               } else {
@@ -233,6 +241,10 @@ echo $_SESSION["type"];
 
                      }
                    }
+                   else
+                   {
+                     $rupture =1;
+                   }
 
                  } else {
                    if($row["nombre"]>0)
@@ -316,6 +328,10 @@ echo $_SESSION["type"];
 
                         }
                       }
+                      else
+                      {
+                        $rupture =1;
+                      }
 
                     } else {
                       if($row["nombre"]>0)
@@ -360,5 +376,11 @@ echo $_SESSION["type"];
        header("location:../index.php");
 
    }
-
+if($rupture == 1)
+{
+  header("location:../panier.php?rupture=true");
+}
+else
+{
 header("location:../panier.php");
+}
