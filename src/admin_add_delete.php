@@ -16,30 +16,47 @@ function delete_product()
     case 'book':
     $sql ="DELETE FROM book
     WHERE id_book = '" . $_POST["id"] . "';";
+    $sql2 ="DELETE FROM cart
+    WHERE id_produit = '" . $_POST["id"] . "'
+    AND type = 'book';";
        break;
 
     case 'music':
     $sql ="DELETE FROM music
   WHERE id_music = '" . $_POST["id"] . "';";
+  $sql2 ="DELETE FROM cart
+   WHERE id_produit = '" . $_POST["id"] . "'
+   AND type = 'music';";
        break;
 
     case 'cloth':
     $sql ="DELETE FROM vetements
   WHERE id_vetement = '" . $_POST["id"] . "';";
+   $sql2 ="DELETE FROM cart
+   WHERE id_produit = '" . $_POST["id"] . "'
+   AND type = 'cloth';";
        break;
 
     case 'sports':
        $sql ="DELETE FROM sportsloisirs
         WHERE id_sl = '" . $_POST["id"] . "';";
+        $sql2 ="DELETE FROM cart
+        WHERE id_produit = '" . $_POST["id"] . "'
+        AND type = 'sports';";
        break;
 
  }
     }
 
     if (mysqli_query($conn, $sql)) {
-        echo "New record created successfully UPDATE";
+        echo "<br>New record created successfully DELETE";
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+    if (mysqli_query($conn, $sql2)) {
+        echo "<br>New record created successfully DELETE FROM CART";
+    } else {
+        echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
     }
     mysqli_close($conn);
 }
