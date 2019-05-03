@@ -79,8 +79,8 @@ echo"
       </div>
       <div class=\"col-3 col-best-sell\">
          <img src=\"/amazonece/".$row2["photo"]."\" style=\"width: 16rem;\" class=\"img-thumbnail\">
-      <div style=\"color:#af4448\">\"".$row2["marque"]."\"</div>
-        <div style=\"color:#af4448\">\"".$row2["nom"]."</div>
+      <div style=\"color:#af4448\">".$row2["marque"]."</div>
+        <div style=\"color:#af4448\">".$row2["nom"]."</div>
         <br>
           <a href=\"./article.php?cat=sports&id=".$row2["id_sl"]."\"class=\"btn btn-primary\">Aperçu</a>
       </div>
