@@ -63,7 +63,7 @@
                     $_SESSION["id"]=$row3['id_admin'];
                     $_SESSION["type"]="admin";
                 }else{
-                   $alert="<div class=\"alert alert-danger mt-2 mx-5 mb-5\" role=\"alert\">
+                   $alert="<div class=\"alert alert-danger mt-2 mx-5 mb-5\" role=\"alert\"  style=\"text-align:center\">
                            Connection impossible, Email ou Mot de Passe incorrect !
                            </div>";
                 }

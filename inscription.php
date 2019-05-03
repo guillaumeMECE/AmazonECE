@@ -12,7 +12,14 @@
 
 <body>
    <?php session_start();
-      include("views/navbar.php"); ?>
+      include("views/navbar.php");
+      $alert="";
+      if (isset($_GET['sign']) and $_GET['sign']=="false" ) {
+         $alert="<div class=\"alert alert-danger mt-2 mx-5 mb-5\" role=\"alert\" style=\"text-align:center\">
+         Email déjà utilisé par un autre utilisateur !
+         </div>";
+      }
+      echo $alert; ?>
    <div class="container m-5">
       <div class="row justify-content-md-center">
          <div class="col-md-auto">
