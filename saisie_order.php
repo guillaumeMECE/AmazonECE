@@ -158,7 +158,15 @@ if (mysqli_num_rows($result_mail) > 0) {
    $message.= $passage_ligne."--".$boundary."--".$passage_ligne; */
    //==========
    //=====Envoi de l'e-mail.
-   mail($mail,$sujet,$message,$header);
+   if(mail($mail,$sujet,$message,$header)){
+      echo "<br> MAIL ENVOYE <br>";
+      echo $mail."<br>";
+      echo $sujet."<br>";
+      echo $message."<br>";
+      echo $header."<br>";
+   }else{
+      echo "<br> ERROR MAIL <br>";
+   }
 
    //==========
 }
