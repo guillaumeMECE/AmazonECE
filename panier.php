@@ -33,9 +33,7 @@ include("views/navbar.php") ?>
    </div>
 </div>
 <?php
-$rupture = isset($_GET['rupture'])? $_GET['rupture'] : "";
-
-if($rupture == "false")
+if(isset($_GET["rupture"]) == true)
 {
   ?>
   <div class="alert alert-danger" role="alert">

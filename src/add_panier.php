@@ -54,7 +54,7 @@ echo $_SESSION["type"];
 
               if (mysqli_num_rows($result2) > 0) {
                 if($row["nombre"]>0)
-{
+                 {
                   $newNombre=$row2["nombre_cart"]+1;
 
                   $sql3 = "UPDATE cart SET nombre_cart='".$newNombre."' WHERE  id_produit = '".$row["id_music"]."' AND type = 'music';";
@@ -71,7 +71,7 @@ echo $_SESSION["type"];
                 }
                 else
                 {
-                  $rupture =1;
+                $rupture = false ;
                 }
 
               } else {
@@ -156,7 +156,7 @@ echo $_SESSION["type"];
                 }
                 else
                 {
-                  $rupture =1;
+                  $rupture =false;
                 }
 
               } else {
@@ -243,7 +243,7 @@ echo $_SESSION["type"];
                    }
                    else
                    {
-                     $rupture =1;
+                     $rupture =false;
                    }
 
                  } else {
@@ -331,7 +331,7 @@ echo $_SESSION["type"];
                       }
                       else
                       {
-                        $rupture =1;
+                        $rupture =false;
 
                       }
 
@@ -379,4 +379,13 @@ echo $_SESSION["type"];
 
    }
 
-header("location:../panier.php");
+   if($row["nombre"]<=0)
+{
+
+  header("location:../panier.php?rupture=true");
+
+}
+else
+{
+  header("location:../panier.php");
+}
