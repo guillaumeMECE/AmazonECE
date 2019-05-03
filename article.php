@@ -47,6 +47,7 @@
    <?php
       if (isset($_GET["cat"]) and isset($_GET["id"])) {
           require_once("config/db.php");
+          $output_type_related=""; //echo qui affichera en fction du type des infos en plus
           // Create connection
           $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
           // Check connection
@@ -131,7 +132,7 @@
             $row = mysqli_fetch_assoc($result);
              if (mysqli_num_rows($result) > 0) {
                  $nom=$row["nom"];
-                 $description=$row["description"] . "<br>Couleur : ".$row["couleur"]."<br>Taille : ".$row["taille"];
+                 $description=$row["description"] . "<br>Marque : ".$row["marque"]." <br> Couleur : ".$row["couleur"]."<br>Taille : ".$row["taille"]."<br>Sexe : ".$row["sexe"];
                  $prix=$row["prix"];
                  $nombre=$row["nombre"];
                  $photo=$row["photo"];
@@ -175,7 +176,7 @@
                         echo "<div class=\"carousel-item\">
                            <img src=\"".substr($photo, 0, -4).$i.".jpg"."\" class=\"d-block w-100\" alt=\"". $nom ."\">
                         </div>";
-                        
+
                      }
                    ?>
                </div>
@@ -198,9 +199,14 @@
             <h3>
                <?php echo $nom;  ?>
             </h3>
+
+            <?php echo $output_type_related ?>
+            <!--ECHO-->
+
             <p>Genre :
                <?php echo $genre;  ?>
             </p>
+
             <p>Description :
                <?php echo $description; ?>
             </p>
