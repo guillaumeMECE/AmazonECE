@@ -37,7 +37,9 @@
                      $class_panier="";
                            break;
                         case 'admin':
-                           $url="/AmazonECE/seller_account.php";
+                           $url="/AmazonECE/admin_manage_product.php";
+                           $icon="dashboard";
+                           $label="Produits";
                            $class_panier="";
                            break;
                      }
