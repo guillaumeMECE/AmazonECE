@@ -17,7 +17,7 @@ echo $_SESSION["type"];
            die("Connection failed: " . mysqli_connect_error());
 
        }
-       $rupture =0;
+
        switch ($_GET["cat"]) {
 
          case 'music':
@@ -314,6 +314,7 @@ echo $_SESSION["type"];
                       if($row["nombre"]>0)
                       {
 
+
                         $newNombre=$row2["nombre_cart"]+1;
 
                         $sql3 = "UPDATE cart SET nombre_cart='".$newNombre."' WHERE  id_produit = '".$row["id_sl"]."' AND type = 'sports';";
@@ -331,6 +332,7 @@ echo $_SESSION["type"];
                       else
                       {
                         $rupture =1;
+
                       }
 
                     } else {
@@ -376,11 +378,5 @@ echo $_SESSION["type"];
        header("location:../index.php");
 
    }
-if($rupture == 1)
-{
-  header("location:../panier.php?rupture=true");
-}
-else
-{
+
 header("location:../panier.php");
-}
