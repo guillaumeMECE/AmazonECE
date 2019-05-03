@@ -21,7 +21,7 @@
             <div class="card" style="width: 20rem;">
                <img src="/amazonece/img/res/music.jpg" class="card-img-top" id="img-cat" alt="img_categorie">
                <div class="card-body">
-                  <form class="form" action="src/add_product_admin.php" method="post" enctype="multipart/form-data">
+                  <form class="form" action="src/admin_add_delete.php" method="post" enctype="multipart/form-data">
 
                         <label>Image</label>
                         <div class="custom-file">
