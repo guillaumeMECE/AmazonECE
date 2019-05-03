@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-
+   <meta charset="utf-8">
    <title>Amazon ECE</title>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+   <link rel="stylesheet" href="style.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
+
+
+
 <body>
 <?php
 
-require_once("../config/db.php");
+require_once("./config/db.php");
 // Create connection
 
 $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -62,30 +63,38 @@ echo"
    <h2 style=\"color:#af4448\">Ventes Flash</h2>
    <div class=\"row\">
       <div class=\"col-3 col-best-sell\">
-         <img src=\"/amazonece/".$row["photo"]."\" class=\"img-thumbnail\"alt=\"".$row["nom"]."\">
-         <div id=\"comment-in-img\">".$row["auteur"]."</div>
-         <div id=\"comment-in-img\">".$row["nom"]."</div>
+         <img src=\"/amazonece/".$row["photo"]."\" style=\"width: 16rem;\"class=\"img-thumbnail\" alt=>
+         <div style=\"color:#af4448 \">".$row["auteur"]."</div>
+         <div style=\"color:#af4448 \">".$row["nom"]."</div>
+
+         <br>
+          <a href=\"./article.php?cat=music&id=".$row["id_music"]."\"class=\"btn btn-primary\">Aperçu</a>
       </div>
       <div class=\"col-3 col-best-sell\">
-      <img src=\"/amazonece/".$row1["photo"]."\" class=\"img-thumbnail\" alt=\"".$row1["title"]."\">
-      <div id=\"comment-in-img\">".$row1["auteur"]."</div>
-      <div id=\"comment-in-img\">".$row1["title"]."</div>
+      <img src=\"/amazonece/".$row1["photo"]."\"style=\"width: 16rem;\" class=\"img-thumbnail\">
+      <div style=\"color:#af4448\">".$row1["auteur"]."</div>
+      <div  style=\"color:#af4448\">".$row1["title"]."</div>
+      <br>
+        <a href=\"./article.php?cat=book&id=".$row1["id_book"]."\"class=\"btn btn-primary\">Aperçu</a>
       </div>
       <div class=\"col-3 col-best-sell\">
-         <img src=\"/amazonece/".$row2["photo"]."\" class=\"img-thumbnail\"alt=\"".$row2["nom"]."\">
-      <div id=\"comment-in-img\">".$row2["marque"]."</div>
-        <div id=\"comment-in-img\">".$row2["nom"]."</div>
+         <img src=\"/amazonece/".$row2["photo"]."\" style=\"width: 16rem;\" class=\"img-thumbnail\">
+      <div style=\"color:#af4448\">\"".$row2["marque"]."\"</div>
+        <div style=\"color:#af4448\">\"".$row2["nom"]."</div>
+        <br>
+          <a href=\"./article.php?cat=sports&id=".$row2["id_sl"]."\"class=\"btn btn-primary\">Aperçu</a>
       </div>
       <div class=\"col-3 col-best-sell\">
-         <img src=\"/amazonece/".$row3["photo"]."\" class=\"img-thumbnail\"alt=\"".$row3["nom"]."\">
-      <div id=\"comment-in-img\">".$row3["marque"]."</div>
-      <div id=\"comment-in-img\">".$row3["nom"]."</div>
+         <img src=\"/amazonece/".$row3["photo"]."\" class=\"img-thumbnail\" style=\"width: 16rem;\">
+      <div style=\"color:#af4448\">".$row3["marque"]."</div>
+      <div style=\"color:#af4448\">".$row3["nom"]."</div>
+      <br>
+        <a href=\"./article.php?cat=cloth&id=".$row3["id_vetement"]."\"class=\"btn btn-primary\">Aperçu</a>
       </div>
    </div>
 </div>";
 mysqli_close($conn);
 
  ?>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
- </html>
+ <body>
+   </html>

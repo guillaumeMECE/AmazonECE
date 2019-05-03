@@ -1,0 +1,47 @@
+<div class="container m-5 p-5 shadow">
+
+
+   <div class="p-3 mb-2 bg-secondary text-white">Inscription nouveau vendeur</div>
+   <form name="formulaire_vendeur" method="post" action="views/saisie_newseller.php" enctype="multipart/form-data">
+      <div class="container">
+         <div class="row">
+            <div class="col">
+               <label for="nom">Nom</label>
+               <input type="Nom" class="form-control" name="nom" required>
+            </div>
+            <div class="col">
+               <label for="prenom">Prenom</label>
+               <input type="prenom" class="form-control" name="prenom" required>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col">
+               <label for="mail">Mail</label>
+               <input type="email" class="form-control" name="mail" placeholder="ex : juliette.dubois@edu.ece.fr" required>
+            </div>
+            <div class="col">
+               <label for="password">Mot de Passe</label>
+               <input type="password" class="form-control" name="password" required>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col">
+               <br> <br>
+               <div class="custom-file">
+                  <label class="custom-file-label" for="path_profil">Photo de Profil</label><br />
+                  <input type="file" class="custom-file-input" name="path_profil" id="path_profil" /><br />
+               </div>
+            </div>
+            <div class="col">
+               <br><br>
+               <div class="custom-file">
+                  <label class="custom-file-label" for="path_bg">Image de fond</label>
+                  <input type="file" class="custom-file-input" name="path_bg" id="path_bg">
+               </div>
+            </div>
+         </div>
+         <br><br>
+         <button type="submit" name="submit" class="btn btn-primary">M'inscrire</button>
+      </div>
+   </form>
+</div>
