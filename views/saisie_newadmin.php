@@ -131,14 +131,15 @@ function add_bg_pic()
     $mail = isset($_POST["mail"])? $_POST["mail"] : "";
 
 require_once("../config/db.php");
+$url="";
        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
        // Check connection
        if (!$conn) {
            die("Connection failed: " . mysqli_connect_error());
        } elseif ($conn) {
-           $query="SELECT mail FROM buyer WHERE mail = '$mail'";
-           $query1 ="SELECT mail FROM seller WHERE mail = '$mail'";
-           $query2 ="SELECT mail FROM admin WHERE mail = '$mail'";
+           $query="SELECT mail FROM buyer WHERE mail = '".$mail."';";
+           $query1 ="SELECT mail FROM seller WHERE mail = '".$mail."';";
+           $query2 ="SELECT mail FROM admin WHERE mail = '".$mail."';";
 
 
            $result1  = mysqli_query($conn, $query);
@@ -148,23 +149,24 @@ require_once("../config/db.php");
            $b =mysqli_num_rows($result1);
            $c =mysqli_num_rows($result3);
 
-           if ($a>0 && $b>0 && $c>0) {
-               header('Location : ../inscription.php');
+           if ($a>0 or $b>0 or $c>0) {
+               $url="Location:/amazonece/inscription.php?sign=false";
+           //header('Location : ../inscription.php');
            } else {
                if ($name!="" && $prenom!="" && $mail!=""&& $password!="") {
                    $sql = "INSERT INTO admin (name, firstname, mail, password, type)
     VALUES('".$name."', '".$prenom."', '".$mail."','".$password."','admin');";
                    $result = mysqli_query($conn, $sql);
-
+                   $url="Location:/amazonece";
                //  header('Location : ../index.php');
                } else {
+                   $url="Location:/amazonece/inscription.php?sign=false";
 
-
-                   header('Location : ../inscription.php');
+                   //header('Location : ../inscription.php');
                }
            }
        }
       mysqli_close($conn);
       add_profil_pic();
       add_bg_pic();
-      header('Location : /amazonece/');
+      header($url);

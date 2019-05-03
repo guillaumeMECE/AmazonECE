@@ -22,6 +22,7 @@
        $typecarte = isset($_POST["type_carte"])? $_POST["type_carte"] : "";
 
 require_once("../config/db.php");
+$url="";
        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
        // Check connection
        if (!$conn) {
@@ -37,8 +38,8 @@ require_once("../config/db.php");
            $a =mysqli_num_rows($result1);
            $b =mysqli_num_rows($result2);
            $c =mysqli_num_rows($result3);
-           if ($a>0 && $b>0 && $c>0) {
-               header('Location : ../inscription.php');
+           if ($a>0 or $b>0 or $c>0) {
+               $url="Location:/amazonece/inscription.php?sign=false";
            } else {
                if ($name!="" && $mail!="") {
                    //INSERT CB
@@ -59,11 +60,12 @@ require_once("../config/db.php");
                    $sql = "INSERT INTO buyer (name,firstname, password, mail, adresse, ville, cp, pays, tel, type,id_card)
   VALUES('".$name."','".$prenom."', '".$password."', '".$mail."', '".$adresse."', '".$ville."', '".$codepostal."','".$pays."','" .$tel."','buyer','".$row['id_card']."');";
                    $result = mysqli_query($conn, $sql);
+                   $url="Location:/amazonece";
                } else {
-                   header('Location : ../inscription.php');
+                   $url="Location:/amazonece/inscription.php?sign=false";
                }
            }
        }
       mysqli_close($conn);
-header('Location : /amazonece/');
+header($url);
 ?>

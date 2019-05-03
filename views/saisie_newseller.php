@@ -135,33 +135,35 @@ function add_bg_pic()
     $image = isset($_POST["image"])? $_POST["image"] : "";
 
 require_once("../config/db.php");
+$url="";
        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
        // Check connection
        if (!$conn) {
            die("Connection failed: " . mysqli_connect_error());
        } elseif ($conn) {
-           $query="SELECT mail FROM buyer WHERE mail = '$mail'";
-           $query1 ="SELECT mail FROM admin WHERE mail = '$mail'";
-           $query2 ="SELECT mail FROM seller WHERE mail = '$mail'";
+           $query="SELECT mail FROM buyer WHERE mail =  '".$mail."';";
+           $query1 ="SELECT mail FROM admin WHERE mail =  '".$mail."';";
+           $query2 ="SELECT mail FROM seller WHERE mail =  '".$mail."';";
 
            $result1  = mysqli_query($conn, $query);
            $result2= mysqli_query($conn, $query1);
            $result3= mysqli_query($conn, $query2);
            $a =mysqli_num_rows($result1);
-           $b =mysqli_num_rows($result1);
+           $b =mysqli_num_rows($result2);
            $c =mysqli_num_rows($result3);
-           if ($a>0 && $b>0 && $c>0) {
-               header('Location : ../inscription.php');
+           if ($a>0 or $b>0 or $c>0) {
+               $url="Location:/amazonece/inscription.php?sign=false";
            } else {
                if ($name!="" && $prenom!="" && $mail!=""&& $password!="") {
                    $sql = "INSERT INTO demandevendeur (mail, name, firstname, password, type)
-    VALUES('".$mail."', '".$name."', '".$prenom."', '".$password."','seller');";
+                   VALUES('".$mail."', '".$name."', '".$prenom."', '".$password."','seller');";
                    //$result = mysqli_query($conn, $sql);
                    if (mysqli_query($conn, $sql)) {
                        echo "New record created successfully UPDATE";
                    } else {
                        echo "Error: " . $sql . "<br>" . mysqli_error($sql);
                    }
+                   $url="Location:/amazonece";
                    /*if ($result) {
                      echo "New record created successfully UPDATE";
                    } else {
@@ -169,11 +171,11 @@ require_once("../config/db.php");
                    }*/
                //header('Location : ../index.php');
                } else {
-                   header('Location : ../inscription.php');
+                  $url="Location:/amazonece/inscription.php?sign=false";
                }
            }
        }
       mysqli_close($conn);
       add_profil_pic();
       add_bg_pic();
-      header('Location:/amazonece');
+      header($url);

@@ -110,7 +110,7 @@
                                                <!--div class=\"help-block text-right\"><a href=\"\" disabled>Oublie du mot de passe ?</a></div-->
                                 </div>
                                 <div class=\"form-group\">
-                                    <button type=\"submit\" class=\"btn btn-primary btn-block\">Connection</button>
+                                    <button type=\"submit\" name=\"submit\" class=\"btn btn-primary btn-block\">Connection</button>
                                 </div>
                            </form>
                        </div>
