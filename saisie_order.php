@@ -70,6 +70,7 @@ require_once("config/db.php");
                 if( ($numero_sql == $numero_form) and ($crypto_sql == $crypto_form))
                 {
 
+
  ?>
                 <div class="alert alert-success" role="alert">
   <h4 class="alert-heading">Votre commande est passée!</h4>
@@ -115,9 +116,11 @@ while ($row = mysqli_fetch_assoc($result))
       $sql3 = "DELETE
                FROM cart
                WHERE id_cart = '".$row["id_cart"]."';";
+
       break;
 
       case 'book':
+
       // on met à jour le nombre de livres dans la BDD
       $sql2 = "UPDATE book
                SET nombre = nombre - '".$row["nombre_cart"]."'
@@ -130,9 +133,11 @@ while ($row = mysqli_fetch_assoc($result))
       $sql3 = "DELETE
                FROM cart
                WHERE id_cart = '".$row["id_cart"]."';";
+
       break;
 
       case 'cloth':
+
       // on met à jour le nombre de vetements dans la BDD
       $sql2 = "UPDATE vetements
                SET nombre = nombre - '".$row["nombre_cart"]."'
@@ -147,9 +152,11 @@ while ($row = mysqli_fetch_assoc($result))
       $sql3 = "DELETE
                FROM cart
                WHERE id_cart = '".$row["id_cart"]."';";
+
       break;
 
       case 'sports':
+
       // on met à jour le nombre de sportsloisirs dans la BDD
       $sql2 = "UPDATE sportsloisirs
                SET nombre = nombre - '".$row["nombre_cart"]."'
@@ -164,6 +171,7 @@ while ($row = mysqli_fetch_assoc($result))
       $sql3 = "DELETE
                FROM cart
                WHERE id_cart = '".$row["id_cart"]."';";
+    
       break;
 
     }
