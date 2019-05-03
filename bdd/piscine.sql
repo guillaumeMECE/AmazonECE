@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 03 mai 2019 à 14:25
+-- Généré le :  ven. 03 mai 2019 à 00:56
 -- Version du serveur :  5.7.21
 -- Version de PHP :  7.2.4
 
@@ -194,7 +194,15 @@ CREATE TABLE IF NOT EXISTS `demandevendeur` (
   `photoProfil` varchar(255) DEFAULT NULL,
   `photoBg` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_demvendeur`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `demandevendeur`
+--
+
+INSERT INTO `demandevendeur` (`id_demvendeur`, `mail`, `name`, `firstname`, `password`, `type`, `photoProfil`, `photoBg`) VALUES
+(8, 'jean@gmail.com', 'dujardin', 'jean', 'azerty', 'seller', 'img/1556837644dujardinjean.jpg', 'img/1556837644bgdujardinjean.jpg'),
+(10, 'ivan@gmail.com', 'vankof', 'ivan', 'azerty', 'seller', 'img/1556837718vankofivan.jpg', 'img/1556837718bgvankofivan.jpg');
 
 -- --------------------------------------------------------
 

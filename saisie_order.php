@@ -107,6 +107,10 @@ while ($row = mysqli_fetch_assoc($result))
       $sql2 = "UPDATE music
                SET nombre = nombre - '".$row["nombre_cart"]."'
                WHERE id_music = '".$row["id_produit"]."';";
+      //on incrémente le nombre de vente du produit dans la bdd
+      $sql4 = "UPDATE music
+               SET nbvente = nbvente + '".$row["nombre_cart"]."'
+               WHERE id_music = '".$row["id_produit"]."';";
       // on supprime l'élement dans le panier
       $sql3 = "DELETE
                FROM cart
@@ -118,6 +122,10 @@ while ($row = mysqli_fetch_assoc($result))
       $sql2 = "UPDATE book
                SET nombre = nombre - '".$row["nombre_cart"]."'
                WHERE id_book = '".$row["id_produit"]."';";
+     //on incrémente le nombre de vente du produit dans la bdd
+     $sql4 = "UPDATE book
+              SET nbvente = nbvente + '".$row["nombre_cart"]."'
+              WHERE id_book = '".$row["id_produit"]."';";
       // on supprime l'élement dans le panier
       $sql3 = "DELETE
                FROM cart
@@ -129,6 +137,12 @@ while ($row = mysqli_fetch_assoc($result))
       $sql2 = "UPDATE vetements
                SET nombre = nombre - '".$row["nombre_cart"]."'
                WHERE id_vetement = '".$row["id_produit"]."';";
+
+      //on incrémente le nombre de vente du produit dans la bdd
+     $sql4 = "UPDATE vetements
+              SET nbvente = nbvente + '".$row["nombre_cart"]."'
+              WHERE id_vetement = '".$row["id_produit"]."';";
+
       // on supprime l'élement dans le panier
       $sql3 = "DELETE
                FROM cart
@@ -140,6 +154,12 @@ while ($row = mysqli_fetch_assoc($result))
       $sql2 = "UPDATE sportsloisirs
                SET nombre = nombre - '".$row["nombre_cart"]."'
                WHERE id_sl = '".$row["id_produit"]."';";
+
+     //on incrémente le nombre de vente du produit dans la bdd
+     $sql4 = "UPDATE sportsloisirs
+              SET nbvente = nbvente + '".$row["nombre_cart"]."'
+              WHERE id_sl = '".$row["id_produit"]."';";
+
       // on supprime l'élement dans le panier
       $sql3 = "DELETE
                FROM cart
@@ -150,6 +170,7 @@ while ($row = mysqli_fetch_assoc($result))
 
     $result1=mysqli_query($conn, $sql2); // send the query
     $result2=mysqli_query($conn, $sql3);
+    $result4 =mysqli_query($conn, $sql4);
 }
 
 
