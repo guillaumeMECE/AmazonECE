@@ -32,6 +32,16 @@ include("views/navbar.php") ?>
       </a>
    </div>
 </div>
+<?php
+if(isset($_GET["rupture"]) == true)
+{
+  ?>
+  <div class="alert alert-danger" role="alert">
+  L'article est en rupture de stock il n'a pas été ajouté au panier
+</div>
+<?php
+}
+?>
    <div class="container my-5">
       <form class="" action="src/suppr_panier.php" method="post">
 
