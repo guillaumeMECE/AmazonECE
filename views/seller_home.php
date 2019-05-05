@@ -52,7 +52,7 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
                <li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"0\" class=\"active\"></li>";
 
                   for ($i=1; $i < $row["nbPhoto"] ; $i++) {
-                     echo "<li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"".$i."\"></li>\"";
+                     echo "<li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"".$i."\"></li>";
                   }
                 echo"
             </ol>
@@ -165,13 +165,13 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
                <li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"0\" class=\"active\"></li>";
 
                   for ($i=1; $i < $row["nbPhoto"] ; $i++) {
-                     echo "<li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"".$i."\"></li>\"";
+                     echo "<li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"".$i."\"></li>";
                   }
                echo"
             </ol>
             <div class=\"carousel-inner\">
                <div class=\"carousel-item active\">
-                  <img src=\"".$row["photo"]."\" class=\"card-img-top d-block w-100\" alt=\"".$row["title"]."\">
+                  <img src=\"".$row["photo"]." class=\"card-img-top d-block w-100\" alt=\"".$row["title"]."\">
                </div>";
                   for ($i=1; $i < $row["nbPhoto"] ; $i++) {
                      echo "<div class=\"carousel-item\">
@@ -278,7 +278,7 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
                <li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"0\" class=\"active\"></li>";
 
                   for ($i=1; $i < $row["nbPhoto"] ; $i++) {
-                     echo "<li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"".$i."\"></li>\"";
+                     echo "<li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"".$i."\"></li>";
                   }
                 echo"
             </ol>
@@ -391,7 +391,7 @@ if (mysqli_num_rows($result) > 0) { // if we get back some values so the request
                <li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"0\" class=\"active\"></li>";
 
                   for ($i=1; $i < $row["nbPhoto"] ; $i++) {
-                     echo "<li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"".$i."\"></li>\"";
+                     echo "<li data-target=\"#carouselExampleIndicators".$idCarousel."\" data-slide-to=\"".$i."\"></li>";
                   }
                echo"
             </ol>
