@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 05 mai 2019 à 15:47
+-- Généré le :  Dim 05 mai 2019 à 16:12
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -39,16 +39,15 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `photoProfil` varchar(255) DEFAULT NULL,
   `photoBg` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_admin`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `admin`
 --
 
 INSERT INTO `admin` (`id_admin`, `name`, `firstname`, `mail`, `password`, `type`, `photoProfil`, `photoBg`) VALUES
-(1, 'Benzakine', 'Clara', 'clara.benzakine@edu.ece.fr', 'azerty', NULL, NULL, NULL),
-(4, 'maurin', 'marc', 'marc@gmail.com', 'azerty', 'admin', 'img/1556827000maurinmarc.jpg', 'img/1556827000bgmaurinmarc.jpg'),
-(12, 'azer', 'ty', 'ty@gmail.com', 'azerty', 'admin', 'img/1556871887azerty.jpg', 'img/1556871887bgazerty.jpg');
+(1, 'Benzakine', 'Clara', 'clara.benzakine@edu.ece.fr', 'azerty', NULL, 'img/clara.jpg', 'img/clara-fond.jpg\r\n'),
+(13, 'Jura', 'Valentine', 'valentine@edu.ece.fr', 'azerty', NULL, 'img/valentine.jpg', 'img/valentine-fond.jpg');
 
 -- --------------------------------------------------------
 
@@ -84,13 +83,13 @@ CREATE TABLE IF NOT EXISTS `book` (
 INSERT INTO `book` (`id_book`, `title`, `auteur`, `date`, `editeur`, `prix`, `photo`, `video`, `description`, `categorie`, `genre`, `nombre`, `id_seller`, `nbPhoto`, `nbvente`) VALUES
 (1, 'Le Rouge et le Noir', 'Stendhal', '2019-04-17', 'Larousse', 7.4, 'img/retn.jpg', NULL, 'Roman', NULL, 'roman', 0, 1, NULL, 0),
 (3, 'Assommoire', 'Zola', '2019-05-04', '', 4, 'img/1556789084Assommoire.jpg', NULL, '', NULL, 'Roman', 20, 1, NULL, 3),
-(7, 'Harry Potter 2', 'J.K. Rowling', '1998-08-02', 'Folio Junior', 8.7, 'img/harry-potter.jpg', NULL, 'Une rentree fracassante en voiture volante, une etrange malediction qui s abat sur les eleves, cette deuxieme annee a l ecole des sorciers ne s annonce pas de tout repos !', NULL, 'Roman', 30, 2, 1, 13),
-(6, 'Le petit prince', 'Antoine de saint-exupery', '1943-05-01', 'Folio', 6.9, 'img/Le-Petit-Prince.jpg', NULL, 'Le Petit Prince est une oeuvre de langue francaise, la plus connue d Antoine de Saint-Exupery.', NULL, 'Roman', 7, 2, 1, 9),
+(7, 'Harry Potter 2', 'J.K. Rowling', '1998-08-02', 'Folio Junior', 8.7, 'img/harry-potter.jpg', NULL, 'Une rentree fracassante en voiture volante, une etrange malediction qui s abat sur les eleves, cette deuxieme annee a l ecole des sorciers ne s annonce pas de tout repos !', NULL, 'Roman', 30, 3, 1, 13),
+(6, 'Le petit prince', 'Antoine de saint-exupery', '1943-05-01', 'Folio', 6.9, 'img/Le-Petit-Prince.jpg', NULL, 'Le Petit Prince est une oeuvre de langue francaise, la plus connue d Antoine de Saint-Exupery.', NULL, 'Roman', 7, 4, 1, 9),
 (8, 'Le Misanthrope', 'Moliere', '1666-01-02', 'Folio', 2, 'img/misanthrope.jpg', NULL, 'Alceste est un melancolique qui s aveugle sur lui-meme pour mieux condamner les autres.', NULL, 'Roman', 4, 1, 1, 1),
-(11, 'Tintin au Congo', 'Herge', '1931-09-13', 'Casterman', 11.5, 'img/tintin.jpg', NULL, 'A peine rentre d URSS, Tintin repart pour le Congo.', NULL, 'bd', 15, 1, 1, 6),
+(11, 'Tintin au Congo', 'Herge', '1931-09-13', 'Casterman', 11.5, 'img/tintin.jpg', NULL, 'A peine rentre d URSS, Tintin repart pour le Congo.', NULL, 'bd', 15, 5, 1, 6),
 (12, 'L\'Odyssee d\'Asterix', 'Albert Uderzo ', '1981-07-11', 'Les Editions Albert Rene', 9.5, 'img/asterix.jpg', NULL, 'Asterix et Obelix, s embarquent pour un long voyage au Moyen-Orient, a la recherche de l huile de roche, ingredient essentiel a la fabrication de la celebre potion magique.', NULL, 'bd', 4, 1, 1, 2),
-(10, 'Therese Raquin', 'Emile Zola', '1867-02-13', 'Folio', 3, 'img/emile.jpg', NULL, 'Roman Classique Emile Zola', NULL, 'Roman', 5, 2, 1, 2),
-(15, 'Paris est une fete', 'Ernest Hemingway', '1964-05-09', 'Folio', 8.4, 'img/paris.jpg', NULL, 'Au cours de l’ete 1957, Hemingway commenca a travailler sur les «Vignettes parisiennes», comme il appelait alors Paris est une fete.', NULL, 'Roman', 3, 2, 1, 0),
+(10, 'Therese Raquin', 'Emile Zola', '1867-02-13', 'Folio', 3, 'img/emile.jpg', NULL, 'Roman Classique Emile Zola', NULL, 'Roman', 5, 6, 1, 2),
+(15, 'Paris est une fete', 'Ernest Hemingway', '1964-05-09', 'Folio', 8.4, 'img/paris.jpg', NULL, 'Au cours de l’ete 1957, Hemingway commenca a travailler sur les «Vignettes parisiennes», comme il appelait alors Paris est une fete.', NULL, 'Roman', 3, 1, 1, 0),
 (14, 'L\'Ecume des jours', 'Boris Vian', '1947-03-08', 'Gallimard', 6.9, 'img/ecume-des-jours.jpg', NULL, 'Un titre leger et lumineux qui annonce une histoire d’amour drole ou grincante, tendre ou grave, fascinante et inoubliable, composee par un ecrivain de vingt-six ans.', NULL, 'Roman', 6, 1, 1, 0);
 
 -- --------------------------------------------------------
@@ -123,11 +122,7 @@ CREATE TABLE IF NOT EXISTS `buyer` (
 --
 
 INSERT INTO `buyer` (`id_buyer`, `id_card`, `name`, `firstname`, `password`, `picture`, `mail`, `adresse`, `ville`, `cp`, `pays`, `tel`, `type`) VALUES
-(1, NULL, 'Guillaume', '', 'azerty', '', 'guillaume.maurin@edu.ece.fr', '11 Rue de Gramont', 'Chambourcy', '78240', 'France', '0760577499', 'MasterCard'),
-(2, 2, 'tst', 'tstf', 'azerty', NULL, 'tst@gmail.com', '', '', '', '', '', NULL),
-(3, NULL, 'Maurin', 'guillaume', 'azertyuiop', NULL, 'guillaumemaurin.gm@gmail.com', '11 Rue de Gramont', 'Chambourcy', '78240', 'France', '0760577499', 'buyer'),
-(4, NULL, 'tst', 'yo', 'wxcvbn', NULL, 'gui@mail.com', '1', '2', '43635', 'Belgique', '0760577499', 'buyer'),
-(5, 4, 'hyy', 'hey', 'wxcvbn', NULL, 'hey@yo.com', 'AEDQ', 'sfzef', '12344', 'Portugal', '1433211', 'buyer'),
+(1, NULL, 'Guillaume', '', 'azerty', 'img/guillaume.jpg', 'guillaume.maurin@edu.ece.fr', '11 Rue de Gramont', 'Chambourcy', '78240', 'France', '0760577499', 'MasterCard'),
 (6, 5, 'michmich', 'mmm', 'hello', NULL, 'grouhel.claire98@gmail.com', '33', 'nice', '65432', 'Choisir...', '06', 'buyer');
 
 -- --------------------------------------------------------
@@ -253,13 +248,13 @@ CREATE TABLE IF NOT EXISTS `music` (
 
 INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`, `nbPhoto`, `nbvente`) VALUES
 (1, 'Tranquility Base Hotel ', 'Arctic Monkeys', '2019-04-03', '45', 'img/am.jpg', NULL, 'Album', 7.29, NULL, 'indie rock', 0, 1, NULL, 2),
-(3, 'A Quick One', 'the Who', '2019-04-03', '45', 'img/who.jpg', NULL, 'Album', 4.5, NULL, 'rock', 10, 1, NULL, 3),
-(4, 'Greatest Hit - the Police', 'The Police', '2019-04-03', '45', 'img/tp.jpg', NULL, 'Album', 11.42, NULL, 'rock', 8, 2, NULL, 1),
+(3, 'A Quick One', 'the Who', '2019-04-03', '45', 'img/who.jpg', NULL, 'Album', 4.5, NULL, 'rock', 10, 3, NULL, 3),
+(4, 'Greatest Hit - the Police', 'The Police', '2019-04-03', '45', 'img/tp.jpg', NULL, 'Album', 11.42, NULL, 'rock', 8, 4, NULL, 1),
 (5, 'A Horse With No Name', 'America', '2019-04-03', '45', 'img/america.jpg', NULL, 'Album - Tom Bug EDIT', 17.12, NULL, 'rock', 7, 1, NULL, 2),
-(47, 'Brol', 'Angele', '2018-10-05', '45', 'img/angele.jpg', NULL, 'Musique Pop', 12.99, NULL, 'Pop', 7, 2, 1, 9),
+(47, 'Brol', 'Angele', '2018-10-05', '45', 'img/angele.jpg', NULL, 'Musique Pop', 12.99, NULL, 'Pop', 7, 5, 1, 9),
 (48, '13', 'Indochine', '2017-07-19', '45', 'img/13.jpg', NULL, 'Dernier Album d\'Indochine', 15.95, NULL, 'Rock', 1, 3, 1, 5),
-(49, 'Racine Carree', 'Stromae', '2013-05-02', '45', 'img/stromae.jpg', NULL, 'Musique Pop', 14.99, NULL, 'Pop', 19, 2, 1, 8),
-(50, 'Mylo Xyloto', 'Coldplay', '2011-05-17', '45', 'img/coldplay.jpg', NULL, 'Groupe Pop Rock', 17.95, NULL, 'Pop Rock', 12, 2, 1, 7),
+(49, 'Racine Carree', 'Stromae', '2013-05-02', '45', 'img/stromae.jpg', NULL, 'Musique Pop', 14.99, NULL, 'Pop', 19, 6, 1, 8),
+(50, 'Mylo Xyloto', 'Coldplay', '2011-05-17', '45', 'img/coldplay.jpg', NULL, 'Groupe Pop Rock', 17.95, NULL, 'Pop Rock', 12, 1, 1, 7),
 (51, '25', 'Adele', '2015-10-18', '45', 'img/adele.jpg', NULL, 'Musique Pop', 20.99, NULL, 'Pop', 20, 1, 1, 2);
 
 -- --------------------------------------------------------
