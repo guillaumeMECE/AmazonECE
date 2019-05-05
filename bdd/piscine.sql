@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 05 mai 2019 à 16:12
+-- Généré le :  Dim 05 mai 2019 à 16:40
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -89,7 +89,7 @@ INSERT INTO `book` (`id_book`, `title`, `auteur`, `date`, `editeur`, `prix`, `ph
 (11, 'Tintin au Congo', 'Herge', '1931-09-13', 'Casterman', 11.5, 'img/tintin.jpg', NULL, 'A peine rentre d URSS, Tintin repart pour le Congo.', NULL, 'bd', 15, 5, 1, 6),
 (12, 'L\'Odyssee d\'Asterix', 'Albert Uderzo ', '1981-07-11', 'Les Editions Albert Rene', 9.5, 'img/asterix.jpg', NULL, 'Asterix et Obelix, s embarquent pour un long voyage au Moyen-Orient, a la recherche de l huile de roche, ingredient essentiel a la fabrication de la celebre potion magique.', NULL, 'bd', 4, 1, 1, 2),
 (10, 'Therese Raquin', 'Emile Zola', '1867-02-13', 'Folio', 3, 'img/emile.jpg', NULL, 'Roman Classique Emile Zola', NULL, 'Roman', 5, 6, 1, 2),
-(15, 'Paris est une fete', 'Ernest Hemingway', '1964-05-09', 'Folio', 8.4, 'img/paris.jpg', NULL, 'Au cours de l’ete 1957, Hemingway commenca a travailler sur les «Vignettes parisiennes», comme il appelait alors Paris est une fete.', NULL, 'Roman', 3, 1, 1, 0),
+(15, 'Paris est une fete', 'Ernest Hemingway', '1964-05-09', 'Folio', 8.4, 'img/paris.jpg', NULL, 'Au cours de l ete 1957, Hemingway commenca a travailler sur les Vignettes parisiennes, comme il appelait alors Paris est une fete.', NULL, 'Roman', 3, 1, 1, 0),
 (14, 'L\'Ecume des jours', 'Boris Vian', '1947-03-08', 'Gallimard', 6.9, 'img/ecume-des-jours.jpg', NULL, 'Un titre leger et lumineux qui annonce une histoire d’amour drole ou grincante, tendre ou grave, fascinante et inoubliable, composee par un ecrivain de vingt-six ans.', NULL, 'Roman', 6, 1, 1, 0);
 
 -- --------------------------------------------------------
@@ -255,7 +255,7 @@ INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo
 (48, '13', 'Indochine', '2017-07-19', '45', 'img/13.jpg', NULL, 'Dernier Album d\'Indochine', 15.95, NULL, 'Rock', 1, 3, 1, 5),
 (49, 'Racine Carree', 'Stromae', '2013-05-02', '45', 'img/stromae.jpg', NULL, 'Musique Pop', 14.99, NULL, 'Pop', 19, 6, 1, 8),
 (50, 'Mylo Xyloto', 'Coldplay', '2011-05-17', '45', 'img/coldplay.jpg', NULL, 'Groupe Pop Rock', 17.95, NULL, 'Pop Rock', 12, 1, 1, 7),
-(51, '25', 'Adele', '2015-10-18', '45', 'img/adele.jpg', NULL, 'Musique Pop', 20.99, NULL, 'Pop', 20, 1, 1, 2);
+(51, '25', 'Adele', '2015-10-18', '45', 'img/adele.jpg', NULL, 'Musique Pop', 20.99, NULL, 'Pop', 20, 1, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -318,11 +318,11 @@ CREATE TABLE IF NOT EXISTS `sportsloisirs` (
 
 INSERT INTO `sportsloisirs` (`id_sl`, `nom`, `marque`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`, `nbPhoto`, `nbvente`) VALUES
 (1, 'Pure Drive 2017', 'Babolat', 'img/babolat.jpg', NULL, 'Offrant une combinaison incroyable de vitesse, de puissance et d effets, la Pure Drive est l une des raquettes les plus populaires et polyvalentes jamais creees !', 169.9, NULL, '', 0, 1, NULL, 2),
-(24, 'Pointes Classiques', 'Repetto', 'img/danse.jpg', NULL, 'Pointes de danse de qualite', 34.99, NULL, 'Chaussons de danse', 0, 1, 1, 0),
+(24, 'Pointes Classiques', 'Repetto', 'img/danse.jpg', NULL, 'Pointes de danse de qualite', 34.99, NULL, 'Chaussons de danse', 0, 1, 2, 0),
 (20, 'Casque Audio', 'Dr Dre', 'img/casque.jpg', NULL, 'Casque Bluetooth Rose\r\nStereo\r\nAgreable et pratique a utiliser', 120, NULL, 'Casque Audio', 30, 3, 1, 7),
 (21, 'Kit de Plongee', 'Decathlon', 'img/kit.jpg', NULL, 'Kit de plongee pour debutant ', 18.99, NULL, 'Kit Plongee', 9, 4, 1, 4),
 (22, 'Balle de Volley', 'Kipsta', 'img/volley.jpg', NULL, 'Balle de Volley pour les professionnels\r\n\r\n', 18.99, NULL, 'Balle', 10, 5, 1, 5),
-(25, 'Halteres 20 kg', 'Decathlon', 'img/haltere.jpg', NULL, 'Lot de 2 halteres de 20 kg\r\nBonne prise en main \r\nAdequates pour les sportifs de haut-niveau', 20, NULL, 'Halteres', 5, 1, 1, 0);
+(25, 'Halteres 20 kg', 'Decathlon', 'img/haltere.jpg', NULL, 'Lot de 2 halteres de 20 kg\r\nBonne prise en main \r\nAdequates pour les sportifs de haut-niveau', 20, NULL, 'Halteres', 5, 1, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -359,10 +359,10 @@ CREATE TABLE IF NOT EXISTS `vetements` (
 INSERT INTO `vetements` (`id_vetement`, `nom`, `taille`, `couleur`, `sexe`, `marque`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`, `nbPhoto`, `nbvente`) VALUES
 (1, 'T-Shirt Champion', 'M', 'Blanc', 'Homme', 'Champion', 'img/champion.jpg', NULL, 'T-shirt Blanc', 21, '', '', 8, 1, NULL, 3),
 (6, 'T-Shirt Champion ', 'XS', 'Blanc', 'Femme', 'Champion', 'img/1556882096tshirt.jpg', NULL, 'T shirt casual sport Champion', 12, NULL, 'Pull', 0, 3, 2, 5),
-(7, 'Casquette NY', 'S', 'Gris', 'Femme', NULL, 'img/casquette', NULL, 'Casquette street style pour femme', 35.95, NULL, 'Casquette', 60, 4, 1, 3),
+(7, 'Casquette NY', 'S', 'Gris', 'Femme', '', 'img/casquette', NULL, 'Casquette street style pour femme', 35.95, NULL, 'Casquette', 60, 1, 2, 3),
 (8, 'Manteau ', 'L', 'Bleu', 'Homme', 'Superdry', 'img/manteau.jpg', NULL, 'Manteau mi-saison\r\nSans capuche', 130, NULL, 'Manteau', 12, 5, 1, 3),
 (9, 'Robe simple', 'S', 'noir', 'Femme', 'Nafnaf', 'img/robe.jpg', NULL, 'Petite robe noire simple et elegante', 57, NULL, 'Robe', 12, 6, 1, 0),
-(10, 'Basket Ville', '40', 'Blanc', 'Femme', 'Converse', 'img/converse.jpg', NULL, 'Basket pratique pour la ville\r\nEn toile, ideal pour l\'ete', 59.99, NULL, 'Basket', 7, 1, 1, 4),
+(10, 'Basket Ville', '40', 'Blanc', 'Femme', 'Converse', 'img/converse.jpg', NULL, 'Basket pratique pour la ville\r\nEn toile, ideal pour l\'ete', 59.99, NULL, 'Basket', 7, 1, 3, 4),
 (11, 'Short de Ville', 'L', 'Rouge', 'Homme', 'Zara', 'img/short.jpg', NULL, 'Short coton leger', 44.5, NULL, 'Short', 7, 3, 1, 0),
 (12, 'Chemise', 'M', 'Bleu', 'Homme', 'Tommy Hilfiger', 'img/chemise.jpg', NULL, 'Chemise coton parfaite pour l\'ete', 34.99, NULL, 'Chemise', 20, 4, 1, 2),
 (13, 'Jean', 'XS', 'Bleu', 'Femme', 'Asos', 'img/jean.jpg', NULL, 'Jean taille basse', 30, NULL, 'Jean', 18, 5, NULL, 0),
