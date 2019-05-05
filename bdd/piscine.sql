@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 05 mai 2019 à 16:40
+-- Généré le :  Dim 05 mai 2019 à 21:15
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -317,7 +317,7 @@ CREATE TABLE IF NOT EXISTS `sportsloisirs` (
 --
 
 INSERT INTO `sportsloisirs` (`id_sl`, `nom`, `marque`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`, `nbPhoto`, `nbvente`) VALUES
-(1, 'Pure Drive 2017', 'Babolat', 'img/babolat.jpg', NULL, 'Offrant une combinaison incroyable de vitesse, de puissance et d effets, la Pure Drive est l une des raquettes les plus populaires et polyvalentes jamais creees !', 169.9, NULL, '', 0, 1, NULL, 2),
+(1, 'Pure Drive 2017', 'Babolat', 'img/raquette1.jpg', NULL, 'Offrant une combinaison incroyable de vitesse, de puissance et d effets, la Pure Drive est l une des raquettes les plus populaires et polyvalentes jamais creees !', 169.9, NULL, '', 0, 1, NULL, 2),
 (24, 'Pointes Classiques', 'Repetto', 'img/danse.jpg', NULL, 'Pointes de danse de qualite', 34.99, NULL, 'Chaussons de danse', 0, 1, 2, 0),
 (20, 'Casque Audio', 'Dr Dre', 'img/casque.jpg', NULL, 'Casque Bluetooth Rose\r\nStereo\r\nAgreable et pratique a utiliser', 120, NULL, 'Casque Audio', 30, 3, 1, 7),
 (21, 'Kit de Plongee', 'Decathlon', 'img/kit.jpg', NULL, 'Kit de plongee pour debutant ', 18.99, NULL, 'Kit Plongee', 9, 4, 1, 4),
