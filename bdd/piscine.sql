@@ -1,9 +1,9 @@
-- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 03 mai 2019 à 17:18
+-- Généré le :  Dim 05 mai 2019 à 12:31
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `book` (
   `nbvente` int(11) DEFAULT '0',
   PRIMARY KEY (`id_book`),
   KEY `id_seller` (`id_seller`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `book`
@@ -83,9 +83,9 @@ CREATE TABLE IF NOT EXISTS `book` (
 
 INSERT INTO `book` (`id_book`, `title`, `auteur`, `date`, `editeur`, `prix`, `photo`, `video`, `description`, `categorie`, `genre`, `nombre`, `id_seller`, `nbPhoto`, `nbvente`) VALUES
 (1, 'Le Rouge et le Noir', 'Stendhal', '2019-04-17', 'Larousse', 7.4, 'img/retn.jpg', NULL, 'Roman', NULL, 'roman', 0, 1, NULL, 0),
-(3, 'Assommoire', 'Zola', '2019-05-04', '', 4, 'img/1556789084Assommoire.jpg', NULL, '', NULL, 'Roman', 22, 1, NULL, 1),
+(3, 'Assommoire', 'Zola', '2019-05-04', '', 4, 'img/1556789084Assommoire.jpg', NULL, '', NULL, 'Roman', 20, 1, NULL, 3),
 (4, 'tstlivre', 'efsfd', '2019-05-30', 'rgfd', 8.31, 'img/1556886199tstlivre.jpg', NULL, 'zegrfds', NULL, 'egfd', 0, 1, 2, 0),
-(5, 'hey', NULL, NULL, NULL, 4, NULL, NULL, NULL, NULL, NULL, 3, NULL, NULL, 0);
+(6, 'Le petit prince', 'Antoine de saint-exupery', '1943-05-01', 'Folio', 6.9, 'img/Le-Petit-Prince.jpg', NULL, 'Le Petit Prince est une œuvre de langue française, la plus connue d\'Antoine de Saint-Exupéry.', NULL, 'Roman', 7, 2, 1, 9);
 
 -- --------------------------------------------------------
 
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `buyer` (
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_buyer`),
   KEY `id_card` (`id_card`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `buyer`
@@ -121,7 +121,8 @@ INSERT INTO `buyer` (`id_buyer`, `id_card`, `name`, `firstname`, `password`, `pi
 (2, 2, 'tst', 'tstf', 'azerty', NULL, 'tst@gmail.com', '', '', '', '', '', NULL),
 (3, NULL, 'Maurin', 'guillaume', 'azertyuiop', NULL, 'guillaumemaurin.gm@gmail.com', '11 Rue de Gramont', 'Chambourcy', '78240', 'France', '0760577499', 'buyer'),
 (4, NULL, 'tst', 'yo', 'wxcvbn', NULL, 'gui@mail.com', '1', '2', '43635', 'Belgique', '0760577499', 'buyer'),
-(5, 4, 'hyy', 'hey', 'wxcvbn', NULL, 'hey@yo.com', 'AEDQ', 'sfzef', '12344', 'Portugal', '1433211', 'buyer');
+(5, 4, 'hyy', 'hey', 'wxcvbn', NULL, 'hey@yo.com', 'AEDQ', 'sfzef', '12344', 'Portugal', '1433211', 'buyer'),
+(6, 5, 'michmich', 'mmm', 'hello', NULL, 'grouhel.claire98@gmail.com', '33', 'nice', '65432', 'Choisir...', '06', 'buyer');
 
 -- --------------------------------------------------------
 
@@ -138,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `card` (
   `crypto` varchar(255) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_card`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `card`
@@ -148,7 +149,8 @@ INSERT INTO `card` (`id_card`, `nomcarte`, `numero`, `datefin`, `crypto`, `type`
 (1, 'Guillaume Maurin', '1234567890', '2019-05-05', '123', 'MasterCard'),
 (2, 'Guillaume Maurin', '1234567890', '2019-05-05', '123', 'MasterCard'),
 (3, 'yo', '890', '2019-05-01', '123', 'Visa'),
-(4, 'heyyo', '890', '2019-05-01', '567', 'AmericanExpress');
+(4, 'heyyo', '890', '2019-05-01', '567', 'AmericanExpress'),
+(5, 'michmich', '12345', '2019-04-03', '000', 'MasterCard');
 
 -- --------------------------------------------------------
 
@@ -166,17 +168,20 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `type` varchar(255) DEFAULT NULL,
   `type_user` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_cart`)
-) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `cart`
 --
 
 INSERT INTO `cart` (`id_cart`, `id_produit`, `user_id`, `nombre_cart`, `prix_unit`, `type`, `type_user`) VALUES
-(47, 3, 1, 1, 4, 'book', 'buyer'),
+(47, 3, 1, 19, 4, 'book', 'buyer'),
 (46, 1, 1, 5, 7.4, 'book', 'buyer'),
-(45, 5, 1, 1, 17.12, 'music', 'buyer'),
-(44, 6, 1, 1, 12, 'cloth', 'buyer');
+(45, 5, 1, 2, 17.12, 'music', 'buyer'),
+(44, 6, 1, 1, 12, 'cloth', 'buyer'),
+(48, 4, 1, 2, 11.42, 'music', 'buyer'),
+(54, 46, 1, 2, 7.4, 'music', 'buyer'),
+(53, 3, 1, 3, 4.5, 'music', 'buyer');
 
 -- --------------------------------------------------------
 
@@ -230,8 +235,8 @@ CREATE TABLE IF NOT EXISTS `music` (
 
 INSERT INTO `music` (`id_music`, `nom`, `auteur`, `datesortie`, `taille`, `photo`, `video`, `description`, `prix`, `categorie`, `genre`, `nombre`, `id_seller`, `nbPhoto`, `nbvente`) VALUES
 (1, 'Tranquility Base Hotel & Casino', 'Arctic Monkeys', '2019-04-03', '45', 'img/am.jpg', NULL, 'Album', 7.29, NULL, 'indie rock', 0, 1, NULL, 2),
-(3, 'A Quick One', 'the Who', '2019-04-03', '45', 'img/who.jpg', NULL, 'Album', 4.5, NULL, 'rock', 12, 1, NULL, 1),
-(4, 'Greatest Hit - the Police', 'The Police', '2019-04-03', '45', 'img/tp.jpg', NULL, 'Album', 11.42, NULL, 'rock', 9, 2, NULL, 0),
+(3, 'A Quick One', 'the Who', '2019-04-03', '45', 'img/who.jpg', NULL, 'Album', 4.5, NULL, 'rock', 10, 1, NULL, 3),
+(4, 'Greatest Hit - the Police', 'The Police', '2019-04-03', '45', 'img/tp.jpg', NULL, 'Album', 11.42, NULL, 'rock', 8, 2, NULL, 1),
 (5, 'A Horse With No Name', 'America', '2019-04-03', '45', 'img/america.jpg', NULL, 'Album - Tom Bug EDIT', 17.12, NULL, 'rock', 7, 1, NULL, 2),
 (46, 'tstmusic', 'azedf', '2019-05-10', '45', 'img/1556886105tstmusic.jpg', NULL, 'ef', 7.4, NULL, 'zedfg', 3, 1, 2, 2);
 
