@@ -70,6 +70,7 @@ require_once("config/db.php");
                 <div class="alert alert-success" role="alert">
   <h4 class="alert-heading">Votre commande est passée!</h4>
   <p>Nous vous remercions de votre commande. Vous recevrez très bientôt un mail de confirmation. </p>
+  <p>La redirection vers la page d'accueil s'effectuera d'un instant à l'autre...</p>
   <hr></hr>
   <p class="mb-0">A bientôt !</p>
 </div>
@@ -97,8 +98,7 @@ if (mysqli_num_rows($result_mail) > 0) {
    	$passage_ligne = "\n";
    }
    //=====Déclaration des messages au format texte et au format HTML.
-   $message_txt = "Salut à tous, voici un e-mail envoyé par un script PHP.";
-   $message_html = "<html><head></head><body><b>Salut à tous</b>, voici un e-mail envoyé par un <i>script PHP</i>.</body></html>";
+   $message_txt = "Votre Commande à bien été prise en compte";
    //==========
 
    //=====Lecture et mise en forme de la pièce jointe.
@@ -114,41 +114,41 @@ if (mysqli_num_rows($result_mail) > 0) {
    //==========
 
    //=====Définition du sujet.
-   $sujet = "Hey mon ami !";
+   $sujet = "AMAZONECE-COMMANDE";
    //=========
 
    //=====Création du header de l'e-mail.
-   $header = "From: \"WeaponsB\"<weaponsb@mail.fr>".$passage_ligne;
-   $header.= "Reply-to: \"WeaponsB\" <weaponsb@mail.fr>".$passage_ligne;
+   $header = "From: \"AmazonECE\"<amazon@ece.com>".$passage_ligne;
+   $header.= "Reply-to: \"AmazonECE\" <amazon@ece.com>".$passage_ligne;
    $header.= "MIME-Version: 1.0".$passage_ligne;
    $header.= "Content-Type: multipart/mixed;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
    //==========
 
    //=====Création du message.
    $message = $passage_ligne."--".$boundary.$passage_ligne;
-   $message.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary_alt\"".$passage_ligne;
-   $message.= $passage_ligne."--".$boundary_alt.$passage_ligne;
+   /*$message.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary_alt\"".$passage_ligne;
+   $message.= $passage_ligne."--".$boundary_alt.$passage_ligne;*/
    //=====Ajout du message au format texte.
    $message.= "Content-Type: text/plain; charset=\"ISO-8859-1\"".$passage_ligne;
    $message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
    $message.= $passage_ligne.$message_txt.$passage_ligne;
    //==========
 
-   $message.= $passage_ligne."--".$boundary_alt.$passage_ligne;
+   //$message.= $passage_ligne."--".$boundary_alt.$passage_ligne;
 
    //=====Ajout du message au format HTML.
-   $message.= "Content-Type: text/html; charset=\"ISO-8859-1\"".$passage_ligne;
+   /*$message.= "Content-Type: text/html; charset=\"ISO-8859-1\"".$passage_ligne;
    $message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
-   $message.= $passage_ligne.$message_html.$passage_ligne;
+   $message.= $passage_ligne.$message_html.$passage_ligne;*/
    //==========
 
    //=====On ferme la boundary alternative.
-   $message.= $passage_ligne."--".$boundary_alt."--".$passage_ligne;
+   /*$message.= $passage_ligne."--".$boundary_alt."--".$passage_ligne;*/
    //==========
 
 
 
-   $message.= $passage_ligne."--".$boundary.$passage_ligne;
+   //$message.= $passage_ligne."--".$boundary.$passage_ligne;
 
    //=====Ajout de la pièce jointe.
    /*$message.= "Content-Type: image/jpeg; name=\"image.jpg\"".$passage_ligne;
@@ -158,6 +158,7 @@ if (mysqli_num_rows($result_mail) > 0) {
    $message.= $passage_ligne."--".$boundary."--".$passage_ligne; */
    //==========
    //=====Envoi de l'e-mail.
+   $message=utf8_decode($message);
    if(mail($mail,$sujet,$message,$header)){
       echo "<br> MAIL ENVOYE <br>";
       echo $mail."<br>";
@@ -273,11 +274,23 @@ while ($row = mysqli_fetch_assoc($result)) {
     $result4 =mysqli_query($conn, $sql4);
 }
                  }
+             }else{
+                ?>
+                <div class="alert alert-alert" role="alert">
+            <h4 class="alert-heading">Vos informations personnelle sont erronée!</h4>
+            <hr></hr>
+          </div>
+                <?php
+                header("Refresh: 3; /amazonece/panier.php");
              }
          }
 
       mysqli_close($conn);
-
+header('Refresh: 4; /amazonece/');
                 ?>
+
+                   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+                   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </body>
 </html>

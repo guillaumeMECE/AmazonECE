@@ -35,8 +35,9 @@ $sql = "SELECT *
   WHERE music.id_seller = '" . $_SESSION['id'] . "';";
 
 $result = mysqli_query($conn, $sql); // send the query
+$cpt=0;
 if (mysqli_num_rows($result) > 0) { // if we get back some values so the request was good
-   $cpt=0;
+
     while ($row = mysqli_fetch_assoc($result)) {
         if ($cpt==0) {
             echo "<div class=\"row\">";
